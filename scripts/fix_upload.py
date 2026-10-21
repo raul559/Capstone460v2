@@ -1,7 +1,7 @@
 import re
 
 # Read the file
-with open('front-end/src/pages/Upload.jsx', 'r', encoding='utf-8') as f:
+with open('apps/web-v1/src/pages/Upload.jsx', 'r', encoding='utf-8') as f:
     content = f.read()
 
 # Find and replace the handleSubmit function
@@ -71,7 +71,7 @@ new_function = '''  async function handleSubmit(e) {
 content = re.sub(old_pattern, new_function, content)
 
 # Write back
-with open('front-end/src/pages/Upload.jsx', 'w', encoding='utf-8') as f:
+with open('apps/web-v1/src/pages/Upload.jsx', 'w', encoding='utf-8') as f:
     f.write(content)
 
 print("✓ Upload.jsx updated successfully!")
