@@ -303,3 +303,61 @@ A good change:
 - Avoids unnecessary infrastructure
 - Handles failure states explicitly
 - Leaves the repository easier to understand
+
+Change Size and Scope
+Keep changes small, focused, and reviewable.
+
+Preferred size
+Target fewer than 300 changed lines for normal implementation changes.
+Treat 500 changed lines as a soft review threshold, not an absolute limit.
+If a planned change is likely to exceed 500 changed lines, split it into smaller independently understandable changes before implementation.
+Exceptions
+The 500-line threshold does not apply strictly to:
+
+generated files
+dependency lock files
+generated API clients
+database migration output
+test fixtures
+snapshots
+mechanical file moves or renames
+initial project scaffolding
+Do not artificially split a cohesive implementation solely to satisfy the line-count threshold.
+
+Scope Rule
+Each change should have one primary purpose.
+
+Avoid combining unrelated:
+
+refactoring
+architecture changes
+dependency upgrades
+feature development
+database migrations
+ML changes
+formatting changes
+in the same change.
+
+High-Risk Changes
+Changes to the following should be especially small and isolated:
+
+ML preprocessing
+model loading
+class mappings
+certainty-factor calculations
+expert-system rules
+authentication
+authorization
+image access
+health-information persistence
+For these areas, prefer one behavioral change per change set and include regression tests.
+
+Before Large Changes
+If the requested work is expected to exceed the review threshold:
+
+Inspect the affected code.
+Identify logical implementation boundaries.
+Produce a short change sequence.
+Implement one boundary at a time.
+Run relevant tests after each boundary.
+Do not begin unrelated subsequent work simply because context remains.
