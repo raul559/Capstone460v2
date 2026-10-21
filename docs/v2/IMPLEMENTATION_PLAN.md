@@ -73,7 +73,7 @@ The following are **not** required for the first vertical slice:
 
 Definition of Done:
 
-- [ ] Expo application runs
+- [ ] Expo application runs/
 - [ ] FastAPI starts locally
 - [ ] FastAPI health endpoint responds
 - [x] V1 remains unchanged
@@ -86,18 +86,22 @@ processes, and the first FastAPI request.
 
 **Status: not started**
 
-- [ ] Locate V1 image preprocessing
-- [ ] Create regression fixtures
-- [ ] Port preprocessing into `intelligence/ml`
-- [ ] Port model loading
-- [ ] Port prediction logic
-- [ ] Preserve seven-class ordering
-- [ ] Port certainty-factor calculations
-- [ ] Port expert rules
-- [ ] Port deterministic analysis pipeline
+- [ ] Locate the v4 `.keras` model; add `models/manifest.json` (checksum, TF version)
+- [ ] Capture V1 regression fixtures before porting:
+      CF math, rules + risk selection, and the model's 7 probabilities on test images
+- [ ] Decision record: keep or change V1's missing-intake → "no",
+      top-3-only evidence, and empty-prediction → low_risk
+- [ ] Port preprocessing, labels, model loading, predictor (with version constants)
+- [ ] Port CF math, evidence, rules, one risk selector (with rule-set version)
+- [ ] V2 matches V1 fixtures, except documented intentional changes
+
+Notes: `preprocess_input` is inside the model, so V2 feeds raw 0..255 pixels.
+The CF engine is the only part that decides risk; chat blending and the ABCDE
+rules are out of scope. Expert-system fixtures don't need the model, so start there.
 
 Definition of Done: known test inputs produce expected V1-equivalent results
-within documented tolerances.
+within documented tolerances, except for intentional changes listed in the
+decision record.
 
 Student focus: personally explain and implement/reconstruct the
 behavior-sensitive core — preprocessing, class ordering, certainty-factor
