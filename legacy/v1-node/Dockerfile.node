@@ -3,10 +3,10 @@ FROM node:20-slim AS frontend-builder
 
 WORKDIR /frontend
 
-COPY front-end/package.json ./
+COPY apps/web-v1/package.json ./
 RUN npm install
 
-COPY front-end/ ./
+COPY apps/web-v1/ ./
 
 # VITE_API_BASE_URL must be set at build time (baked into the bundle by Vite)
 # Pass it with: docker build --build-arg VITE_API_BASE_URL=https://your-python-service-url
@@ -20,10 +20,10 @@ FROM node:20-slim
 
 WORKDIR /app
 
-COPY package.json ./
+COPY legacy/v1-node/package.json ./
 RUN npm install
 
-COPY server.js ./
+COPY legacy/v1-node/server.js ./
 
 # Copy built frontend from stage 1
 COPY --from=frontend-builder /frontend/dist ./front-end/dist
