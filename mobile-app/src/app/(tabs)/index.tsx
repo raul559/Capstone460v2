@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { router } from 'expo-router';
 
 export default function HomeScreen() {
   const showComingSoon = (feature: string) => {
@@ -55,7 +56,11 @@ export default function HomeScreen() {
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Upload an image"
-            onPress={() => showComingSoon('Image upload')}
+            onPress={() => {
+  console.log('Upload button pressed');
+  console.log('Current route:', router);
+  router.push('/upload');
+}}
             style={({ pressed }) => [
               styles.button,
               pressed && styles.buttonPressed,
