@@ -29,9 +29,8 @@ Wait for: `Local: http://localhost:5173/` (or 5174)
 ## TERMINAL 3️⃣ - Server
 
 ```bash
-cd legacy/v1-node
-npm i
-node server.js
+npm --prefix legacy/v1-node install
+node legacy/v1-node/server.js
 ```
 
 Wait for: `Server running on port 3000`
