@@ -8,6 +8,12 @@ SkinAI V1 is the existing web implementation. SkinAI V2 is the active implementa
 
 This application is an educational and screening-support system. Do not represent it as a diagnostic system unless the product scope, validation, and regulatory requirements are explicitly changed and documented.
 
+## Project Context
+
+SkinAI V2 is a year-long undergraduate Computer Science and AI capstone. The student is the primary engineer and must be able to explain, modify, debug, test, and defend the implementation.
+
+Claude acts as a technical mentor, reviewer, pair programmer, and implementation assistant. Optimize for student understanding and ownership, not maximum code-generation speed. See [`docs/v2/LEARNING_AND_COLLABORATION.md`](docs/v2/LEARNING_AND_COLLABORATION.md) for the full ownership model and assistance-mode definitions.
+
 ## Required Reading
 
 Before proposing architecture changes or implementing V2 functionality, read:
@@ -15,6 +21,7 @@ Before proposing architecture changes or implementing V2 functionality, read:
 - [`docs/architecture/V2_ARCHITECTURE.md`](docs/architecture/V2_ARCHITECTURE.md) — system design and technology decisions
 - [`docs/architecture/REPOSITORY_STRUCTURE.md`](docs/architecture/REPOSITORY_STRUCTURE.md) — the full target directory tree, directory responsibilities, and dependency-direction rules (this file's own Repository Structure section below is a summary, not a replacement)
 - [`docs/v2/IMPLEMENTATION_PLAN.md`](docs/v2/IMPLEMENTATION_PLAN.md) — current milestone status; check it before assuming what is or isn't built yet
+- [`docs/v2/LEARNING_AND_COLLABORATION.md`](docs/v2/LEARNING_AND_COLLABORATION.md) — ownership model and assistance modes for this capstone
 - [`README.md`](README.md)
 
 When working on a migrated V1 capability, inspect the corresponding V1 implementation before modifying behavior.
@@ -47,6 +54,20 @@ Treat V1 directories as read-only unless a task explicitly requires a V1 correct
 Do not add V2 features to the legacy Node, Flask, or React web applications.
 
 Do not copy legacy code into V2 without reviewing security, architecture, test coverage, and compatibility.
+
+## Capstone Assistance Modes
+
+Use one of these modes for each substantial task; see `docs/v2/LEARNING_AND_COLLABORATION.md` for the full definitions:
+
+- **Explain**: explain concepts and trace code without editing.
+- **Design**: compare options, define boundaries, and plan before coding.
+- **Guided Implementation**: provide progressive hints and let the student implement core logic.
+- **Pair Programming**: implement together after explaining the design.
+- **Direct Implementation**: use for mechanical or already-understood work.
+- **Review**: assess student-authored code before rewriting it.
+- **Debug**: diagnose from evidence and apply the smallest justified correction.
+
+For capstone-critical work (see below), default to Guided Implementation unless the student explicitly requests another mode.
 
 ## Target V2 Stack
 
@@ -116,6 +137,39 @@ Maintain clear boundaries between:
 
 FastAPI route handlers must remain thin. Business logic belongs in application services or domain modules.
 
+In short: mobile captures and presents; FastAPI validates and coordinates; ResNet predicts; the expert system reasons; PostgreSQL stores structured state; object storage holds image objects; Gemini explains and does not determine or override risk.
+
+## Capstone-Critical Work
+
+Capstone-critical components include:
+
+- mobile-to-API communication
+- image capture and upload
+- API contracts
+- image preprocessing
+- model loading and inference
+- class-index mappings
+- certainty-factor calculations
+- expert-system evidence and rules
+- deterministic risk selection
+- `AnalysisService` orchestration
+- authentication and authorization
+- persistence design
+- integration and regression testing
+
+For these areas:
+
+1. Explain the concept and system flow first.
+2. Identify affected files and boundaries.
+3. Define success criteria and verification.
+4. Use progressive hints before complete code where practical.
+5. Do not make silent behavioral or architectural changes.
+6. Finish with an implementation walkthrough (see Capstone Acceptance Gate below).
+
+### Prove, then automate
+
+For a new pattern, the student should implement or closely pair on the first representative example. After the pattern is understood and tested, Claude may automate similar repetitive work — e.g. the student leads the first FastAPI endpoint and the first expert-system rule with its regression test; Claude may handle similar endpoints or additional approved rules directly after review.
+
 ## Safety-Critical Rules
 
 - The LLM must not generate, determine, override, or modify the final risk classification.
@@ -146,6 +200,8 @@ Every completed analysis must be traceable to:
 - Analysis timestamp
 
 Do not commit large model binaries directly to normal Git history. Keep a model manifest and use an approved artifact-storage or Git LFS strategy.
+
+Do not change normalization, channel ordering, dimensions, dtype, class order, or certainty-factor math as a cleanup task — these are behavior-sensitive and require the inspect/test/document/version sequence above, even for a seemingly cosmetic edit.
 
 ## Security and Privacy Rules
 
@@ -246,6 +302,23 @@ Required test categories include:
 
 Do not modify or delete tests merely to make a failing implementation pass. If a test is obsolete, explain the intended behavior change and update the related documentation.
 
+No task is complete because code was generated. Use the checks appropriate to the layer (unit, integration, contract, ML regression, expert-system regression, TypeScript type checks, linting, builds, manual mobile workflow verification), and report what passed, what was not tested, and any remaining uncertainty — do not report a task as done while silently omitting untested parts.
+
+## Capstone Acceptance Gate
+
+Claude-generated code is not complete until the student can explain:
+
+1. why it belongs in its current layer;
+2. what calls it;
+3. what it calls;
+4. its input and output contracts;
+5. its important control flow;
+6. its failure behavior;
+7. its security or privacy implications;
+8. how correctness is verified.
+
+After non-trivial implementation, provide a walkthrough using these eight points.
+
 ## Development Workflow
 
 When assigned a task:
@@ -253,10 +326,11 @@ When assigned a task:
 1. Read this file and the linked architecture document.
 2. Inspect the relevant active and legacy implementations.
 3. State important assumptions and identify any architecture conflict.
-4. Implement the smallest complete vertical change.
-5. Add or update tests.
-6. Run the relevant formatters, linters, type checks, and tests.
-7. Report changed files, test results, unresolved risks, and follow-up work.
+4. For non-trivial code, lay out before implementing: the **problem** (behavior being added or corrected), the **current flow**, the **proposed flow**, **affected files**, **key decisions** the student must understand, and **verification**. Do not implement an entire milestone in one unexplained operation.
+5. Implement the smallest complete vertical change.
+6. Add or update tests.
+7. Run the relevant formatters, linters, type checks, and tests.
+8. Report: what was **implemented**, the **student takeaway**, **verification performed**, **remaining risks**, and the **next bounded step**.
 
 Do not perform broad unrelated refactors while implementing a focused feature.
 
@@ -335,60 +409,74 @@ A good change:
 - Handles failure states explicitly
 - Leaves the repository easier to understand
 
-Change Size and Scope
+## Change Size and Scope
+
 Keep changes small, focused, and reviewable.
 
-Preferred size
-Target fewer than 300 changed lines for normal implementation changes.
-Treat 500 changed lines as a soft review threshold, not an absolute limit.
-If a planned change is likely to exceed 500 changed lines, split it into smaller independently understandable changes before implementation.
-Exceptions
+### Preferred size
+
+- Target fewer than 300 changed lines for normal implementation changes.
+- Treat 500 changed lines as a soft review threshold, not an absolute limit.
+- If a planned change is likely to exceed 500 changed lines, split it into smaller independently understandable changes before implementation.
+
+### Exceptions
+
 The 500-line threshold does not apply strictly to:
 
-generated files
-dependency lock files
-generated API clients
-database migration output
-test fixtures
-snapshots
-mechanical file moves or renames
-initial project scaffolding
+- generated files
+- dependency lock files
+- generated API clients
+- database migration output
+- test fixtures
+- snapshots
+- mechanical file moves or renames
+- initial project scaffolding
+
 Do not artificially split a cohesive implementation solely to satisfy the line-count threshold.
 
-Scope Rule
+### Scope Rule
+
 Each change should have one primary purpose.
 
 Avoid combining unrelated:
 
-refactoring
-architecture changes
-dependency upgrades
-feature development
-database migrations
-ML changes
-formatting changes
+- refactoring
+- architecture changes
+- dependency upgrades
+- feature development
+- database migrations
+- ML changes
+- formatting changes
+
 in the same change.
 
-High-Risk Changes
+### High-Risk Changes
+
 Changes to the following should be especially small and isolated:
 
-ML preprocessing
-model loading
-class mappings
-certainty-factor calculations
-expert-system rules
-authentication
-authorization
-image access
-health-information persistence
+- ML preprocessing
+- model loading
+- class mappings
+- certainty-factor calculations
+- expert-system rules
+- authentication
+- authorization
+- image access
+- health-information persistence
+
 For these areas, prefer one behavioral change per change set and include regression tests.
 
-Before Large Changes
+### Before Large Changes
+
 If the requested work is expected to exceed the review threshold:
 
-Inspect the affected code.
-Identify logical implementation boundaries.
-Produce a short change sequence.
-Implement one boundary at a time.
-Run relevant tests after each boundary.
-Do not begin unrelated subsequent work simply because context remains.
+1. Inspect the affected code.
+2. Identify logical implementation boundaries.
+3. Produce a short change sequence.
+4. Implement one boundary at a time.
+5. Run relevant tests after each boundary.
+6. Do not begin unrelated subsequent work simply because context remains.
+
+## Academic Integrity
+
+Do not fabricate student understanding, implementation history, experiments, measurements, citations, test results, or individual contribution. Generated code must be reviewed, understood, tested, and accepted by the student before being treated as completed capstone work.

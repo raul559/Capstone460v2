@@ -62,5 +62,20 @@ See **`RUN.md`** for step-by-step instructions on running the project locally.
 
 ---
 
-⚠️ **Disclaimer:**  
+## Project Documentation
+
+### Architecture
+
+- [SkinAI V2 Architecture](docs/architecture/V2_ARCHITECTURE.md)
+- [Repository Structure](docs/architecture/REPOSITORY_STRUCTURE.md)
+
+### V2 Delivery and Learning
+
+- [Implementation Plan](docs/v2/IMPLEMENTATION_PLAN.md)
+- [Learning and Collaboration Protocol](docs/v2/LEARNING_AND_COLLABORATION.md)
+- [Claude Session Prompt Template](docs/v2/SESSION_PROMPT_TEMPLATE.md)
+
+---
+
+ **Disclaimer:**  
 This application is for demonstration and academic purposes only. It should not be used for real medical diagnosis or treatment decisions.

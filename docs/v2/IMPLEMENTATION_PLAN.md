@@ -1,5 +1,8 @@
 # SkinAI V2 Implementation Plan
 
+**Current objective:** build SkinAI V2 incrementally while preserving
+student understanding, testability, and V1 behavioral reference.
+
 > Update the "Current State" section and each milestone's Status line
 > whenever a revision changes repository structure or completes a milestone
 > step, per `CLAUDE.md`'s Documentation Rules. This file goes stale the
@@ -70,28 +73,39 @@ The following are **not** required for the first vertical slice:
 
 Definition of Done:
 
-- [ ] Expo application runs
+- [ ] Expo application runs/
 - [ ] FastAPI starts locally
 - [ ] FastAPI health endpoint responds
 - [x] V1 remains unchanged
 - [ ] unit test commands run successfully (no V2 unit tests exist yet)
 
+Student focus: understand repository boundaries, local development
+processes, and the first FastAPI request.
+
 ## Milestone 2 — Intelligence Migration
 
 **Status: not started**
 
-- [ ] Locate V1 image preprocessing
-- [ ] Create regression fixtures
-- [ ] Port preprocessing into `intelligence/ml`
-- [ ] Port model loading
-- [ ] Port prediction logic
-- [ ] Preserve seven-class ordering
-- [ ] Port certainty-factor calculations
-- [ ] Port expert rules
-- [ ] Port deterministic analysis pipeline
+- [ ] Locate the v4 `.keras` model; add `models/manifest.json` (checksum, TF version)
+- [ ] Capture V1 regression fixtures before porting:
+      CF math, rules + risk selection, and the model's 7 probabilities on test images
+- [ ] Decision record: keep or change V1's missing-intake → "no",
+      top-3-only evidence, and empty-prediction → low_risk
+- [ ] Port preprocessing, labels, model loading, predictor (with version constants)
+- [ ] Port CF math, evidence, rules, one risk selector (with rule-set version)
+- [ ] V2 matches V1 fixtures, except documented intentional changes
+
+Notes: `preprocess_input` is inside the model, so V2 feeds raw 0..255 pixels.
+The CF engine is the only part that decides risk; chat blending and the ABCDE
+rules are out of scope. Expert-system fixtures don't need the model, so start there.
 
 Definition of Done: known test inputs produce expected V1-equivalent results
-within documented tolerances.
+within documented tolerances, except for intentional changes listed in the
+decision record.
+
+Student focus: personally explain and implement/reconstruct the
+behavior-sensitive core — preprocessing, class ordering, certainty-factor
+math, and rule evaluation — rather than having it ported wholesale.
 
 ## Milestone 3 — Analysis API
 
@@ -105,6 +119,9 @@ Do not introduce persistence yet unless required.
 
 Definition of Done: a test image and intake payload can travel through the
 entire backend and return a typed analysis result.
+
+Student focus: understand how the route, schema, service, intelligence
+layer, and response boundaries connect.
 
 ## Milestone 4 — Mobile Vertical Slice
 
@@ -125,6 +142,9 @@ Connect the real mobile application to the real FastAPI analysis endpoint.
 
 Definition of Done: phone → image → intake → FastAPI → ResNet50 → expert
 system → result → phone works end-to-end.
+
+Student focus: implement and be able to explain the full mobile-to-backend
+flow, not just assemble screens around a working API call.
 
 ## Milestone 5 — Persistence
 
@@ -185,7 +205,7 @@ Polish:
 - presentation demo mode
 - prepared non-identifying demo fixtures
 
-## Deferred Capabilities
+## Deferred Until Measured Need
 
 Do not implement without demonstrated need:
 
@@ -199,3 +219,12 @@ Do not implement without demonstrated need:
 
 FAISS should be migrated only after the primary V2 analysis workflow is
 working.
+
+## Completion Standard
+
+A milestone is complete only when functionality, student understanding,
+verification, documentation, and known limitations are all recorded —
+checking every box in a milestone's task list without the corresponding
+understanding and verification does not count as done. See
+`docs/v2/LEARNING_AND_COLLABORATION.md` for the checkpoint-document format
+to use when closing out a milestone.
