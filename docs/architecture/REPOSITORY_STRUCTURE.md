@@ -548,8 +548,6 @@ skinai/
 │   ├── v1/
 │   └── v2/
 │       └── IMPLEMENTATION_PLAN.md
-├── models/
-│   └── README.md
 ├── .github/
 │   └── workflows/
 ├── .gitignore
