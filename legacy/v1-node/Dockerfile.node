@@ -1,0 +1,35 @@
+# Stage 1: Build the React frontend
+FROM node:20-slim AS frontend-builder
+
+WORKDIR /frontend
+
+COPY apps/web-v1/package.json ./
+RUN npm install
+
+COPY apps/web-v1/ ./
+
+# VITE_API_BASE_URL must be set at build time (baked into the bundle by Vite)
+# Pass it with: docker build --build-arg VITE_API_BASE_URL=https://your-python-service-url
+ARG VITE_API_BASE_URL=http://localhost:3720
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+
+RUN npm run build
+
+# Stage 2: Node.js server
+FROM node:20-slim
+
+WORKDIR /app
+
+COPY legacy/v1-node/package.json ./
+RUN npm install
+
+COPY legacy/v1-node/server.js ./
+
+# Copy built frontend from stage 1
+COPY --from=frontend-builder /frontend/dist ./front-end/dist
+
+EXPOSE 8080
+
+ENV PORT=8080
+
+CMD node server.js

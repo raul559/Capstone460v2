@@ -17,6 +17,24 @@ This project was developed as part of a Senior Capstone at Purdue University For
 
 ## Project Structure
 
+```
+apps/
+  mobile/        React Native (Expo) mobile app — active V2 development
+  web-v1/        React/Vite web frontend (V1, served by legacy/v1-node)
+legacy/
+  v1-node/       Node/Express server: auth, image storage, serves apps/web-v1
+  v1-flask/      Python/Flask API: ML inference, expert system, chatbot
+services/        FastAPI backend for V2 (see docs/architecture)
+intelligence/    V2 ML and expert-system modules (see docs/architecture)
+tests/           V2 unit/integration/contract/regression tests
+docs/
+  architecture/  V2 architecture brief
+  v1/            V1 implementation and deployment docs
+scripts/         Repo-wide maintenance scripts
+```
+
+See `CLAUDE.md` and `docs/architecture/V2_ARCHITECTURE.md` for the full
+rationale and the target V2 architecture.
 
 ---
 
@@ -44,5 +62,20 @@ See **`RUN.md`** for step-by-step instructions on running the project locally.
 
 ---
 
-⚠️ **Disclaimer:**  
+## Project Documentation
+
+### Architecture
+
+- [SkinAI V2 Architecture](docs/architecture/V2_ARCHITECTURE.md)
+- [Repository Structure](docs/architecture/REPOSITORY_STRUCTURE.md)
+
+### V2 Delivery and Learning
+
+- [Implementation Plan](docs/v2/IMPLEMENTATION_PLAN.md)
+- [Learning and Collaboration Protocol](docs/v2/LEARNING_AND_COLLABORATION.md)
+- [Claude Session Prompt Template](docs/v2/SESSION_PROMPT_TEMPLATE.md)
+
+---
+
+ **Disclaimer:**  
 This application is for demonstration and academic purposes only. It should not be used for real medical diagnosis or treatment decisions.
