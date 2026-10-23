@@ -12,7 +12,9 @@ This application is an educational and screening-support system. Do not represen
 
 Before proposing architecture changes or implementing V2 functionality, read:
 
-- [`docs/architecture/V2_ARCHITECTURE.md`](docs/architecture/V2_ARCHITECTURE.md)
+- [`docs/architecture/V2_ARCHITECTURE.md`](docs/architecture/V2_ARCHITECTURE.md) — system design and technology decisions
+- [`docs/architecture/REPOSITORY_STRUCTURE.md`](docs/architecture/REPOSITORY_STRUCTURE.md) — the full target directory tree, directory responsibilities, and dependency-direction rules (this file's own Repository Structure section below is a summary, not a replacement)
+- [`docs/v2/IMPLEMENTATION_PLAN.md`](docs/v2/IMPLEMENTATION_PLAN.md) — current milestone status; check it before assuming what is or isn't built yet
 - [`README.md`](README.md)
 
 When working on a migrated V1 capability, inspect the corresponding V1 implementation before modifying behavior.
@@ -162,7 +164,7 @@ Do not commit large model binaries directly to normal Git history. Keep a model 
 
 ## Repository Structure
 
-Use this target layout:
+Current top-level layout:
 
 ```text
 skinai/
@@ -186,15 +188,25 @@ skinai/
 │   └── regression/
 ├── docs/
 │   ├── architecture/
-│   │   └── V2_ARCHITECTURE.md
+│   │   ├── V2_ARCHITECTURE.md
+│   │   └── REPOSITORY_STRUCTURE.md
 │   ├── v1/
 │   └── v2/
 ├── scripts/
-├── .github/
-│   └── workflows/
 ├── .gitignore
 └── .env.example
 ```
+
+`models/` (model metadata, manifests, checksums — not large binaries) is
+planned per `docs/architecture/REPOSITORY_STRUCTURE.md` but not yet created;
+add it when ML model migration (Milestone 2) actually needs it, not before.
+
+This is a summary for quick orientation. For the full target tree, per-directory
+responsibilities, and the dependency-direction rules between layers, see
+`docs/architecture/REPOSITORY_STRUCTURE.md` — that document is the source of
+truth for directory structure. If this summary and that document ever
+disagree, `REPOSITORY_STRUCTURE.md` wins; fix this summary to match it rather
+than the other way around.
 
 Do not create new top-level directories when an existing domain-aligned location fits the work.
 
@@ -265,6 +277,25 @@ Update documentation when changing:
 - Setup or development commands
 
 Place architecture decision records under `docs/architecture/decisions/` when a meaningful architecture choice is made or reversed.
+
+### Keep planning docs current every revision
+
+A revision that changes repository structure or completes a milestone step
+without updating the docs that describe that state is incomplete, not done:
+
+- If a directory is added, removed, or repurposed, update
+  `docs/architecture/REPOSITORY_STRUCTURE.md`'s target tree and this file's
+  Repository Structure summary in the same change.
+- If a Milestone 1-8 step in `docs/v2/IMPLEMENTATION_PLAN.md` is completed,
+  check its box and update that milestone's Status line in the same change.
+- Before writing a new planning or architecture doc, check whether an
+  existing one (`V2_ARCHITECTURE.md`, `REPOSITORY_STRUCTURE.md`,
+  `IMPLEMENTATION_PLAN.md`) already owns that content, and extend it instead
+  of creating a parallel document that will drift.
+- A new doc must state its own correct file path in its first section if
+  that isn't obvious from context, and must actually be saved at that path —
+  do not write placement instructions for a file and then put the file
+  somewhere else.
 
 ## Commands
 
