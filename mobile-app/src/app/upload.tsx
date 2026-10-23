@@ -45,7 +45,13 @@ export default function UploadScreen() {
       <SafeAreaView style={styles.safeArea}>
         <Pressable
           accessibilityRole="button"
-          onPress={() => router.back()}
+          onPress={() => {
+            if (router.canGoBack()) {
+              router.back();
+            } else {
+              router.replace('/');
+            }
+          }}
           style={styles.backButton}
         >
           <ThemedText style={styles.backText}>
