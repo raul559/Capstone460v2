@@ -248,7 +248,7 @@ backend/
 Suggested mobile structure:
 
 ```text
-mobile/
+apps/mobile/
   app/
     _layout.tsx
 
