@@ -12,7 +12,7 @@ This application is an educational and screening-support system. Do not represen
 
 Before proposing architecture changes or implementing V2 functionality, read:
 
-- [`docs/architecture/V2_ARCHITECTURE.md`](docs/architecture/V2_ARCHITECTURE.md)
+- [`documentation/architecture/V2_ARCHITECTURE.md`](documentation/architecture/V2_ARCHITECTURE.md)
 - [`README.md`](README.md)
 
 When working on a migrated V1 capability, inspect the corresponding V1 implementation before modifying behavior.
