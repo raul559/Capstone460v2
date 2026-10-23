@@ -3,7 +3,7 @@ steps:
     args:
       - build
       - -f
-      - Dockerfile.node
+      - legacy/v1-node/Dockerfile.node
       - -t
       - ${_IMAGE}
       - --build-arg

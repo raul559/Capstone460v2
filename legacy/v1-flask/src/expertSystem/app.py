@@ -28,11 +28,11 @@ import sys
 from pathlib import Path
 from dotenv import load_dotenv
 # --- Static path to .env in project root ---
-# Resolves from: expertSystem/app.py -> back-end/src/ -> back-end/ -> Capstone/
+# Resolves from: expertSystem/app.py -> legacy/v1-flask/src/ -> legacy/v1-flask/ -> legacy/ -> repo root
 APP_DIR = Path(__file__).resolve().parent
 BACK_END_SRC = APP_DIR.parent
 BACK_END = BACK_END_SRC.parent
-PROJECT_ROOT = BACK_END.parent
+PROJECT_ROOT = BACK_END.parent.parent
 ENV_FILE = PROJECT_ROOT / ".env"
 
 # Load environment variables FIRST from explicit path, before any imports that need them

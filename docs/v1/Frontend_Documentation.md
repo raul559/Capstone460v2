@@ -50,7 +50,7 @@ If this errors, reinstall Node.js and ensure it is added to your PATH.
 **2. Navigate to the frontend directory:**
 
 ```bash
-cd front-end
+cd apps/web-v1
 ```
 
 **3. Install dependencies:**
@@ -63,7 +63,7 @@ This installs all packages listed in `package.json` and `package-lock.json`. It 
 
 **4. Configure the API base URL (optional):**
 
-Create a `.env` file inside `front-end/` if you need to override the default Flask backend URL:
+Create a `.env` file inside `apps/web-v1/` if you need to override the default Flask backend URL:
 
 ```
 VITE_API_BASE_URL=http://localhost:3720
@@ -90,7 +90,7 @@ Open that URL in your browser. The dev server hot-reloads on every file save.
 npm run build
 ```
 
-The compiled output goes to `front-end/dist/`. The Node.js server (`server.js` in the project root) serves this directory automatically when running in production mode.
+The compiled output goes to `apps/web-v1/dist/`. The Node.js server (`server.js` in legacy/v1-node/) serves this directory automatically when running in production mode.
 
 ### Key dependencies
 
@@ -106,7 +106,7 @@ The compiled output goes to `front-end/dist/`. The Node.js server (`server.js` i
 
 ## Application Overview
 
-The frontend is a **React 19 single-page application (SPA)** built with Vite. Execution starts in `front-end/src/main.jsx`, which mounts the root `App` component inside a `BrowserRouter`:
+The frontend is a **React 19 single-page application (SPA)** built with Vite. Execution starts in `apps/web-v1/src/main.jsx`, which mounts the root `App` component inside a `BrowserRouter`:
 
 ```jsx
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -236,7 +236,7 @@ The application uses a dark theme with Purdue gold accents, implemented with pla
 
 ### Home
 
-**File:** `front-end/src/pages/Home.jsx`
+**File:** `apps/web-v1/src/pages/Home.jsx`
 
 The landing page. Displays a full-width hero image with a title, brief project description, and a **Get Started** button that navigates to `/upload`.
 
@@ -249,7 +249,7 @@ Key elements:
 
 ### Upload
 
-**File:** `front-end/src/pages/Upload.jsx`
+**File:** `apps/web-v1/src/pages/Upload.jsx`
 
 The primary feature page. Allows patients to upload skin lesion images and fill out a patient intake form, then displays the AI risk assessment.
 
@@ -306,7 +306,7 @@ The user can download the analysis results as a PDF. The PDF is generated client
 
 ### Reports
 
-**File:** `front-end/src/pages/Reports.jsx`
+**File:** `apps/web-v1/src/pages/Reports.jsx`
 
 Displays saved analysis reports. Behavior differs based on the user's role:
 
@@ -337,7 +337,7 @@ Each report card shows:
 
 ### Login
 
-**File:** `front-end/src/pages/Login.jsx`
+**File:** `apps/web-v1/src/pages/Login.jsx`
 
 Handles both new account registration and existing account login.
 
@@ -367,7 +367,7 @@ When the doctor logs in, `skinai_role` is set to `"doctor"`, unlocking doctor-sp
 
 ### Team
 
-**File:** `front-end/src/pages/Team.jsx`
+**File:** `apps/web-v1/src/pages/Team.jsx`
 
 Displays team member cards. Each card features:
 - Front face: team member photo and name
@@ -379,7 +379,7 @@ Team member photos are stored in `src/assets/` (`damianpic.jpeg`, `sripic.jpeg`,
 
 ### About
 
-**File:** `front-end/src/pages/About.jsx`
+**File:** `apps/web-v1/src/pages/About.jsx`
 
 Static informational page describing:
 - The project goal (AI-assisted dermatology screening)
@@ -393,7 +393,7 @@ Static informational page describing:
 
 ### Navbar
 
-**File:** `front-end/src/components/Navbar.jsx`
+**File:** `apps/web-v1/src/components/Navbar.jsx`
 
 Sticky header rendered on all pages. Contains:
 - Application logo / name ("SkinAI")
@@ -405,7 +405,7 @@ Sticky header rendered on all pages. Contains:
 
 ### Footer
 
-**File:** `front-end/src/components/Footer.jsx`
+**File:** `apps/web-v1/src/components/Footer.jsx`
 
 Simple footer rendered on all pages. Displays copyright text and a project credit line. No interactive functionality.
 
@@ -413,7 +413,7 @@ Simple footer rendered on all pages. Displays copyright text and a project credi
 
 ### ChatbotWidget
 
-**File:** `front-end/src/components/ChatbotWidget.jsx`
+**File:** `apps/web-v1/src/components/ChatbotWidget.jsx`
 
 A floating AI chatbot ("Skinderella") that persists on every page. It integrates with the Flask `/chat` endpoint and is context-aware of the most recent analysis results.
 

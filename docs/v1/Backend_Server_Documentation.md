@@ -52,36 +52,40 @@ The frontend resolves the Flask base URL from the environment variable `VITE_API
 ### File Architecture
 
 ```
-Capstone460/
+Capstone460v2/
 │
-├── server.js                      # Node.js/Express entry point
-├── package.json                   # Node.js dependencies
-├── .env                           # Environment variables (secret)
-├── .env.example                   # Environment variable template
+├── .env                            # Environment variables (secret)
+├── .env.example                    # Environment variable template
 │
-├── front-end/                     # React/Vite frontend (see Frontend Docs)
-│   └── dist/                      # Built frontend served by Node.js in production
+├── apps/
+│   └── web-v1/                     # React/Vite frontend (see Frontend Docs)
+│       └── dist/                   # Built frontend served by the Node.js server in production
 │
-└── back-end/
-    └── src/
-        ├── expert_pipeline.py     # Pipeline orchestration (main entry point)
-        ├── keras_predictor.py     # ResNet50 model wrapper
-        ├── skinai_analyzer.py     # High-level CF analysis interface
-        ├── certainty_factors.py   # MYCIN CF engine + rule definitions
-        ├── query.py               # FAISS image similarity search
-        ├── requirements.txt       # Python dependencies
-        │
-        ├── models/
-        │   └── resnet50_skin_disease_finetuned_v4.keras  # Pre-trained model (217MB)
-        │
-        └── expertSystem/
-            ├── app.py             # Flask web server (main Python entry point)
-            ├── chat.py            # Gemini intake chatbot logic
-            ├── disease_facts.py   # Medical reference data
-            ├── disease_prediction.py  # Expert fusion logic
-            ├── rules.py           # ABCDE scoring / class bonus rules
-            ├── schema.py          # Data models (Facts, ExpertOutput)
-            └── normalize.py       # Input normalization helpers
+└── legacy/
+    ├── v1-node/
+    │   ├── server.js                # Node.js/Express entry point
+    │   └── package.json             # Node.js dependencies
+    │
+    └── v1-flask/
+        └── src/
+            ├── expert_pipeline.py     # Pipeline orchestration (main entry point)
+            ├── keras_predictor.py     # ResNet50 model wrapper
+            ├── skinai_analyzer.py     # High-level CF analysis interface
+            ├── certainty_factors.py   # MYCIN CF engine + rule definitions
+            ├── query.py               # FAISS image similarity search
+            ├── requirements.txt       # Python dependencies
+            │
+            ├── models/
+            │   └── resnet50_skin_disease_finetuned_v4.keras  # Pre-trained model (217MB)
+            │
+            └── expertSystem/
+                ├── app.py             # Flask web server (main Python entry point)
+                ├── chat.py            # Gemini intake chatbot logic
+                ├── disease_facts.py   # Medical reference data
+                ├── disease_prediction.py  # Expert fusion logic
+                ├── rules.py           # ABCDE scoring / class bonus rules
+                ├── schema.py          # Data models (Facts, ExpertOutput)
+                └── normalize.py       # Input normalization helpers
 ```
 
 ---
@@ -342,7 +346,7 @@ Lightweight Gemini-powered chatbot for general questions about the application. 
 
 **`GET /*`**
 
-All non-API, non-chat GET requests return the built React SPA (`front-end/dist/index.html`). This allows React Router to handle client-side navigation after a full page load or refresh.
+All non-API, non-chat GET requests return the built React SPA (`apps/web-v1/dist/index.html`). This allows React Router to handle client-side navigation after a full page load or refresh.
 
 ---
 
@@ -750,35 +754,35 @@ GEMINI_MODEL=gemini-2.0-flash
 ### Step 2 — Install Node.js dependencies
 
 ```bash
-# From the project root
+cd legacy/v1-node
 npm install
 ```
 
 ### Step 3 — Install Python dependencies
 
 ```bash
-pip install -r back-end/src/requirements.txt
+pip install -r legacy/v1-flask/src/requirements.txt
 ```
 
 ### Step 4 — Run all three processes (three separate terminals)
 
 **Terminal 1 — Python Flask backend:**
 ```bash
-cd back-end/src
+cd legacy/v1-flask/src
 python -m expertSystem.app
 ```
 Wait for: `Running on http://localhost:3720`
 
 **Terminal 2 — React frontend dev server:**
 ```bash
-cd front-end
+cd apps/web-v1
 npm run dev
 ```
 Wait for: `Local: http://localhost:5173/`
 
 **Terminal 3 — Node.js server:**
 ```bash
-# From the project root
+cd legacy/v1-node
 node server.js
 ```
 Wait for: `Server running on http://localhost:3000`
@@ -790,7 +794,7 @@ Navigate to **http://localhost:5173/**
 ### Running Tests
 
 ```bash
-cd back-end
+cd legacy/v1-flask
 python -m pytest tests/ -v
 ```
 
@@ -799,11 +803,11 @@ python -m pytest tests/ -v
 To serve the frontend through the Node.js server (single process):
 
 ```bash
-cd front-end
+cd apps/web-v1
 npm run build
 ```
 
-Then start only the Node.js server (`node server.js`). It will serve the built frontend from `front-end/dist/` on the configured `PORT`.
+Then start only the Node.js server (`node server.js`) from `legacy/v1-node/`. It will serve the built frontend from `apps/web-v1/dist/` on the configured `PORT`.
 
 ### Deployed Application
 

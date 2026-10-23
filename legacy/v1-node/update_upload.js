@@ -3,7 +3,10 @@ const path = require("path");
 
 const filePath = path.join(
   __dirname,
-  "front-end",
+  "..",
+  "..",
+  "apps",
+  "web-v1",
   "src",
   "pages",
   "Upload.jsx",
