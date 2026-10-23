@@ -12,7 +12,7 @@ This application is an educational and screening-support system. Do not represen
 
 Before proposing architecture changes or implementing V2 functionality, read:
 
-- [`documentation/architecture/V2_ARCHITECTURE.md`](documentation/architecture/V2_ARCHITECTURE.md)
+- [`docs/architecture/V2_ARCHITECTURE.md`](docs/architecture/V2_ARCHITECTURE.md)
 - [`README.md`](README.md)
 
 When working on a migrated V1 capability, inspect the corresponding V1 implementation before modifying behavior.
@@ -33,12 +33,12 @@ Active V2 development belongs in:
 
 ## Legacy V1 Directories
 
-The current V1 implementation and reference documents are retained for migration and regression analysis. Their planned destinations in the target layout have not yet been created:
+The following directories contain SkinAI V1 and are retained for migration, behavioral reference, and regression analysis:
 
-- `front-end/` — React web application (planned: `apps/web-v1/`)
-- `server.js` — Express backend (planned: `legacy/v1-node/`)
-- `back-end/` — Flask backend and intelligence code (planned: `legacy/v1-flask/`)
-- `documentation/Backend_Server_Documentation.md`, `documentation/Expert_System_Documentation.md`, and `documentation/Frontend_Documentation.md` — V1 reference documentation (planned: `docs/v1/`)
+- `apps/web-v1/`
+- `legacy/v1-node/`
+- `legacy/v1-flask/`
+- `docs/v1/`
 
 Treat V1 directories as read-only unless a task explicitly requires a V1 correction.
 

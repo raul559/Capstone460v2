@@ -4,8 +4,8 @@ Your app has **two backend services**, each deployed as a separate Cloud Run ser
 
 | Service | Dockerfile | Purpose |
 | --- | --- | --- |
-| `skinai-python` | `Dockerfile` | Python Flask – AI analysis & chatbot |
-| `skinai-node` | `Dockerfile.node` | Node.js – auth, MongoDB, image uploads + serves frontend |
+| `skinai-python` | `legacy/v1-flask/Dockerfile` | Python Flask – AI analysis & chatbot |
+| `skinai-node` | `legacy/v1-node/Dockerfile.node` | Node.js – auth, MongoDB, image uploads + serves frontend |
 
 ---
 
@@ -40,12 +40,14 @@ The Python service must be deployed first so its URL can be embedded into the fr
 
 ```bash
 # From the repo root
-# Build Python image using root Dockerfile
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/skinai-python:latest .
+# Build Python image using cloudbuild.yaml, which points -f at
+# legacy/v1-flask/Dockerfile (edit the image names in cloudbuild.yaml
+# if you want them to say skinai-python instead of capstone)
+gcloud builds submit --config cloudbuild.yaml .
 
 # Deploy Python image to Cloud Run
 gcloud run deploy skinai-python \
-  --image gcr.io/YOUR_PROJECT_ID/skinai-python:latest \
+  --image gcr.io/YOUR_PROJECT_ID/capstone:latest \
   --platform managed \
   --region us-central1 \
   --allow-unauthenticated \
@@ -96,7 +98,7 @@ After deploy, the `skinai-node` URL is the address your users open in the browse
 
 ## CORS — required after deploying Python
 
-The browser calls the Python service directly (upload analysis, chatbot). Make sure the Python Flask app allows the Node service URL as an origin. In `back-end/src/expertSystem/app.py`, verify the CORS config includes the Node service URL or set it via an env var.
+The browser calls the Python service directly (upload analysis, chatbot). Make sure the Python Flask app allows the Node service URL as an origin. In `legacy/v1-flask/src/expertSystem/app.py`, verify the CORS config includes the Node service URL or set it via an env var.
 
 ---
 
@@ -115,10 +117,10 @@ The browser calls the Python service directly (upload analysis, chatbot). Make s
 
 **Python only** (AI/chatbot changes):
 ```bash
-gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/skinai-python:latest .
+gcloud builds submit --config cloudbuild.yaml .
 
 gcloud run deploy skinai-python \
-  --image gcr.io/YOUR_PROJECT_ID/skinai-python:latest \
+  --image gcr.io/YOUR_PROJECT_ID/capstone:latest \
   --region us-central1 \
   --set-env-vars "GEMINI_API_KEY=YOUR_GEMINI_API_KEY"
 ```
@@ -174,10 +176,10 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
       - uses: google-github-actions/setup-gcloud@v2
       - run: |
-          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/skinai-python:latest .
+          gcloud builds submit --config cloudbuild.yaml .
 
           gcloud run deploy skinai-python \
-            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/skinai-python:latest \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/capstone:latest \
             --platform managed --region us-central1 \
             --allow-unauthenticated --memory 2Gi --timeout 600 \
             --project ${{ secrets.GCP_PROJECT_ID }} \

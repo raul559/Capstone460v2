@@ -76,7 +76,7 @@ The model is trained on the **HAM10000** (Human Against Machine with 10,000 trai
 
 ## Analysis Pipeline
 
-**File:** `back-end/src/expert_pipeline.py`
+**File:** `legacy/v1-flask/src/expert_pipeline.py`
 
 `run_expert_pipeline()` is the single entry point called by the Flask `/analyze_skin` route. It accepts raw image bytes and intake form fields and returns a fully structured payload.
 
@@ -143,14 +143,14 @@ def run_expert_pipeline(
 
 ## Image Prediction — Keras ResNet50
 
-**File:** `back-end/src/keras_predictor.py`
+**File:** `legacy/v1-flask/src/keras_predictor.py`
 
 `KerasResNetPredictor` wraps the pre-trained Keras model and exposes a clean `predict_topk` interface.
 
 ### Model
 
 - **Architecture:** ResNet50 fine-tuned on HAM10000
-- **Weights file:** `back-end/src/models/resnet50_skin_disease_finetuned_v4.keras` (217 MB)
+- **Weights file:** `legacy/v1-flask/src/models/resnet50_skin_disease_finetuned_v4.keras` (217 MB)
 - **Input shape:** `(224, 224, 3)` float32, pixel values in range `[0, 255]` (no normalization applied)
 - **Output:** Softmax probability vector over 7 classes
 
@@ -200,7 +200,7 @@ def _preprocess_one(self, image_bytes: bytes) -> np.ndarray:
 
 ## Certainty Factor Engine
 
-**File:** `back-end/src/certainty_factors.py`
+**File:** `legacy/v1-flask/src/certainty_factors.py`
 
 Implements MYCIN's uncertainty algebra for combining evidence from multiple sources (image model + clinical symptoms) using certainty factors (CFs). CFs are real values in `[-1, 1]`:
 - `1.0` — definitely true
@@ -365,7 +365,7 @@ Image predictions are mapped as: `img_<label>` = model probability (clamped to `
 
 ## SkinAI Analyzer
 
-**File:** `back-end/src/skinai_analyzer.py`
+**File:** `legacy/v1-flask/src/skinai_analyzer.py`
 
 `analyze_skin_lesion()` is the high-level function that combines model predictions and clinical intake to produce a risk assessment.
 
@@ -411,7 +411,7 @@ def analyze_skin_lesion(topk: list[dict], intake: dict) -> dict:
 
 ## Disease Facts Reference
 
-**File:** `back-end/src/expertSystem/disease_facts.py`
+**File:** `legacy/v1-flask/src/expertSystem/disease_facts.py`
 
 The `DISEASE_FACTS` dictionary provides patient-readable clinical information for each label. The Gemini chatbot can look up entries via tool calls.
 
@@ -437,7 +437,7 @@ Each entry includes:
 
 ## FAISS Image Similarity Search
 
-**File:** `back-end/src/query.py`
+**File:** `legacy/v1-flask/src/query.py`
 
 The optional `search()` function finds visually similar images in the HAM10000 dataset using a prebuilt FAISS index.
 
@@ -487,7 +487,7 @@ results = search(img, filters, top_k=5)
 
 ## Gemini Chatbot Integration
 
-**File:** `back-end/src/expertSystem/chat.py`
+**File:** `legacy/v1-flask/src/expertSystem/chat.py`
 
 The chatbot is powered by Google Gemini (`gemini-2.0-flash` by default). It serves as an intake assistant to gather clinical details from the patient, explain analysis results, and answer general dermatology questions.
 

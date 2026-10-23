@@ -17,6 +17,24 @@ This project was developed as part of a Senior Capstone at Purdue University For
 
 ## Project Structure
 
+```
+apps/
+  mobile/        React Native (Expo) mobile app — active V2 development
+  web-v1/        React/Vite web frontend (V1, served by legacy/v1-node)
+legacy/
+  v1-node/       Node/Express server: auth, image storage, serves apps/web-v1
+  v1-flask/      Python/Flask API: ML inference, expert system, chatbot
+services/        FastAPI backend for V2 (see docs/architecture)
+intelligence/    V2 ML and expert-system modules (see docs/architecture)
+tests/           V2 unit/integration/contract/regression tests
+docs/
+  architecture/  V2 architecture brief
+  v1/            V1 implementation and deployment docs
+scripts/         Repo-wide maintenance scripts
+```
+
+See `CLAUDE.md` and `docs/architecture/V2_ARCHITECTURE.md` for the full
+rationale and the target V2 architecture.
 
 ---
 
