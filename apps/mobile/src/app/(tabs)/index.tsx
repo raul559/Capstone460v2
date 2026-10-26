@@ -33,7 +33,7 @@ export default function HomeScreen() {
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Take a photo"
-            onPress={() => showComingSoon('Camera')}
+            onPress={() => router.push('/camera')}
             style={({ pressed }) => [
               styles.button,
               pressed && styles.buttonPressed,
