@@ -1,18 +1,19 @@
 
-import { StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import type { SkinAnalysisResult } from '@/library/skin-analysis';
 
 type Props = {
   result: SkinAnalysisResult;
+  imageUri: string;
 };
 
 const riskLabels: Record<string, string> = {
-  high_risk: 'High risk',
-  moderate_risk: 'Moderate risk',
-  low_risk: 'Low risk',
-  clinician_review: 'Clinician review recommended',
+  high_risk: 'High Risk',
+  moderate_risk: 'Moderate Risk',
+  low_risk: 'Low Risk',
+  clinician_review: 'Clinician Review Recommended',
 };
 
 const predictionLabels: Record<string, string> = {
@@ -21,107 +22,388 @@ const predictionLabels: Record<string, string> = {
   bkl: 'Benign keratosis-like lesion',
   df: 'Dermatofibroma',
   mel: 'Melanoma',
-  nv: 'Melanocytic nevus',
+  nv: 'Melanocytic nevi',
   vasc: 'Vascular lesion',
 };
 
-export function SkinAnalysisResults({ result }: Props) {
+const predictionDescriptions: Record<string, string> = {
+  akiec: 'A potentially precancerous or related skin lesion. A healthcare professional should evaluate it.',
+  bcc: 'A common type of skin cancer. A healthcare professional should evaluate this finding.',
+  bkl: 'A benign keratosis-like skin lesion. This preliminary result does not replace clinical examination.',
+  df: 'A usually benign skin growth. A clinician can confirm the finding.',
+  mel: 'A potentially serious skin condition. Prompt evaluation by a qualified healthcare professional is important.',
+  nv: 'A common type of pigmented mole. This preliminary assessment does not replace a clinical examination.',
+  vasc: 'A skin lesion involving blood vessels. A clinician can confirm the finding.',
+};
+
+export function SkinAnalysisResults({ result, imageUri }: Props) {
+  const primary = result.top_predictions[0];
+  const code = primary?.label.toLowerCase() ?? '';
+  const risk = riskLabels[result.risk_score] ?? result.risk_score;
+
   return (
     <View style={styles.container}>
-      <ThemedText style={styles.heading}>
-        Analysis Results
-      </ThemedText>
+      {/* Results heading */}
+      <View style={styles.header}>
+        <View style={styles.logo}>
+          <ThemedText style={styles.logoText}>S</ThemedText>
+        </View>
+        <ThemedText style={styles.headerLabel}>RESULT OVERVIEW</ThemedText>
+        <View style={styles.headerIcon}>
+          <ThemedText style={styles.sparkle}>✦</ThemedText>
+        </View>
+      </View>
 
-      <ThemedText style={styles.riskLabel}>
-        Risk classification
-      </ThemedText>
+      <ThemedText style={styles.pageTitle}>Your analysis</ThemedText>
 
-      <ThemedText style={styles.riskValue}>
-        {riskLabels[result.risk_score] ?? result.risk_score}
-      </ThemedText>
+      {/* Uploaded image */}
+      <View style={styles.imageCard}>
+        <Image
+          source={{ uri: imageUri }}
+          style={styles.image}
+          resizeMode="cover"
+        />
+        <ThemedText style={styles.imageCaption}>Analyzed image</ThemedText>
+      </View>
 
-      <ThemedText style={styles.note}>
-        This is an AI-generated estimate, not a medical diagnosis.
-        A clinician should assess concerning or changing lesions.
-      </ThemedText>
+      {/* Primary finding */}
+      {primary && (
+        <View style={styles.findingCard}>
+          <View style={styles.findingHeader}>
+            <ThemedText style={styles.sectionLabel}>
+              PRIMARY FINDING
+            </ThemedText>
+            <View style={styles.codeBadge}>
+              <ThemedText style={styles.codeText}>
+                {code.toUpperCase()}
+              </ThemedText>
+            </View>
+          </View>
 
-      <ThemedText style={styles.subheading}>
-        Top predictions
-      </ThemedText>
+          <ThemedText style={styles.findingTitle}>
+            {predictionLabels[code] ?? primary.label}
+          </ThemedText>
 
-      {result.top_predictions.map((prediction, index) => (
-        <View
-          key={`${prediction.label}-${index}`}
-          style={styles.predictionRow}
-        >
-          <View style={styles.predictionText}>
-            <ThemedText style={styles.predictionName}>
-              {predictionLabels[prediction.label.toLowerCase()] ??
-                prediction.label}
+          <ThemedText style={styles.description}>
+            {predictionDescriptions[code] ??
+              'This preliminary AI assessment does not replace a clinical examination.'}
+          </ThemedText>
+
+          <View style={styles.confidenceRow}>
+            <View style={styles.confidenceBadge}>
+              <ThemedText style={styles.confidenceText}>
+                Confidence: {(primary.confidence * 100).toFixed(1)}%
+              </ThemedText>
+            </View>
+          </View>
+
+          <View style={styles.riskBadge}>
+            <ThemedText style={styles.riskText}>
+              {risk}
             </ThemedText>
           </View>
 
-          <ThemedText style={styles.confidence}>
-            {(prediction.confidence * 100).toFixed(1)}%
+          <ThemedText style={styles.learnMore}>
+            Preliminary AI finding · Not a diagnosis
           </ThemedText>
         </View>
-      ))}
+      )}
+
+      {/* Clinical notice */}
+      <View style={styles.noticeCard}>
+        <ThemedText style={styles.noticeIcon}>!</ThemedText>
+        <View style={styles.noticeContent}>
+          <ThemedText style={styles.noticeTitle}>
+            Clinical Triage Notice
+          </ThemedText>
+          <ThemedText style={styles.noticeText}>
+            Confidence scores are not clinical recommendations. This tool
+            cannot rule out malignancy or replace a biopsy. If a spot is new,
+            changing, bleeding, or concerning, contact a qualified healthcare
+            professional.
+          </ThemedText>
+        </View>
+      </View>
+
+      {/* Other predictions */}
+      {result.top_predictions.length > 1 && (
+        <View style={styles.otherCard}>
+          <ThemedText style={styles.otherTitle}>
+            Other possible findings
+          </ThemedText>
+
+          {result.top_predictions.slice(1).map((prediction, index) => {
+            const label = prediction.label.toLowerCase();
+
+            return (
+              <View
+                key={`${prediction.label}-${index}`}
+                style={styles.predictionRow}
+              >
+                <ThemedText style={styles.predictionName}>
+                  {predictionLabels[label] ?? prediction.label}
+                </ThemedText>
+                <ThemedText style={styles.predictionConfidence}>
+                  {(prediction.confidence * 100).toFixed(1)}%
+                </ThemedText>
+              </View>
+            );
+          })}
+        </View>
+      )}
+
+      {/* Questionnaire placeholder */}
+      <View style={styles.questionnaire}>
+        <ThemedText style={styles.questionnaireText}>
+          Boost confidence: Complete the symptom check to provide additional
+          information about your skin.
+        </ThemedText>
+
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => {}}
+          style={styles.questionnaireButton}
+        >
+          <ThemedText style={styles.questionnaireButtonText}>
+            Questionnaire coming soon
+          </ThemedText>
+          <ThemedText style={styles.arrow}>›</ThemedText>
+        </Pressable>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
-    borderColor: '#B8CDD6',
-    borderRadius: 14,
-    padding: 16,
-    marginTop: 18,
-    backgroundColor: '#F3F7F8',
+    marginTop: 24,
   },
-  heading: {
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 18,
+  },
+  logo: {
+    width: 36,
+    height: 36,
+    borderRadius: 11,
+    backgroundColor: '#3E839C',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logoText: {
+    color: '#FFFFFF',
     fontSize: 21,
     fontWeight: 'bold',
-    marginBottom: 14,
   },
-  riskLabel: {
-    fontSize: 14,
-    opacity: 0.7,
-  },
-  riskValue: {
-    fontSize: 19,
+  headerLabel: {
+    color: '#1F242C',
+    fontSize: 11,
     fontWeight: 'bold',
-    marginTop: 4,
+    letterSpacing: 1,
   },
-  note: {
+  headerIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#EFF1F4',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  sparkle: {
+    fontSize: 20,
+    color: '#3E839C',
+  },
+  pageTitle: {
+    color: '#1F242C',
+    fontSize: 27,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  imageCard: {
+    backgroundColor: '#EFF1F4',
+    borderRadius: 18,
+    marginBottom: 20,
+    overflow: 'hidden',
+    elevation: 4,
+  },
+  image: {
+    width: '100%',
+    height: 190,
+    backgroundColor: '#D0D6E1',
+  },
+  imageCaption: {
+    color: '#3B4351',
+    fontSize: 11,
+    padding: 12,
+  },
+  findingCard: {
+    backgroundColor: '#EFF1F4',
+    borderColor: '#D0D6E1',
+    borderWidth: 1,
+    borderRadius: 18,
+    padding: 18,
+    marginBottom: 20,
+    elevation: 4,
+  },
+  findingHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  sectionLabel: {
+    color: '#1F242C',
+    fontSize: 10,
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  codeBadge: {
+    backgroundColor: '#1F242C',
+    borderRadius: 6,
+    paddingVertical: 5,
+    paddingHorizontal: 9,
+  },
+  codeText: {
+    color: '#EFF1F4',
+    fontSize: 10,
+    fontWeight: 'bold',
+  },
+  findingTitle: {
+    color: '#1F242C',
+    fontSize: 23,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  description: {
+    color: '#3B4351',
+    fontSize: 13,
+    lineHeight: 20,
+    marginBottom: 12,
+  },
+  confidenceRow: {
+    flexDirection: 'row',
+    marginBottom: 12,
+  },
+  confidenceBadge: {
+    backgroundColor: '#D5D6D8',
+    borderColor: '#D0D6E1',
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+  },
+  confidenceText: {
+    color: '#168838',
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  riskBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: '#3E839C',
+    borderRadius: 12,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    marginBottom: 10,
+  },
+  riskText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  learnMore: {
+    color: '#3B4351',
+    fontSize: 11,
+  },
+  noticeCard: {
+    flexDirection: 'row',
+    backgroundColor: '#EFF1F4',
+    borderColor: '#B41B1B',
+    borderWidth: 1,
+    borderRadius: 12,
+    padding: 14,
+    marginBottom: 20,
+    elevation: 3,
+  },
+  noticeIcon: {
+    color: '#B41B1B',
+    fontSize: 17,
+    fontWeight: 'bold',
+    marginRight: 12,
+  },
+  noticeContent: {
+    flex: 1,
+  },
+  noticeTitle: {
+    color: '#3B4351',
+    fontSize: 13,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  noticeText: {
+    color: '#3B4351',
     fontSize: 12,
     lineHeight: 18,
-    marginTop: 10,
-    marginBottom: 16,
-    opacity: 0.8,
   },
-  subheading: {
-    fontSize: 16,
+  otherCard: {
+    backgroundColor: '#EFF1F4',
+    borderRadius: 14,
+    padding: 16,
+    marginBottom: 20,
+  },
+  otherTitle: {
+    color: '#1F242C',
+    fontSize: 15,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 10,
   },
   predictionRow: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 9,
     borderTopWidth: 1,
-    borderTopColor: '#D6E1E5',
-  },
-  predictionText: {
-    flex: 1,
-    paddingRight: 12,
+    borderTopColor: '#D0D6E1',
+    paddingVertical: 10,
   },
   predictionName: {
-    fontSize: 14,
+    color: '#3B4351',
+    fontSize: 12,
+    flex: 1,
+    paddingRight: 10,
   },
-  confidence: {
+  predictionConfidence: {
+    color: '#1F242C',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+  questionnaire: {
+    marginBottom: 20,
+  },
+  questionnaireText: {
+    color: '#3B4351',
+    fontSize: 13,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    lineHeight: 20,
+    marginBottom: 13,
+  },
+  questionnaireButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#3E839C',
+    borderRadius: 100,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    elevation: 4,
+  },
+  questionnaireButtonText: {
+    color: '#FFFFFF',
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: 'bold',
+  },
+  arrow: {
+    color: '#FFFFFF',
+    fontSize: 24,
   },
 });
