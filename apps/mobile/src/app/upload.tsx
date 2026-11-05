@@ -1,4 +1,5 @@
 
+
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -103,6 +104,20 @@ export default function UploadScreen() {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
         >
+          {/* Back Button */}
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.back()}
+            style={({ pressed }) => [
+              styles.backButton,
+              pressed && styles.buttonPressed,
+            ]}
+          >
+            <ThemedText style={styles.backText}>
+              ‹ Back
+            </ThemedText>
+          </Pressable>
+
           {/* Header */}
           <View style={styles.header}>
             <View style={styles.headerTop}>
@@ -292,7 +307,10 @@ export default function UploadScreen() {
 
           {/* Existing analysis results */}
           {analysisResult && (
-            <SkinAnalysisResults result={analysisResult} imageUri={imageUri!} />
+            <SkinAnalysisResults
+              result={analysisResult}
+              imageUri={imageUri!}
+            />
           )}
 
           <ThemedText style={styles.disclaimer}>
@@ -310,6 +328,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#D0D6E1',
+  },
+  backButton: {
+    alignSelf: 'flex-start',
+    paddingVertical: 12,
+    paddingHorizontal: 4,
+    marginBottom: 12,
+  },
+  backText: {
+    color: '#3E839C',
+    fontSize: 16,
+    fontWeight: '600',
   },
   safeArea: {
     flex: 1,
