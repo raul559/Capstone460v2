@@ -1,4 +1,5 @@
 
+import { router } from 'expo-router';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
@@ -152,7 +153,7 @@ export function SkinAnalysisResults({ result, imageUri }: Props) {
         </View>
       )}
 
-      {/* Questionnaire placeholder */}
+      {/* Questionnaire and AI Chat */}
       <View style={styles.questionnaire}>
         <ThemedText style={styles.questionnaireText}>
           Boost confidence: Complete the symptom check to provide additional
@@ -168,6 +169,28 @@ export function SkinAnalysisResults({ result, imageUri }: Props) {
             Questionnaire coming soon
           </ThemedText>
           <ThemedText style={styles.arrow}>›</ThemedText>
+        </Pressable>
+
+        <Pressable
+          accessibilityRole="button"
+          onPress={() =>
+            router.push({
+              pathname: '/explore',
+              params: {
+                imageUri,
+                from: 'results',
+              },
+            })
+          }
+          style={({ pressed }) => [
+            styles.chatButton,
+            pressed && styles.buttonPressed,
+          ]}
+        >
+          <ThemedText style={styles.chatButtonText}>
+            Chat with SkinAI
+          </ThemedText>
+          <ThemedText style={styles.chatArrow}>›</ThemedText>
         </Pressable>
       </View>
     </View>
@@ -401,6 +424,30 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 14,
     fontWeight: 'bold',
+  },
+  chatButton: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#EFF1F4',
+    borderColor: '#3E839C',
+    borderWidth: 1,
+    borderRadius: 100,
+    paddingVertical: 16,
+    paddingHorizontal: 20,
+    marginTop: 12,
+  },
+  chatButtonText: {
+    color: '#3E839C',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  chatArrow: {
+    color: '#3E839C',
+    fontSize: 24,
+  },
+  buttonPressed: {
+    opacity: 0.7,
   },
   arrow: {
     color: '#FFFFFF',
