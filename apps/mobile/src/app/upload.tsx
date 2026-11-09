@@ -1,6 +1,5 @@
 
-
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -16,27 +15,21 @@ import { router, useLocalSearchParams } from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { SkinAnalysisResults } from '../components/skin-analysis-results';
-import {
-  analyzeSkinImage,
-  type SkinAnalysisResult,
-} from '@/library/skin-analysis';
-
+import { analyzeSkinImage } from '@/library/skin-analysis';
 export default function UploadScreen() {
   const params = useLocalSearchParams<{ imageUri?: string }>();
 
-  const [imageUri, setImageUri] = useState<string | null>(null);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisResult, setAnalysisResult] =
-    useState<SkinAnalysisResult | null>(null);
+  // Receive an image passed from the camera screen.
+  const cameraImageUri =
+    typeof params.imageUri === 'string' ? params.imageUri : null;
 
-  // Receive a photo captured by the camera screen.
-  useEffect(() => {
-    if (params.imageUri) {
-      setImageUri(params.imageUri);
-      setAnalysisResult(null);
-    }
-  }, [params.imageUri]);
+  const [imageUri, setImageUri] = useState<string | null>(
+    cameraImageUri
+  );
+
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+
+  
 
   // Open the phone's photo library.
   const chooseImage = async () => {
@@ -51,8 +44,18 @@ export default function UploadScreen() {
 
       if (result.canceled) return;
 
-      setImageUri(result.assets[0].uri);
-      setAnalysisResult(null);
+      const selectedImage = result.assets[0]?.uri;
+
+      if (!selectedImage) {
+        Alert.alert(
+          'No image selected',
+          'Please select a valid image and try again.'
+        );
+        return;
+      }
+
+      setImageUri(selectedImage);
+      
     } catch {
       Alert.alert(
         'Unable to select image',
@@ -73,10 +76,11 @@ export default function UploadScreen() {
     if (!imageUri || isAnalyzing) return;
 
     setIsAnalyzing(true);
-    setAnalysisResult(null);
+    
 
     try {
       const result = await analyzeSkinImage(imageUri);
+
       router.push({
         pathname: '/results',
         params: {
@@ -107,6 +111,7 @@ export default function UploadScreen() {
           {/* Back Button */}
           <Pressable
             accessibilityRole="button"
+            accessibilityLabel="Go back"
             onPress={() => router.back()}
             style={({ pressed }) => [
               styles.backButton,
@@ -143,7 +148,7 @@ export default function UploadScreen() {
             </ThemedText>
           </View>
 
-          {/* Image selection card */}
+          {/* Image Selection Card */}
           <View style={styles.selectionCard}>
             {imageUri ? (
               <>
@@ -163,9 +168,13 @@ export default function UploadScreen() {
                 </ThemedText>
 
                 <Pressable
+                  accessibilityRole="button"
                   onPress={chooseImage}
                   disabled={isAnalyzing}
-                  style={styles.secondaryButton}
+                  style={({ pressed }) => [
+                    styles.secondaryButton,
+                    pressed && styles.buttonPressed,
+                  ]}
                 >
                   <ThemedText style={styles.secondaryButtonText}>
                     Choose another image
@@ -175,7 +184,9 @@ export default function UploadScreen() {
             ) : (
               <>
                 <View style={styles.uploadIcon}>
-                  <ThemedText style={styles.uploadIconText}>▧</ThemedText>
+                  <ThemedText style={styles.uploadIconText}>
+                    ▧
+                  </ThemedText>
                 </View>
 
                 <ThemedText style={styles.cardTitle}>
@@ -188,6 +199,7 @@ export default function UploadScreen() {
 
                 <View style={styles.selectionButtons}>
                   <Pressable
+                    accessibilityRole="button"
                     onPress={chooseImage}
                     disabled={isAnalyzing}
                     style={styles.selectionOption}
@@ -198,6 +210,7 @@ export default function UploadScreen() {
                   </Pressable>
 
                   <Pressable
+                    accessibilityRole="button"
                     onPress={openCamera}
                     disabled={isAnalyzing}
                     style={styles.selectionOption}
@@ -211,7 +224,7 @@ export default function UploadScreen() {
             )}
           </View>
 
-          {/* Photo tips */}
+          {/* Photo Tips */}
           <View style={styles.infoCard}>
             <ThemedText style={styles.infoTitle}>
               Tips for a successful photo
@@ -239,7 +252,7 @@ export default function UploadScreen() {
             </View>
           </View>
 
-          {/* Upload information */}
+          {/* Upload Information */}
           <View style={styles.noticeCard}>
             <ThemedText style={styles.noticeIcon}>ⓘ</ThemedText>
 
@@ -255,7 +268,7 @@ export default function UploadScreen() {
             </View>
           </View>
 
-          {/* Medical disclaimer */}
+          {/* Medical Disclaimer */}
           <View style={styles.noticeCard}>
             <ThemedText style={styles.noticeIcon}>♡</ThemedText>
 
@@ -271,20 +284,22 @@ export default function UploadScreen() {
             </View>
           </View>
 
-          {/* Analyze button */}
+          {/* Analyze Button */}
           <Pressable
             accessibilityRole="button"
+            accessibilityLabel="Analyze selected image"
             disabled={!imageUri || isAnalyzing}
             onPress={analyzePhoto}
             style={({ pressed }) => [
               styles.analyzeButton,
-              !imageUri && styles.disabledButton,
-              pressed && imageUri && styles.buttonPressed,
+              (!imageUri || isAnalyzing) && styles.disabledButton,
+              pressed && styles.buttonPressed,
             ]}
           >
             {isAnalyzing ? (
               <View style={styles.loadingContent}>
                 <ActivityIndicator color="#FFFFFF" />
+
                 <ThemedText style={styles.analyzeButtonText}>
                   Analyzing image...
                 </ThemedText>
@@ -294,7 +309,10 @@ export default function UploadScreen() {
                 <ThemedText style={styles.analyzeButtonText}>
                   Analyze image
                 </ThemedText>
-                <ThemedText style={styles.analyzeArrow}>→</ThemedText>
+
+                <ThemedText style={styles.analyzeArrow}>
+                  →
+                </ThemedText>
               </View>
             )}
           </Pressable>
@@ -304,14 +322,6 @@ export default function UploadScreen() {
               ? 'Ready to analyze · Educational use only'
               : 'Select an image to continue · Educational use only'}
           </ThemedText>
-
-          {/* Existing analysis results */}
-          {analysisResult && (
-            <SkinAnalysisResults
-              result={analysisResult}
-              imageUri={imageUri!}
-            />
-          )}
 
           <ThemedText style={styles.disclaimer}>
             SkinAI is an educational tool and does not provide a
@@ -329,6 +339,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#D0D6E1',
   },
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: 24,
+  },
+  scrollContent: {
+    paddingTop: 13,
+    paddingBottom: 30,
+  },
   backButton: {
     alignSelf: 'flex-start',
     paddingVertical: 12,
@@ -339,14 +357,6 @@ const styles = StyleSheet.create({
     color: '#3E839C',
     fontSize: 16,
     fontWeight: '600',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: 24,
-  },
-  scrollContent: {
-    paddingTop: 13,
-    paddingBottom: 30,
   },
   header: {
     marginBottom: 17,

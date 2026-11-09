@@ -25,6 +25,7 @@ export default function HomeScreen() {
             <View style={styles.logoIcon}>
               <ThemedText style={styles.logoIconText}>S</ThemedText>
             </View>
+
             <View>
               <ThemedText style={styles.logo}>SkinAI</ThemedText>
               <ThemedText style={styles.brandSubtitle}>
@@ -49,6 +50,7 @@ export default function HomeScreen() {
             <ThemedText style={styles.sectionTitle}>
               Part I: Image Analysis
             </ThemedText>
+
             <ThemedText style={styles.cardDescription}>
               Upload or capture a spot for visual AI classification.
               We recommend starting with an image, followed by our
@@ -57,19 +59,20 @@ export default function HomeScreen() {
           </View>
 
           <Pressable
-  accessibilityRole="button"
-  accessibilityLabel="Start an image analysis"
-  onPress={() => router.push('/camera')}
-  style={({ pressed }) => [
-    styles.primaryButton,
-    pressed && styles.buttonPressed,
-  ]}
->
-  <ThemedText style={styles.buttonText}>
-    Start an image analysis
-  </ThemedText>
-  <ThemedText style={styles.arrow}>›</ThemedText>
-</Pressable>
+            accessibilityRole="button"
+            accessibilityLabel="Start an image analysis"
+            onPress={() => router.push('/upload')}
+            style={({ pressed }) => [
+              styles.primaryButton,
+              pressed && styles.buttonPressed,
+            ]}
+          >
+            <ThemedText style={styles.buttonText}>
+              Start an image analysis
+            </ThemedText>
+
+            <ThemedText style={styles.arrow}>›</ThemedText>
+          </Pressable>
         </View>
 
         {/* Part II: Questionnaire */}
@@ -78,8 +81,9 @@ export default function HomeScreen() {
             <ThemedText style={styles.sectionTitle}>
               Part II: Questionnaire
             </ThemedText>
+
             <ThemedText style={styles.cardDescription}>
-              Don't have an image? Try our questionnaire-only option.
+              Don&apos;t have an image? Try our questionnaire-only option.
               Evaluate warning signs, changes, and family risk factors.
             </ThemedText>
           </View>
@@ -95,6 +99,7 @@ export default function HomeScreen() {
             <ThemedText style={styles.buttonText}>
               Begin with a questionnaire
             </ThemedText>
+
             <ThemedText style={styles.arrow}>›</ThemedText>
           </Pressable>
         </View>
@@ -125,10 +130,12 @@ export default function HomeScreen() {
         {/* Educational disclaimer */}
         <View style={styles.disclaimer}>
           <ThemedText style={styles.disclaimerIcon}>ⓘ</ThemedText>
+
           <View style={styles.disclaimerContent}>
             <ThemedText style={styles.disclaimerTitle}>
               Learning, not diagnosis
             </ThemedText>
+
             <ThemedText style={styles.disclaimerText}>
               Not a medical diagnosis tool. Do not use results for
               diagnosis or treatment decisions.

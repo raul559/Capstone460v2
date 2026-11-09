@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   Image,
   KeyboardAvoidingView,
@@ -41,32 +41,31 @@ export default function ChatScreen() {
   const [message, setMessage] = useState('');
   const [feedback, setFeedback] = useState<Feedback>(null);
 
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      sender: 'assistant',
-      text: 'Hello! Welcome to SkinAI. I can help you learn about skin health and understand our image analysis system.',
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(() => {
+    if (imageUri) {
+      return [
+        {
+          id: 1,
+          sender: 'user',
+          text: 'I would like to learn more about this skin image.',
+          imageUri,
+        },
+        {
+          id: 2,
+          sender: 'assistant',
+          text: 'I can help explain general skin health information. A photograph alone cannot determine whether a spot is benign or cancerous. A qualified dermatologist can evaluate the area and any changes over time.',
+        },
+      ];
+    }
 
-  useEffect(() => {
-    if (!imageUri) return;
-
-    setMessages([
+    return [
       {
-        id: Date.now(),
-        sender: 'user',
-        text: 'I would like to learn more about this skin image.',
-        imageUri,
-      },
-      {
-        id: Date.now() + 1,
+        id: 1,
         sender: 'assistant',
-        text:
-          'I can help explain general skin health information. A photograph alone cannot determine whether a spot is benign or cancerous. A qualified dermatologist can evaluate the area and any changes over time.',
+        text: 'Hello! Welcome to SkinAI. I can help you learn about skin health and understand our image analysis system.',
       },
-    ]);
-  }, [imageUri]);
+    ];
+  });
 
   const sendMessage = (text: string) => {
     const trimmedMessage = text.trim();

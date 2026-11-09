@@ -1,3 +1,4 @@
+
 import { useLocalSearchParams, router } from 'expo-router';
 import {
   Pressable,
@@ -30,7 +31,51 @@ export default function ResultsScreen() {
 
   try {
     if (resultData) {
-      analysisResult = JSON.parse(resultData) as SkinAnalysisResult;
+      const parsed: unknown = JSON.parse(resultData);
+
+      if (
+        typeof parsed === 'object' &&
+        parsed !== null &&
+        'top_predictions' in parsed &&
+        'risk_score' in parsed
+      ) {
+        const data = parsed as {
+          top_predictions: unknown;
+          risk_score: unknown;
+        };
+
+        const validPredictions =
+          Array.isArray(data.top_predictions) &&
+          data.top_predictions.length > 0 &&
+          data.top_predictions.every((prediction: unknown) => {
+            if (
+              typeof prediction !== 'object' ||
+              prediction === null
+            ) {
+              return false;
+            }
+
+            const item = prediction as {
+              label?: unknown;
+              confidence?: unknown;
+            };
+
+            return (
+              typeof item.label === 'string' &&
+              typeof item.confidence === 'number' &&
+              Number.isFinite(item.confidence) &&
+              item.confidence >= 0 &&
+              item.confidence <= 1
+            );
+          });
+
+        if (
+          validPredictions &&
+          typeof data.risk_score === 'string'
+        ) {
+          analysisResult = parsed as SkinAnalysisResult;
+        }
+      }
     }
   } catch {
     analysisResult = null;
@@ -63,7 +108,7 @@ export default function ResultsScreen() {
                 Results unavailable
               </ThemedText>
               <ThemedText>
-                We couldn't load your analysis. Please try again.
+                We couldn&apos;t load your analysis. Please try again.
               </ThemedText>
             </View>
           )}
