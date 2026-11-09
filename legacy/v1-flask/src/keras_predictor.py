@@ -8,7 +8,13 @@ import tensorflow as tf
 # MUST match training order exactly
 CLASS_NAMES = ["akiec", "bcc", "bkl", "df", "mel", "nv", "vasc"]
 
-MODEL_PATH = Path(__file__).parent / "models" / "resnet50_skin_disease_finetuned_v4.keras"
+MODEL_PATH = (
+    Path(__file__).resolve().parents[3]
+    / "back-end"
+    / "src"
+    / "models"
+    / "resnet50_skin_disease_finetuned_v4.keras"
+)
 
 
 class KerasResNetPredictor:

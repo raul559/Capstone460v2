@@ -57,18 +57,19 @@ export default function HomeScreen() {
           </View>
 
           <Pressable
-            accessibilityRole="button"
-            onPress={() => router.push('/upload')}
-            style={({ pressed }) => [
-              styles.primaryButton,
-              pressed && styles.buttonPressed,
-            ]}
-          >
-            <ThemedText style={styles.buttonText}>
-              Start an image analysis
-            </ThemedText>
-            <ThemedText style={styles.arrow}>›</ThemedText>
-          </Pressable>
+  accessibilityRole="button"
+  accessibilityLabel="Start an image analysis"
+  onPress={() => router.push('/camera')}
+  style={({ pressed }) => [
+    styles.primaryButton,
+    pressed && styles.buttonPressed,
+  ]}
+>
+  <ThemedText style={styles.buttonText}>
+    Start an image analysis
+  </ThemedText>
+  <ThemedText style={styles.arrow}>›</ThemedText>
+</Pressable>
         </View>
 
         {/* Part II: Questionnaire */}
