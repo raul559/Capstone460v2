@@ -64,7 +64,8 @@ export default function CameraScreen() {
       return;
     }
 
-    router.replace({
+    // Return to the existing Upload screen with the captured photo.
+    router.dismissTo({
       pathname: '/upload',
       params: { imageUri },
     });
@@ -147,7 +148,6 @@ export default function CameraScreen() {
               </ThemedText>
             </Pressable>
           )}
-
         </ScrollView>
       </SafeAreaView>
     </ThemedView>

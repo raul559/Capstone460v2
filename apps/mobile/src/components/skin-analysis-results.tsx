@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
+import { useTheme } from '@/hooks/use-theme';
 import type { SkinAnalysisResult } from '@/library/skin-analysis';
 
 type Props = {
@@ -38,6 +39,9 @@ const predictionDescriptions: Record<string, string> = {
 };
 
 export function SkinAnalysisResults({ result, imageUri }: Props) {
+  const colors = useTheme();
+  const styles = createStyles(colors);
+
   const primary = result.top_predictions[0];
   const code = primary?.label.toLowerCase() ?? '';
   const risk = riskLabels[result.risk_score] ?? result.risk_score;
@@ -197,260 +201,262 @@ export function SkinAnalysisResults({ result, imageUri }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 24,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 18,
-  },
-  logo: {
-    width: 36,
-    height: 36,
-    borderRadius: 11,
-    backgroundColor: '#3E839C',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logoText: {
-    color: '#FFFFFF',
-    fontSize: 21,
-    fontWeight: 'bold',
-  },
-  headerLabel: {
-    color: '#1F242C',
-    fontSize: 11,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  headerIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#EFF1F4',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  sparkle: {
-    fontSize: 20,
-    color: '#3E839C',
-  },
-  pageTitle: {
-    color: '#1F242C',
-    fontSize: 27,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  imageCard: {
-    backgroundColor: '#EFF1F4',
-    borderRadius: 18,
-    marginBottom: 20,
-    overflow: 'hidden',
-    elevation: 4,
-  },
-  image: {
-    width: '100%',
-    height: 190,
-    backgroundColor: '#D0D6E1',
-  },
-  imageCaption: {
-    color: '#3B4351',
-    fontSize: 11,
-    padding: 12,
-  },
-  findingCard: {
-    backgroundColor: '#EFF1F4',
-    borderColor: '#D0D6E1',
-    borderWidth: 1,
-    borderRadius: 18,
-    padding: 18,
-    marginBottom: 20,
-    elevation: 4,
-  },
-  findingHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  sectionLabel: {
-    color: '#1F242C',
-    fontSize: 10,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  codeBadge: {
-    backgroundColor: '#1F242C',
-    borderRadius: 6,
-    paddingVertical: 5,
-    paddingHorizontal: 9,
-  },
-  codeText: {
-    color: '#EFF1F4',
-    fontSize: 10,
-    fontWeight: 'bold',
-  },
-  findingTitle: {
-    color: '#1F242C',
-    fontSize: 23,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  description: {
-    color: '#3B4351',
-    fontSize: 13,
-    lineHeight: 20,
-    marginBottom: 12,
-  },
-  confidenceRow: {
-    flexDirection: 'row',
-    marginBottom: 12,
-  },
-  confidenceBadge: {
-    backgroundColor: '#D5D6D8',
-    borderColor: '#D0D6E1',
-    borderWidth: 1,
-    borderRadius: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-  },
-  confidenceText: {
-    color: '#168838',
-    fontSize: 11,
-    fontWeight: '600',
-  },
-  riskBadge: {
-    alignSelf: 'flex-start',
-    backgroundColor: '#3E839C',
-    borderRadius: 12,
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    marginBottom: 10,
-  },
-  riskText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  learnMore: {
-    color: '#3B4351',
-    fontSize: 11,
-  },
-  noticeCard: {
-    flexDirection: 'row',
-    backgroundColor: '#EFF1F4',
-    borderColor: '#B41B1B',
-    borderWidth: 1,
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 20,
-    elevation: 3,
-  },
-  noticeIcon: {
-    color: '#B41B1B',
-    fontSize: 17,
-    fontWeight: 'bold',
-    marginRight: 12,
-  },
-  noticeContent: {
-    flex: 1,
-  },
-  noticeTitle: {
-    color: '#3B4351',
-    fontSize: 13,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  noticeText: {
-    color: '#3B4351',
-    fontSize: 12,
-    lineHeight: 18,
-  },
-  otherCard: {
-    backgroundColor: '#EFF1F4',
-    borderRadius: 14,
-    padding: 16,
-    marginBottom: 20,
-  },
-  otherTitle: {
-    color: '#1F242C',
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  predictionRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    borderTopWidth: 1,
-    borderTopColor: '#D0D6E1',
-    paddingVertical: 10,
-  },
-  predictionName: {
-    color: '#3B4351',
-    fontSize: 12,
-    flex: 1,
-    paddingRight: 10,
-  },
-  predictionConfidence: {
-    color: '#1F242C',
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  questionnaire: {
-    marginBottom: 20,
-  },
-  questionnaireText: {
-    color: '#3B4351',
-    fontSize: 13,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    lineHeight: 20,
-    marginBottom: 13,
-  },
-  questionnaireButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#3E839C',
-    borderRadius: 100,
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    elevation: 4,
-  },
-  questionnaireButtonText: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  chatButton: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#EFF1F4',
-    borderColor: '#3E839C',
-    borderWidth: 1,
-    borderRadius: 100,
-    paddingVertical: 16,
-    paddingHorizontal: 20,
-    marginTop: 12,
-  },
-  chatButtonText: {
-    color: '#3E839C',
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  chatArrow: {
-    color: '#3E839C',
-    fontSize: 24,
-  },
-  buttonPressed: {
-    opacity: 0.7,
-  },
-  arrow: {
-    color: '#FFFFFF',
-    fontSize: 24,
-  },
-});
+function createStyles(colors: ReturnType<typeof useTheme>) {
+  return StyleSheet.create({
+    container: {
+      marginTop: 24,
+    },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 18,
+    },
+    logo: {
+      width: 36,
+      height: 36,
+      borderRadius: 11,
+      backgroundColor: colors.accent,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    logoText: {
+      color: colors.white,
+      fontSize: 21,
+      fontWeight: 'bold',
+    },
+    headerLabel: {
+      color: colors.text,
+      fontSize: 11,
+      fontWeight: 'bold',
+      letterSpacing: 1,
+    },
+    headerIcon: {
+      width: 36,
+      height: 36,
+      borderRadius: 18,
+      backgroundColor: colors.backgroundElement,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    sparkle: {
+      fontSize: 20,
+      color: colors.accent,
+    },
+    pageTitle: {
+      color: colors.text,
+      fontSize: 27,
+      fontWeight: 'bold',
+      marginBottom: 20,
+    },
+    imageCard: {
+      backgroundColor: colors.backgroundElement,
+      borderRadius: 18,
+      marginBottom: 20,
+      overflow: 'hidden',
+      elevation: 4,
+    },
+    image: {
+      width: '100%',
+      height: 190,
+      backgroundColor: colors.background,
+    },
+    imageCaption: {
+      color: colors.textSecondary,
+      fontSize: 11,
+      padding: 12,
+    },
+    findingCard: {
+      backgroundColor: colors.backgroundElement,
+      borderColor: colors.border,
+      borderWidth: 1,
+      borderRadius: 18,
+      padding: 18,
+      marginBottom: 20,
+      elevation: 4,
+    },
+    findingHeader: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    sectionLabel: {
+      color: colors.text,
+      fontSize: 10,
+      fontWeight: 'bold',
+      letterSpacing: 1,
+    },
+    codeBadge: {
+      backgroundColor: colors.text,
+      borderRadius: 6,
+      paddingVertical: 5,
+      paddingHorizontal: 9,
+    },
+    codeText: {
+      color: colors.backgroundElement,
+      fontSize: 10,
+      fontWeight: 'bold',
+    },
+    findingTitle: {
+      color: colors.text,
+      fontSize: 23,
+      fontWeight: 'bold',
+      marginBottom: 10,
+    },
+    description: {
+      color: colors.textSecondary,
+      fontSize: 13,
+      lineHeight: 20,
+      marginBottom: 12,
+    },
+    confidenceRow: {
+      flexDirection: 'row',
+      marginBottom: 12,
+    },
+    confidenceBadge: {
+      backgroundColor: colors.backgroundSelected,
+      borderColor: colors.border,
+      borderWidth: 1,
+      borderRadius: 12,
+      paddingVertical: 8,
+      paddingHorizontal: 12,
+    },
+    confidenceText: {
+      color: colors.accent,
+      fontSize: 11,
+      fontWeight: '600',
+    },
+    riskBadge: {
+      alignSelf: 'flex-start',
+      backgroundColor: colors.accent,
+      borderRadius: 12,
+      paddingVertical: 8,
+      paddingHorizontal: 14,
+      marginBottom: 10,
+    },
+    riskText: {
+      color: colors.white,
+      fontSize: 12,
+      fontWeight: 'bold',
+    },
+    learnMore: {
+      color: colors.textSecondary,
+      fontSize: 11,
+    },
+    noticeCard: {
+      flexDirection: 'row',
+      backgroundColor: colors.backgroundElement,
+      borderColor: colors.danger,
+      borderWidth: 1,
+      borderRadius: 12,
+      padding: 14,
+      marginBottom: 20,
+      elevation: 3,
+    },
+    noticeIcon: {
+      color: colors.danger,
+      fontSize: 17,
+      fontWeight: 'bold',
+      marginRight: 12,
+    },
+    noticeContent: {
+      flex: 1,
+    },
+    noticeTitle: {
+      color: colors.text,
+      fontSize: 13,
+      fontWeight: 'bold',
+      marginBottom: 5,
+    },
+    noticeText: {
+      color: colors.textSecondary,
+      fontSize: 12,
+      lineHeight: 18,
+    },
+    otherCard: {
+      backgroundColor: colors.backgroundElement,
+      borderRadius: 14,
+      padding: 16,
+      marginBottom: 20,
+    },
+    otherTitle: {
+      color: colors.text,
+      fontSize: 15,
+      fontWeight: 'bold',
+      marginBottom: 10,
+    },
+    predictionRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      borderTopWidth: 1,
+      borderTopColor: colors.border,
+      paddingVertical: 10,
+    },
+    predictionName: {
+      color: colors.textSecondary,
+      fontSize: 12,
+      flex: 1,
+      paddingRight: 10,
+    },
+    predictionConfidence: {
+      color: colors.text,
+      fontSize: 12,
+      fontWeight: 'bold',
+    },
+    questionnaire: {
+      marginBottom: 20,
+    },
+    questionnaireText: {
+      color: colors.textSecondary,
+      fontSize: 13,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      lineHeight: 20,
+      marginBottom: 13,
+    },
+    questionnaireButton: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: colors.accent,
+      borderRadius: 100,
+      paddingVertical: 16,
+      paddingHorizontal: 20,
+      elevation: 4,
+    },
+    questionnaireButtonText: {
+      color: colors.white,
+      fontSize: 14,
+      fontWeight: 'bold',
+    },
+    chatButton: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      backgroundColor: colors.backgroundElement,
+      borderColor: colors.accent,
+      borderWidth: 1,
+      borderRadius: 100,
+      paddingVertical: 16,
+      paddingHorizontal: 20,
+      marginTop: 12,
+    },
+    chatButtonText: {
+      color: colors.accent,
+      fontSize: 14,
+      fontWeight: 'bold',
+    },
+    chatArrow: {
+      color: colors.accent,
+      fontSize: 24,
+    },
+    buttonPressed: {
+      opacity: 0.7,
+    },
+    arrow: {
+      color: colors.white,
+      fontSize: 24,
+    },
+  });
+}

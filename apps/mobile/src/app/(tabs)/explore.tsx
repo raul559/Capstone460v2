@@ -14,20 +14,24 @@ import { useLocalSearchParams, router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
+import { useTheme } from '@/hooks/use-theme';
+
+type Feedback = 'up' | 'down' | null;
 
 type Message = {
   id: number;
   text: string;
   sender: 'user' | 'assistant';
   imageUri?: string;
+  feedback?: Feedback;
 };
-
-type Feedback = 'up' | 'down' | null;
 
 const assistantReply =
   'Thanks for your message! The SkinAI chat service is not connected yet. Once backend integration is complete, you will be able to receive personalized educational responses.';
 
 export default function ChatScreen() {
+  const colors = useTheme();
+
   const params = useLocalSearchParams<{
     imageUri?: string;
     from?: string;
@@ -39,7 +43,6 @@ export default function ChatScreen() {
   const openedFromResults = params.from === 'results';
 
   const [message, setMessage] = useState('');
-  const [feedback, setFeedback] = useState<Feedback>(null);
 
   const [messages, setMessages] = useState<Message[]>(() => {
     if (imageUri) {
@@ -67,27 +70,324 @@ export default function ChatScreen() {
     ];
   });
 
+  const styles = StyleSheet.create({
+    safeArea: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingHorizontal: 16,
+      paddingVertical: 13,
+      backgroundColor: colors.backgroundElement,
+      borderBottomWidth: 1,
+      borderBottomColor: colors.border,
+      gap: 11,
+    },
+    backButton: {
+      width: 28,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    backText: {
+      color: colors.textSecondary,
+      fontSize: 34,
+    },
+    logo: {
+      width: 40,
+      height: 40,
+      borderRadius: 20,
+      backgroundColor: colors.accent,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    logoText: {
+      color: colors.white,
+      fontSize: 22,
+      fontWeight: '700',
+    },
+    headerInfo: {
+      flex: 1,
+      gap: 3,
+    },
+    title: {
+      color: colors.text,
+      fontSize: 17,
+      fontWeight: '700',
+    },
+    subtitle: {
+      color: colors.textSecondary,
+      fontSize: 11,
+    },
+    profileCircle: {
+      width: 34,
+      height: 34,
+      borderRadius: 17,
+      backgroundColor: colors.backgroundSelected,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    profileText: {
+      color: colors.text,
+      fontWeight: '700',
+    },
+    chatArea: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    chatContent: {
+      padding: 16,
+      gap: 18,
+    },
+    sessionCard: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: colors.backgroundElement,
+      borderRadius: 14,
+      padding: 13,
+      gap: 11,
+    },
+    sessionIcon: {
+      width: 38,
+      height: 38,
+      borderRadius: 12,
+      backgroundColor: colors.backgroundSelected,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    sessionIconText: {
+      color: colors.accent,
+      fontSize: 21,
+    },
+    sessionInfo: {
+      flex: 1,
+      gap: 4,
+    },
+    sessionTitle: {
+      color: colors.text,
+      fontWeight: '700',
+      fontSize: 13,
+    },
+    sessionSubtitle: {
+      color: colors.textSecondary,
+      fontSize: 11,
+    },
+    sessionMenu: {
+      color: colors.textSecondary,
+      fontWeight: '700',
+    },
+    dateLabel: {
+      color: colors.textSecondary,
+      fontSize: 10,
+      fontWeight: '700',
+      textAlign: 'center',
+      letterSpacing: 1.2,
+    },
+    messageRow: {
+      flexDirection: 'row',
+      alignItems: 'flex-end',
+      gap: 8,
+    },
+    userMessageRow: {
+      justifyContent: 'flex-end',
+    },
+    smallLogo: {
+      width: 27,
+      height: 27,
+      borderRadius: 14,
+      backgroundColor: colors.accent,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    smallLogoText: {
+      color: colors.white,
+      fontSize: 14,
+      fontWeight: '700',
+    },
+    messageGroup: {
+      maxWidth: '86%',
+      gap: 7,
+    },
+    userMessageGroup: {
+      alignItems: 'flex-end',
+    },
+    messageBubble: {
+      padding: 13,
+      borderRadius: 15,
+      gap: 9,
+    },
+    assistantBubble: {
+      backgroundColor: colors.backgroundElement,
+      borderBottomLeftRadius: 4,
+    },
+    userBubble: {
+      backgroundColor: colors.accent,
+      borderBottomRightRadius: 4,
+    },
+    attachedImage: {
+      width: 210,
+      height: 165,
+      borderRadius: 10,
+      backgroundColor: colors.backgroundSelected,
+    },
+    messageText: {
+      color: colors.text,
+      fontSize: 13,
+      lineHeight: 20,
+    },
+    userMessageText: {
+      color: colors.white,
+    },
+    feedbackRow: {
+      flexDirection: 'row',
+      gap: 8,
+    },
+    feedbackButton: {
+      paddingHorizontal: 9,
+      paddingVertical: 5,
+      borderRadius: 9,
+      backgroundColor: colors.backgroundElement,
+    },
+    feedbackSelected: {
+      backgroundColor: colors.backgroundSelected,
+    },
+    feedbackText: {
+      fontSize: 13,
+    },
+    suggestionSection: {
+      gap: 9,
+      marginTop: 3,
+    },
+    suggestionLabel: {
+      color: colors.textSecondary,
+      fontSize: 10,
+      fontWeight: '700',
+      letterSpacing: 1,
+    },
+    suggestionChip: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: colors.backgroundElement,
+      borderColor: colors.border,
+      borderWidth: 1,
+      borderRadius: 12,
+      paddingHorizontal: 13,
+      paddingVertical: 12,
+    },
+    suggestionText: {
+      color: colors.accent,
+      fontSize: 12,
+      fontWeight: '600',
+    },
+    suggestionArrow: {
+      color: colors.accent,
+      fontSize: 20,
+    },
+    projectFooter: {
+      alignItems: 'center',
+      paddingVertical: 13,
+      gap: 5,
+    },
+    projectTitle: {
+      color: colors.text,
+      fontWeight: '700',
+      fontSize: 12,
+    },
+    projectText: {
+      color: colors.textSecondary,
+      fontSize: 10,
+      textAlign: 'center',
+    },
+    inputSection: {
+      paddingHorizontal: 13,
+      paddingTop: 11,
+      paddingBottom: 9,
+      backgroundColor: colors.backgroundElement,
+      borderTopWidth: 1,
+      borderTopColor: colors.border,
+    },
+    inputContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: colors.background,
+      borderWidth: 1,
+      borderColor: colors.border,
+      borderRadius: 14,
+      paddingHorizontal: 12,
+      paddingVertical: 5,
+      gap: 8,
+    },
+    textInput: {
+      flex: 1,
+      color: colors.text,
+      fontSize: 13,
+      maxHeight: 90,
+      minHeight: 40,
+      paddingVertical: 8,
+    },
+    sendButton: {
+      width: 36,
+      height: 36,
+      borderRadius: 18,
+      backgroundColor: colors.accent,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    sendButtonDisabled: {
+      opacity: 0.4,
+    },
+    sendButtonText: {
+      color: colors.white,
+      fontSize: 23,
+      fontWeight: '700',
+    },
+    buttonPressed: {
+      opacity: 0.7,
+    },
+    disclaimer: {
+      color: colors.textSecondary,
+      fontSize: 9,
+      textAlign: 'center',
+      marginTop: 8,
+    },
+  });
+
   const sendMessage = (text: string) => {
     const trimmedMessage = text.trim();
 
     if (!trimmedMessage) return;
 
+    const messageId = Date.now();
+
     setMessages((current) => [
       ...current,
       {
-        id: Date.now(),
+        id: messageId,
         sender: 'user',
         text: trimmedMessage,
       },
       {
-        id: Date.now() + 1,
+        id: messageId + 1,
         sender: 'assistant',
         text: assistantReply,
       },
     ]);
 
     setMessage('');
-    setFeedback(null);
+  };
+
+  const updateFeedback = (messageId: number, feedback: Feedback) => {
+    setMessages((current) =>
+      current.map((item) =>
+        item.id === messageId ? { ...item, feedback } : item
+      )
+    );
   };
 
   return (
@@ -97,7 +397,6 @@ export default function ChatScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 10 : 0}
       >
-        {/* Header */}
         <View style={styles.header}>
           {openedFromResults && (
             <Pressable
@@ -132,7 +431,6 @@ export default function ChatScreen() {
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          {/* Session information */}
           <View style={styles.sessionCard}>
             <View style={styles.sessionIcon}>
               <ThemedText style={styles.sessionIconText}>✦</ThemedText>
@@ -154,7 +452,6 @@ export default function ChatScreen() {
             CONVERSATION
           </ThemedText>
 
-          {/* Messages */}
           {messages.map((item) => (
             <View
               key={item.id}
@@ -207,29 +504,31 @@ export default function ChatScreen() {
                     <Pressable
                       accessibilityRole="button"
                       accessibilityLabel="Helpful response"
-                      onPress={() => setFeedback('up')}
+                      accessibilityState={{
+                        selected: item.feedback === 'up',
+                      }}
+                      onPress={() => updateFeedback(item.id, 'up')}
                       style={[
                         styles.feedbackButton,
-                        feedback === 'up' && styles.feedbackSelected,
+                        item.feedback === 'up' && styles.feedbackSelected,
                       ]}
                     >
-                      <ThemedText style={styles.feedbackText}>
-                        👍
-                      </ThemedText>
+                      <ThemedText style={styles.feedbackText}>👍</ThemedText>
                     </Pressable>
 
                     <Pressable
                       accessibilityRole="button"
                       accessibilityLabel="Unhelpful response"
-                      onPress={() => setFeedback('down')}
+                      accessibilityState={{
+                        selected: item.feedback === 'down',
+                      }}
+                      onPress={() => updateFeedback(item.id, 'down')}
                       style={[
                         styles.feedbackButton,
-                        feedback === 'down' && styles.feedbackSelected,
+                        item.feedback === 'down' && styles.feedbackSelected,
                       ]}
                     >
-                      <ThemedText style={styles.feedbackText}>
-                        👎
-                      </ThemedText>
+                      <ThemedText style={styles.feedbackText}>👎</ThemedText>
                     </Pressable>
                   </View>
                 )}
@@ -237,7 +536,6 @@ export default function ChatScreen() {
             </View>
           ))}
 
-          {/* Suggested question */}
           <View style={styles.suggestionSection}>
             <ThemedText style={styles.suggestionLabel}>
               SUGGESTED QUESTION
@@ -260,7 +558,6 @@ export default function ChatScreen() {
             </Pressable>
           </View>
 
-          {/* Project information */}
           <View style={styles.projectFooter}>
             <ThemedText style={styles.projectTitle}>
               SkinAI Classifier
@@ -274,14 +571,13 @@ export default function ChatScreen() {
           </View>
         </ScrollView>
 
-        {/* Message input */}
         <View style={styles.inputSection}>
           <View style={styles.inputContainer}>
             <TextInput
               value={message}
               onChangeText={setMessage}
               placeholder="Ask SkinAI a question..."
-              placeholderTextColor="#858B96"
+              placeholderTextColor={colors.textSecondary}
               style={styles.textInput}
               multiline
               maxLength={1000}
@@ -310,289 +606,3 @@ export default function ChatScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#D0D6E1',
-  },
-  container: {
-    flex: 1,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 13,
-    backgroundColor: '#EFF1F4',
-    borderBottomWidth: 1,
-    borderBottomColor: '#C4CBD5',
-    gap: 11,
-  },
-  backButton: {
-    width: 28,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backText: {
-    color: '#3B4351',
-    fontSize: 34,
-  },
-  logo: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#3E839C',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logoText: {
-    color: '#FFFFFF',
-    fontSize: 22,
-    fontWeight: '700',
-  },
-  headerInfo: {
-    flex: 1,
-    gap: 3,
-  },
-  title: {
-    color: '#3B4351',
-    fontSize: 17,
-    fontWeight: '700',
-  },
-  subtitle: {
-    color: '#68717F',
-    fontSize: 11,
-  },
-  profileCircle: {
-    width: 34,
-    height: 34,
-    borderRadius: 17,
-    backgroundColor: '#D0D6E1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  profileText: {
-    color: '#3B4351',
-    fontWeight: '700',
-  },
-  chatArea: {
-    flex: 1,
-  },
-  chatContent: {
-    padding: 16,
-    gap: 18,
-  },
-  sessionCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#EFF1F4',
-    borderRadius: 14,
-    padding: 13,
-    gap: 11,
-  },
-  sessionIcon: {
-    width: 38,
-    height: 38,
-    borderRadius: 12,
-    backgroundColor: '#DCE9EC',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  sessionIconText: {
-    color: '#3E839C',
-    fontSize: 21,
-  },
-  sessionInfo: {
-    flex: 1,
-    gap: 4,
-  },
-  sessionTitle: {
-    color: '#3B4351',
-    fontWeight: '700',
-    fontSize: 13,
-  },
-  sessionSubtitle: {
-    color: '#68717F',
-    fontSize: 11,
-  },
-  sessionMenu: {
-    color: '#68717F',
-    fontWeight: '700',
-  },
-  dateLabel: {
-    color: '#68717F',
-    fontSize: 10,
-    fontWeight: '700',
-    textAlign: 'center',
-    letterSpacing: 1.2,
-  },
-  messageRow: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    gap: 8,
-  },
-  userMessageRow: {
-    justifyContent: 'flex-end',
-  },
-  smallLogo: {
-    width: 27,
-    height: 27,
-    borderRadius: 14,
-    backgroundColor: '#3E839C',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  smallLogoText: {
-    color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: '700',
-  },
-  messageGroup: {
-    maxWidth: '86%',
-    gap: 7,
-  },
-  userMessageGroup: {
-    alignItems: 'flex-end',
-  },
-  messageBubble: {
-    padding: 13,
-    borderRadius: 15,
-    gap: 9,
-  },
-  assistantBubble: {
-    backgroundColor: '#EFF1F4',
-    borderBottomLeftRadius: 4,
-  },
-  userBubble: {
-    backgroundColor: '#3E839C',
-    borderBottomRightRadius: 4,
-  },
-  attachedImage: {
-    width: 210,
-    height: 165,
-    borderRadius: 10,
-    backgroundColor: '#D0D6E1',
-  },
-  messageText: {
-    color: '#3B4351',
-    fontSize: 13,
-    lineHeight: 20,
-  },
-  userMessageText: {
-    color: '#FFFFFF',
-  },
-  feedbackRow: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-  feedbackButton: {
-    paddingHorizontal: 9,
-    paddingVertical: 5,
-    borderRadius: 9,
-    backgroundColor: '#EFF1F4',
-  },
-  feedbackSelected: {
-    backgroundColor: '#C1DDE3',
-  },
-  feedbackText: {
-    fontSize: 13,
-  },
-  suggestionSection: {
-    gap: 9,
-    marginTop: 3,
-  },
-  suggestionLabel: {
-    color: '#68717F',
-    fontSize: 10,
-    fontWeight: '700',
-    letterSpacing: 1,
-  },
-  suggestionChip: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#EFF1F4',
-    borderColor: '#C4CBD5',
-    borderWidth: 1,
-    borderRadius: 12,
-    paddingHorizontal: 13,
-    paddingVertical: 12,
-  },
-  suggestionText: {
-    color: '#3E839C',
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  suggestionArrow: {
-    color: '#3E839C',
-    fontSize: 20,
-  },
-  projectFooter: {
-    alignItems: 'center',
-    paddingVertical: 13,
-    gap: 5,
-  },
-  projectTitle: {
-    color: '#3B4351',
-    fontWeight: '700',
-    fontSize: 12,
-  },
-  projectText: {
-    color: '#68717F',
-    fontSize: 10,
-    textAlign: 'center',
-  },
-  inputSection: {
-    paddingHorizontal: 13,
-    paddingTop: 11,
-    paddingBottom: 9,
-    backgroundColor: '#EFF1F4',
-    borderTopWidth: 1,
-    borderTopColor: '#C4CBD5',
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#C4CBD5',
-    borderRadius: 14,
-    paddingHorizontal: 12,
-    paddingVertical: 5,
-    gap: 8,
-  },
-  textInput: {
-    flex: 1,
-    color: '#3B4351',
-    fontSize: 13,
-    maxHeight: 90,
-    minHeight: 40,
-    paddingVertical: 8,
-  },
-  sendButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#3E839C',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  sendButtonDisabled: {
-    opacity: 0.4,
-  },
-  sendButtonText: {
-    color: '#FFFFFF',
-    fontSize: 23,
-    fontWeight: '700',
-  },
-  buttonPressed: {
-    opacity: 0.7,
-  },
-  disclaimer: {
-    color: '#68717F',
-    fontSize: 9,
-    textAlign: 'center',
-    marginTop: 8,
-  },
-});

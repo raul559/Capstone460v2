@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -11,25 +11,52 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
-import { router, useLocalSearchParams } from 'expo-router';
+import {
+  router,
+  useFocusEffect,
+  useLocalSearchParams,
+} from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { useTheme } from '@/hooks/use-theme';
 import { analyzeSkinImage } from '@/library/skin-analysis';
+import { saveAnalysisResult } from '@/library/analysis-result-store';
+
 export default function UploadScreen() {
   const params = useLocalSearchParams<{ imageUri?: string }>();
 
   // Receive an image passed from the camera screen.
   const cameraImageUri =
-    typeof params.imageUri === 'string' ? params.imageUri : null;
+    typeof params.imageUri === 'string' && params.imageUri.length > 0
+      ? params.imageUri
+      : null;
 
-  const [imageUri, setImageUri] = useState<string | null>(
-    cameraImageUri
-  );
+  // Store images selected from the photo library separately.
+  const [selectedImageUri, setSelectedImageUri] =
+    useState<string | null>(null);
+
+  // Prefer the camera image when one is available.
+  const imageUri = cameraImageUri ?? selectedImageUri;
 
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-  
+  // Track analysis requests so abandoned requests cannot navigate.
+  const requestIdRef = useRef(0);
+
+  // Get the currently selected app theme.
+  const colors = useTheme();
+
+  // Invalidate an analysis request when leaving this screen.
+  useFocusEffect(
+    useCallback(() => {
+      setIsAnalyzing(false);
+
+      return () => {
+        requestIdRef.current += 1;
+      };
+    }, [])
+  );
 
   // Open the phone's photo library.
   const chooseImage = async () => {
@@ -54,8 +81,9 @@ export default function UploadScreen() {
         return;
       }
 
-      setImageUri(selectedImage);
-      
+      // Clear an older camera image before using the gallery image.
+      router.setParams({ imageUri: undefined });
+      setSelectedImageUri(selectedImage);
     } catch {
       Alert.alert(
         'Unable to select image',
@@ -75,20 +103,28 @@ export default function UploadScreen() {
   const analyzePhoto = async () => {
     if (!imageUri || isAnalyzing) return;
 
+    const requestId = ++requestIdRef.current;
+
     setIsAnalyzing(true);
-    
 
     try {
       const result = await analyzeSkinImage(imageUri);
 
+      // Ignore results from requests that are no longer active.
+      if (requestId !== requestIdRef.current) return;
+
+      // Store the analysis outside the route parameters.
+      const analysisId = saveAnalysisResult(imageUri, result);
+
       router.push({
         pathname: '/results',
         params: {
-          imageUri,
-          result: JSON.stringify(result),
+          analysisId,
         },
       });
     } catch (error) {
+      if (requestId !== requestIdRef.current) return;
+
       Alert.alert(
         'Analysis failed',
         error instanceof Error
@@ -96,9 +132,255 @@ export default function UploadScreen() {
           : 'Unable to analyze this photo. Please try again.'
       );
     } finally {
-      setIsAnalyzing(false);
+      if (requestId === requestIdRef.current) {
+        setIsAnalyzing(false);
+      }
     }
   };
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    safeArea: {
+      flex: 1,
+      paddingHorizontal: 24,
+    },
+    scrollContent: {
+      paddingTop: 13,
+      paddingBottom: 30,
+    },
+    backButton: {
+      alignSelf: 'flex-start',
+      paddingVertical: 12,
+      paddingHorizontal: 4,
+      marginBottom: 12,
+    },
+    backText: {
+      color: colors.accent,
+      fontSize: 16,
+      fontWeight: '600',
+    },
+    header: {
+      marginBottom: 17,
+    },
+    headerTop: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 19,
+    },
+    logoBox: {
+      width: 36,
+      height: 36,
+      borderRadius: 11,
+      backgroundColor: colors.accent,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    logoText: {
+      color: colors.white,
+      fontSize: 21,
+      fontWeight: 'bold',
+    },
+    headerLabel: {
+      color: colors.text,
+      fontSize: 11,
+      fontWeight: 'bold',
+      letterSpacing: 1,
+    },
+    headerIcon: {
+      width: 36,
+      height: 36,
+      borderRadius: 18,
+      backgroundColor: colors.backgroundElement,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    headerIconText: {
+      color: colors.accent,
+      fontSize: 20,
+    },
+    title: {
+      color: colors.text,
+      fontSize: 27,
+      fontWeight: 'bold',
+    },
+    description: {
+      color: colors.textSecondary,
+      fontSize: 14,
+      marginTop: 10,
+    },
+    selectionCard: {
+      alignItems: 'center',
+      backgroundColor: colors.backgroundElement,
+      borderColor: colors.accent,
+      borderWidth: 1,
+      borderRadius: 18,
+      padding: 22,
+      marginBottom: 17,
+    },
+    uploadIcon: {
+      width: 52,
+      height: 52,
+      borderRadius: 16,
+      backgroundColor: colors.backgroundSelected,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 12,
+    },
+    uploadIconText: {
+      fontSize: 29,
+      color: colors.accent,
+    },
+    cardTitle: {
+      color: colors.text,
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 10,
+    },
+    cardDescription: {
+      color: colors.textSecondary,
+      fontSize: 12,
+      marginBottom: 14,
+      textAlign: 'center',
+    },
+    selectionButtons: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      gap: 20,
+    },
+    selectionOption: {
+      paddingVertical: 8,
+      paddingHorizontal: 4,
+    },
+    optionText: {
+      color: colors.textSecondary,
+      fontSize: 12,
+      fontWeight: 'bold',
+    },
+    previewImage: {
+      width: '100%',
+      height: 190,
+      marginBottom: 15,
+      borderRadius: 12,
+    },
+    secondaryButton: {
+      padding: 10,
+      borderRadius: 10,
+      backgroundColor: colors.backgroundSelected,
+    },
+    secondaryButtonText: {
+      color: colors.accent,
+      fontWeight: 'bold',
+      fontSize: 13,
+    },
+    infoCard: {
+      backgroundColor: colors.backgroundElement,
+      borderRadius: 18,
+      padding: 16,
+      marginBottom: 17,
+      elevation: 3,
+    },
+    infoTitle: {
+      color: colors.text,
+      fontSize: 14,
+      fontWeight: 'bold',
+      marginBottom: 12,
+    },
+    tipRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 12,
+    },
+    tipIcon: {
+      color: colors.accent,
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginRight: 10,
+    },
+    tipText: {
+      color: colors.textSecondary,
+      fontSize: 12,
+      flex: 1,
+    },
+    noticeCard: {
+      flexDirection: 'row',
+      backgroundColor: colors.backgroundElement,
+      borderRadius: 12,
+      padding: 14,
+      marginBottom: 17,
+      elevation: 3,
+    },
+    noticeIcon: {
+      color: colors.accent,
+      fontSize: 19,
+      marginRight: 10,
+    },
+    noticeContent: {
+      flex: 1,
+    },
+    noticeTitle: {
+      color: colors.text,
+      fontSize: 13,
+      fontWeight: 'bold',
+      marginBottom: 4,
+    },
+    noticeText: {
+      color: colors.textSecondary,
+      fontSize: 12,
+      lineHeight: 18,
+    },
+    analyzeButton: {
+      backgroundColor: colors.accent,
+      borderRadius: 100,
+      paddingVertical: 15,
+      paddingHorizontal: 17,
+      marginTop: 2,
+      elevation: 3,
+    },
+    disabledButton: {
+      opacity: 0.5,
+    },
+    analyzeButtonContent: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    analyzeButtonText: {
+      color: colors.white,
+      fontSize: 15,
+      fontWeight: 'bold',
+    },
+    analyzeArrow: {
+      color: colors.white,
+      fontSize: 21,
+    },
+    loadingContent: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 10,
+    },
+    buttonPressed: {
+      opacity: 0.75,
+    },
+    footerText: {
+      color: colors.textSecondary,
+      fontSize: 11,
+      textAlign: 'center',
+      marginTop: 10,
+    },
+    disclaimer: {
+      color: colors.textSecondary,
+      fontSize: 11,
+      textAlign: 'center',
+      marginTop: 20,
+      lineHeight: 17,
+    },
+  });
 
   return (
     <ThemedView style={styles.container}>
@@ -298,7 +580,7 @@ export default function UploadScreen() {
           >
             {isAnalyzing ? (
               <View style={styles.loadingContent}>
-                <ActivityIndicator color="#FFFFFF" />
+                <ActivityIndicator color={colors.white} />
 
                 <ThemedText style={styles.analyzeButtonText}>
                   Analyzing image...
@@ -333,247 +615,3 @@ export default function UploadScreen() {
     </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#D0D6E1',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: 24,
-  },
-  scrollContent: {
-    paddingTop: 13,
-    paddingBottom: 30,
-  },
-  backButton: {
-    alignSelf: 'flex-start',
-    paddingVertical: 12,
-    paddingHorizontal: 4,
-    marginBottom: 12,
-  },
-  backText: {
-    color: '#3E839C',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  header: {
-    marginBottom: 17,
-  },
-  headerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 19,
-  },
-  logoBox: {
-    width: 36,
-    height: 36,
-    borderRadius: 11,
-    backgroundColor: '#3E839C',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logoText: {
-    color: '#FFFFFF',
-    fontSize: 21,
-    fontWeight: 'bold',
-  },
-  headerLabel: {
-    color: '#1F242C',
-    fontSize: 11,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
-  headerIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: '#EFF1F4',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  headerIconText: {
-    color: '#3E839C',
-    fontSize: 20,
-  },
-  title: {
-    color: '#1F242C',
-    fontSize: 27,
-    fontWeight: 'bold',
-  },
-  description: {
-    color: '#3B4351',
-    fontSize: 14,
-    marginTop: 10,
-  },
-  selectionCard: {
-    alignItems: 'center',
-    backgroundColor: '#EFF1F4',
-    borderColor: '#3E839C',
-    borderWidth: 1,
-    borderRadius: 18,
-    padding: 22,
-    marginBottom: 17,
-  },
-  uploadIcon: {
-    width: 52,
-    height: 52,
-    borderRadius: 16,
-    backgroundColor: '#D0DCE3',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 12,
-  },
-  uploadIconText: {
-    fontSize: 29,
-    color: '#3E839C',
-  },
-  cardTitle: {
-    color: '#1F242C',
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  cardDescription: {
-    color: '#3B4351',
-    fontSize: 12,
-    marginBottom: 14,
-    textAlign: 'center',
-  },
-  selectionButtons: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    gap: 20,
-  },
-  selectionOption: {
-    paddingVertical: 8,
-    paddingHorizontal: 4,
-  },
-  optionText: {
-    color: '#3B4351',
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-  previewImage: {
-    width: '100%',
-    height: 190,
-    marginBottom: 15,
-    borderRadius: 12,
-  },
-  secondaryButton: {
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: '#D0DCE3',
-  },
-  secondaryButtonText: {
-    color: '#245B45',
-    fontWeight: 'bold',
-    fontSize: 13,
-  },
-  infoCard: {
-    backgroundColor: '#EFF1F4',
-    borderRadius: 18,
-    padding: 16,
-    marginBottom: 17,
-    elevation: 3,
-  },
-  infoTitle: {
-    color: '#1F242C',
-    fontSize: 14,
-    fontWeight: 'bold',
-    marginBottom: 12,
-  },
-  tipRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  tipIcon: {
-    color: '#3E839C',
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginRight: 10,
-  },
-  tipText: {
-    color: '#3B4351',
-    fontSize: 12,
-    flex: 1,
-  },
-  noticeCard: {
-    flexDirection: 'row',
-    backgroundColor: '#EFF1F4',
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 17,
-    elevation: 3,
-  },
-  noticeIcon: {
-    color: '#3E839C',
-    fontSize: 19,
-    marginRight: 10,
-  },
-  noticeContent: {
-    flex: 1,
-  },
-  noticeTitle: {
-    color: '#3B4351',
-    fontSize: 13,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  noticeText: {
-    color: '#3B4351',
-    fontSize: 12,
-    lineHeight: 18,
-  },
-  analyzeButton: {
-    backgroundColor: '#3E839C',
-    borderRadius: 100,
-    paddingVertical: 15,
-    paddingHorizontal: 17,
-    marginTop: 2,
-    elevation: 3,
-  },
-  disabledButton: {
-    opacity: 0.5,
-  },
-  analyzeButtonContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  analyzeButtonText: {
-    color: '#FFFFFF',
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-  analyzeArrow: {
-    color: '#FFFFFF',
-    fontSize: 21,
-  },
-  loadingContent: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 10,
-  },
-  buttonPressed: {
-    opacity: 0.75,
-  },
-  footerText: {
-    color: '#3B4351',
-    fontSize: 11,
-    textAlign: 'center',
-    marginTop: 10,
-  },
-  disclaimer: {
-    color: '#3B4351',
-    fontSize: 11,
-    textAlign: 'center',
-    marginTop: 20,
-    lineHeight: 17,
-  },
-});

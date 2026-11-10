@@ -11,78 +11,41 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { SkinAnalysisResults } from '@/components/skin-analysis-results';
-import type { SkinAnalysisResult } from '@/library/skin-analysis';
+import { useTheme } from '@/hooks/use-theme';
+import {
+  clearAnalysisResult,
+  getAnalysisResult,
+} from '@/library/analysis-result-store';
 
 export default function ResultsScreen() {
-  const params = useLocalSearchParams<{
-    imageUri?: string;
-    result?: string;
-  }>();
+  const colors = useTheme();
+  const params = useLocalSearchParams<{ analysisId?: string }>();
 
-  const imageUri = Array.isArray(params.imageUri)
-    ? params.imageUri[0]
-    : params.imageUri;
+  const analysisId =
+    typeof params.analysisId === 'string'
+      ? params.analysisId
+      : null;
 
-  const resultData = Array.isArray(params.result)
-    ? params.result[0]
-    : params.result;
+  const storedAnalysis = analysisId
+    ? getAnalysisResult(analysisId)
+    : null;
 
-  let analysisResult: SkinAnalysisResult | null = null;
+  const analysisResult = storedAnalysis?.result ?? null;
+  const imageUri = storedAnalysis?.imageUri ?? null;
+  const hasLoaded = true;
 
-  try {
-    if (resultData) {
-      const parsed: unknown = JSON.parse(resultData);
-
-      if (
-        typeof parsed === 'object' &&
-        parsed !== null &&
-        'top_predictions' in parsed &&
-        'risk_score' in parsed
-      ) {
-        const data = parsed as {
-          top_predictions: unknown;
-          risk_score: unknown;
-        };
-
-        const validPredictions =
-          Array.isArray(data.top_predictions) &&
-          data.top_predictions.length > 0 &&
-          data.top_predictions.every((prediction: unknown) => {
-            if (
-              typeof prediction !== 'object' ||
-              prediction === null
-            ) {
-              return false;
-            }
-
-            const item = prediction as {
-              label?: unknown;
-              confidence?: unknown;
-            };
-
-            return (
-              typeof item.label === 'string' &&
-              typeof item.confidence === 'number' &&
-              Number.isFinite(item.confidence) &&
-              item.confidence >= 0 &&
-              item.confidence <= 1
-            );
-          });
-
-        if (
-          validPredictions &&
-          typeof data.risk_score === 'string'
-        ) {
-          analysisResult = parsed as SkinAnalysisResult;
-        }
-      }
+  const handleBack = () => {
+    if (analysisId) {
+      clearAnalysisResult(analysisId);
     }
-  } catch {
-    analysisResult = null;
-  }
+
+    router.back();
+  };
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView
+      style={[styles.container, { backgroundColor: colors.background }]}
+    >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView
           contentContainerStyle={styles.content}
@@ -90,24 +53,51 @@ export default function ResultsScreen() {
         >
           <Pressable
             style={styles.backButton}
-            onPress={() => router.back()}
+            onPress={handleBack}
           >
-            <ThemedText style={styles.backText}>
+            <ThemedText
+              style={[styles.backText, { color: colors.accent }]}
+            >
               ← Back to Image Analysis
             </ThemedText>
           </Pressable>
 
-          {analysisResult && imageUri ? (
+          {!hasLoaded ? (
+            <View
+              style={[
+                styles.errorContainer,
+                { backgroundColor: colors.backgroundElement },
+              ]}
+            >
+              <ThemedText
+                style={[styles.errorTitle, { color: colors.text }]}
+              >
+                Loading results...
+              </ThemedText>
+            </View>
+          ) : analysisResult && imageUri ? (
             <SkinAnalysisResults
               result={analysisResult}
               imageUri={imageUri}
             />
           ) : (
-            <View style={styles.errorContainer}>
-              <ThemedText style={styles.errorTitle}>
+            <View
+              style={[
+                styles.errorContainer,
+                { backgroundColor: colors.backgroundElement },
+              ]}
+            >
+              <ThemedText
+                style={[styles.errorTitle, { color: colors.text }]}
+              >
                 Results unavailable
               </ThemedText>
-              <ThemedText>
+              <ThemedText
+                style={[
+                  styles.errorMessage,
+                  { color: colors.textSecondary },
+                ]}
+              >
                 We couldn&apos;t load your analysis. Please try again.
               </ThemedText>
             </View>
@@ -121,7 +111,6 @@ export default function ResultsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#D0D6E1',
   },
   safeArea: {
     flex: 1,
@@ -137,12 +126,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   backText: {
-    color: '#3E839C',
     fontSize: 16,
     fontWeight: '600',
   },
   errorContainer: {
-    backgroundColor: '#EFF1F4',
     padding: 20,
     borderRadius: 16,
     gap: 10,
@@ -150,5 +137,8 @@ const styles = StyleSheet.create({
   errorTitle: {
     fontSize: 20,
     fontWeight: '700',
+  },
+  errorMessage: {
+    fontSize: 14,
   },
 });

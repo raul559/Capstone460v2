@@ -1,4 +1,5 @@
-﻿import { useState } from 'react';
+﻿
+import { useState } from 'react';
 import {
   Alert,
   Pressable,
@@ -9,17 +10,11 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-const COLORS = {
-  background: '#D0D6E1',
-  card: '#EFF1F4',
-  text: '#1F242C',
-  secondary: '#3B4351',
-  accent: '#3E839C',
-  border: '#C2CAD5',
-  white: '#FFFFFF',
-  danger: '#B84A4A',
-};
+import {
+  useThemePreference,
+  type ThemePreference,
+} from '@/contexts/theme-preference';
+import { useTheme } from '@/hooks/use-theme';
 
 type AccountRowProps = {
   title: string;
@@ -28,18 +23,27 @@ type AccountRowProps = {
 };
 
 function AccountRow({ title, subtitle, onPress }: AccountRowProps) {
+  const colors = useTheme();
+
   return (
-    <Pressable style={styles.row} onPress={onPress}>
+    <Pressable
+      style={[styles.row, { borderBottomColor: colors.border }]}
+      onPress={onPress}
+    >
       <View style={styles.rowText}>
-        <Text style={styles.rowTitle}>{title}</Text>
-        <Text style={styles.rowSubtitle}>{subtitle}</Text>
+        <Text style={[styles.rowTitle, { color: colors.text }]}>{title}</Text>
+        <Text style={[styles.rowSubtitle, { color: colors.textSecondary }]}>
+          {subtitle}
+        </Text>
       </View>
-      <Text style={styles.chevron}>›</Text>
+      <Text style={[styles.chevron, { color: colors.textSecondary }]}>›</Text>
     </Pressable>
   );
 }
 
 export default function AccountScreen() {
+  const colors = useTheme();
+  const { preference, setPreference } = useThemePreference();
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
 
   const showUnavailable = (feature: string) => {
@@ -49,83 +53,194 @@ export default function AccountScreen() {
     );
   };
 
+  const themeOptions: { label: string; value: ThemePreference }[] = [
+    { label: 'System Default', value: 'system' },
+    { label: 'Light Mode', value: 'light' },
+    { label: 'Dark Mode', value: 'dark' },
+  ];
+
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top']}>
+    <SafeAreaView
+      style={[styles.safeArea, { backgroundColor: colors.background }]}
+      edges={['top']}
+    >
       <ScrollView
-        style={styles.screen}
+        style={[styles.screen, { backgroundColor: colors.background }]}
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.header}>
           <View>
-            <Text style={styles.headerLabel}>SKINAI</Text>
-            <Text style={styles.headerTitle}>Your account</Text>
+            <Text style={[styles.headerLabel, { color: colors.accent }]}>
+              SKINAI
+            </Text>
+            <Text style={[styles.headerTitle, { color: colors.text }]}>
+              Your account
+            </Text>
           </View>
           <Pressable
-            style={styles.settingsButton}
+            style={[
+              styles.settingsButton,
+              { backgroundColor: colors.backgroundElement },
+            ]}
             onPress={() => showUnavailable('Settings')}
             accessibilityLabel="Settings"
           >
-            <Text style={styles.settingsIcon}>⚙</Text>
+            <Text style={[styles.settingsIcon, { color: colors.textSecondary }]}>
+              ⚙
+            </Text>
           </Pressable>
         </View>
 
-        <View style={styles.profileCard}>
-          <View style={styles.avatar}>
+        <View
+          style={[
+            styles.profileCard,
+            { backgroundColor: colors.backgroundElement },
+          ]}
+        >
+          <View style={[styles.avatar, { backgroundColor: colors.accent }]}>
             <Text style={styles.avatarText}>U</Text>
           </View>
           <View style={styles.profileInfo}>
-            <Text style={styles.profileName}>Your profile</Text>
-            <Text style={styles.profileEmail}>
+            <Text style={[styles.profileName, { color: colors.text }]}>
+              Your profile
+            </Text>
+            <Text style={[styles.profileEmail, { color: colors.textSecondary }]}>
               Account information not connected
             </Text>
-            <Text style={styles.accountType}>PATIENT USER ACCOUNT</Text>
+            <Text style={[styles.accountType, { color: colors.accent }]}>
+              PATIENT USER ACCOUNT
+            </Text>
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>ACCOUNT SETTINGS</Text>
-        <View style={styles.card}>
+        <Text style={[styles.sectionTitle, { color: colors.textSecondary }]}>
+          ACCOUNT SETTINGS
+        </Text>
+        <View
+          style={[
+            styles.card,
+            { backgroundColor: colors.backgroundElement },
+          ]}
+        >
           <AccountRow
             title="Personal details"
             subtitle="Name, email and profile"
             onPress={() => showUnavailable('Personal details')}
           />
-          <View style={styles.separator} />
           <AccountRow
             title="Password & security"
             subtitle="Manage your account security"
             onPress={() => showUnavailable('Password & security')}
           />
-          <View style={styles.separator} />
           <View style={styles.notificationRow}>
             <View style={styles.rowText}>
-              <Text style={styles.rowTitle}>Notifications</Text>
-              <Text style={styles.rowSubtitle}>Product updates</Text>
+              <Text style={[styles.rowTitle, { color: colors.text }]}>
+                Notifications
+              </Text>
+              <Text style={[styles.rowSubtitle, { color: colors.textSecondary }]}>
+                Product updates
+              </Text>
             </View>
             <Switch
               value={notificationsEnabled}
               onValueChange={setNotificationsEnabled}
-              trackColor={{ false: COLORS.border, true: COLORS.accent }}
-              thumbColor={COLORS.white}
+              trackColor={{
+                false: colors.border,
+                true: colors.accent,
+              }}
+              thumbColor={colors.white}
               accessibilityLabel="Product update notifications"
             />
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>DATA & SESSIONS</Text>
-        <View style={styles.card}>
+        <Text style={[styles.sectionTitle, { color: colors.textSecondary }]}>
+          APPEARANCE
+        </Text>
+        <View
+          style={[
+            styles.card,
+            { backgroundColor: colors.backgroundElement },
+          ]}
+        >
+          <Text
+            style={[
+              styles.appearanceDescription,
+              { color: colors.textSecondary },
+            ]}
+          >
+            Choose how SkinAI looks on your device.
+          </Text>
+
+          {themeOptions.map((option) => {
+            const selected = preference === option.value;
+
+            return (
+              <Pressable
+                key={option.value}
+                onPress={() => setPreference(option.value)}
+                style={[
+                  styles.themeOption,
+                  {
+                    backgroundColor: selected
+                      ? colors.backgroundSelected
+                      : 'transparent',
+                    borderColor: selected
+                      ? colors.accent
+                      : colors.border,
+                  },
+                ]}
+                accessibilityRole="radio"
+                accessibilityState={{ selected }}
+              >
+                <Text style={[styles.themeOptionText, { color: colors.text }]}>
+                  {option.label}
+                </Text>
+
+                <View
+                  style={[
+                    styles.radioOuter,
+                    {
+                      borderColor: selected
+                        ? colors.accent
+                        : colors.textSecondary,
+                    },
+                  ]}
+                >
+                  {selected && (
+                    <View
+                      style={[
+                        styles.radioInner,
+                        { backgroundColor: colors.accent },
+                      ]}
+                    />
+                  )}
+                </View>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        <Text style={[styles.sectionTitle, { color: colors.textSecondary }]}>
+          DATA & SESSIONS
+        </Text>
+        <View
+          style={[
+            styles.card,
+            { backgroundColor: colors.backgroundElement },
+          ]}
+        >
           <AccountRow
             title="History & images"
             subtitle="Review or delete saved sessions"
             onPress={() => showUnavailable('History & images')}
           />
-          <View style={styles.separator} />
           <AccountRow
             title="Data use & privacy"
             subtitle="How images and messages are processed"
             onPress={() => showUnavailable('Data use & privacy')}
           />
-          <View style={styles.separator} />
           <AccountRow
             title="About SkinAI"
             subtitle="Learn more about how SkinAI works"
@@ -133,13 +248,20 @@ export default function AccountScreen() {
           />
         </View>
 
-        <View style={styles.signOutCard}>
-          <Text style={styles.signOutTitle}>Sign out</Text>
-          <Text style={styles.signOutSubtitle}>
+        <View
+          style={[
+            styles.signOutCard,
+            { backgroundColor: colors.backgroundElement },
+          ]}
+        >
+          <Text style={[styles.signOutTitle, { color: colors.text }]}>
+            Sign out
+          </Text>
+          <Text style={[styles.signOutSubtitle, { color: colors.textSecondary }]}>
             Account sign-out is not connected yet.
           </Text>
           <Pressable
-            style={styles.signOutButton}
+            style={[styles.signOutButton, { backgroundColor: colors.accent }]}
             onPress={() => showUnavailable('Sign out')}
           >
             <Text style={styles.signOutButtonText}>Sign out</Text>
@@ -148,16 +270,25 @@ export default function AccountScreen() {
             onPress={() => showUnavailable('Delete account')}
             style={styles.deleteButton}
           >
-            <Text style={styles.deleteText}>Delete account</Text>
+            <Text style={[styles.deleteText, { color: colors.danger }]}>
+              Delete account
+            </Text>
           </Pressable>
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.footerTitle}>SkinAI Classifier · Capstone</Text>
-          <Text style={styles.footerText}>
+          <Text style={[styles.footerTitle, { color: colors.textSecondary }]}>
+            SkinAI Classifier · Capstone
+          </Text>
+          <Text style={[styles.footerText, { color: colors.textSecondary }]}>
             Purdue University Fort Wayne
           </Text>
-          <Text style={styles.footerDisclaimer}>
+          <Text
+            style={[
+              styles.footerDisclaimer,
+              { color: colors.textSecondary },
+            ]}
+          >
             Educational purposes only · Not for medical diagnosis
           </Text>
         </View>
@@ -167,14 +298,8 @@ export default function AccountScreen() {
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: COLORS.background,
-  },
-  screen: {
-    flex: 1,
-    backgroundColor: COLORS.background,
-  },
+  safeArea: { flex: 1 },
+  screen: { flex: 1 },
   content: {
     paddingHorizontal: 20,
     paddingTop: 16,
@@ -190,31 +315,21 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   headerLabel: {
-    color: COLORS.accent,
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 2,
     marginBottom: 5,
   },
-  headerTitle: {
-    color: COLORS.text,
-    fontSize: 28,
-    fontWeight: '700',
-  },
+  headerTitle: { fontSize: 28, fontWeight: '700' },
   settingsButton: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    backgroundColor: COLORS.card,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  settingsIcon: {
-    fontSize: 22,
-    color: COLORS.secondary,
-  },
+  settingsIcon: { fontSize: 22 },
   profileCard: {
-    backgroundColor: COLORS.card,
     borderRadius: 18,
     padding: 18,
     flexDirection: 'row',
@@ -225,38 +340,28 @@ const styles = StyleSheet.create({
     width: 58,
     height: 58,
     borderRadius: 29,
-    backgroundColor: COLORS.accent,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 15,
   },
   avatarText: {
-    color: COLORS.white,
+    color: '#FFFFFF',
     fontSize: 23,
     fontWeight: '700',
   },
-  profileInfo: {
-    flex: 1,
-  },
+  profileInfo: { flex: 1 },
   profileName: {
-    color: COLORS.text,
     fontSize: 18,
     fontWeight: '700',
     marginBottom: 3,
   },
-  profileEmail: {
-    color: COLORS.secondary,
-    fontSize: 12,
-    marginBottom: 8,
-  },
+  profileEmail: { fontSize: 12, marginBottom: 8 },
   accountType: {
-    color: COLORS.accent,
     fontSize: 10,
     fontWeight: '800',
     letterSpacing: 1,
   },
   sectionTitle: {
-    color: COLORS.secondary,
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 1.5,
@@ -264,9 +369,9 @@ const styles = StyleSheet.create({
     marginLeft: 3,
   },
   card: {
-    backgroundColor: COLORS.card,
     borderRadius: 16,
     paddingHorizontal: 16,
+    paddingVertical: 4,
     marginBottom: 26,
   },
   row: {
@@ -275,30 +380,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 13,
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
-  rowText: {
-    flex: 1,
-    paddingRight: 12,
-  },
+  rowText: { flex: 1, paddingRight: 12 },
   rowTitle: {
-    color: COLORS.text,
     fontSize: 15,
     fontWeight: '600',
     marginBottom: 5,
   },
-  rowSubtitle: {
-    color: COLORS.secondary,
-    fontSize: 12,
-  },
-  chevron: {
-    color: COLORS.secondary,
-    fontSize: 27,
-    fontWeight: '300',
-  },
-  separator: {
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: COLORS.border,
-  },
+  rowSubtitle: { fontSize: 12 },
+  chevron: { fontSize: 27, fontWeight: '300' },
   notificationRow: {
     minHeight: 75,
     flexDirection: 'row',
@@ -306,61 +397,59 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 12,
   },
+  appearanceDescription: {
+    fontSize: 12,
+    paddingVertical: 12,
+  },
+  themeOption: {
+    minHeight: 52,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    marginBottom: 9,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  themeOptionText: { fontSize: 14, fontWeight: '600' },
+  radioOuter: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    borderWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  radioInner: { width: 10, height: 10, borderRadius: 5 },
   signOutCard: {
-    backgroundColor: COLORS.card,
     borderRadius: 16,
     padding: 18,
     marginBottom: 28,
   },
   signOutTitle: {
-    color: COLORS.text,
     fontSize: 16,
     fontWeight: '700',
     marginBottom: 5,
   },
-  signOutSubtitle: {
-    color: COLORS.secondary,
-    fontSize: 12,
-    marginBottom: 16,
-  },
+  signOutSubtitle: { fontSize: 12, marginBottom: 16 },
   signOutButton: {
-    backgroundColor: COLORS.accent,
     borderRadius: 12,
     padding: 14,
     alignItems: 'center',
   },
   signOutButtonText: {
-    color: COLORS.white,
+    color: '#FFFFFF',
     fontSize: 14,
     fontWeight: '700',
   },
-  deleteButton: {
-    alignItems: 'center',
-    paddingTop: 16,
-  },
-  deleteText: {
-    color: COLORS.danger,
-    fontSize: 13,
-    fontWeight: '600',
-  },
-  footer: {
-    alignItems: 'center',
-    paddingTop: 8,
-  },
+  deleteButton: { alignItems: 'center', paddingTop: 16 },
+  deleteText: { fontSize: 13, fontWeight: '600' },
+  footer: { alignItems: 'center', paddingTop: 8 },
   footerTitle: {
-    color: COLORS.secondary,
     fontSize: 12,
     fontWeight: '700',
     marginBottom: 5,
   },
-  footerText: {
-    color: COLORS.secondary,
-    fontSize: 11,
-    marginBottom: 7,
-  },
-  footerDisclaimer: {
-    color: COLORS.secondary,
-    fontSize: 10,
-    textAlign: 'center',
-  },
+  footerText: { fontSize: 11, marginBottom: 7 },
+  footerDisclaimer: { fontSize: 10, textAlign: 'center' },
 });
