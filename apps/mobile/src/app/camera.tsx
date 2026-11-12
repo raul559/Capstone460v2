@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
 import {
-  ActivityIndicator,
   Alert,
   Image,
   Pressable,
@@ -15,21 +14,13 @@ import { router } from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { SkinAnalysisResults } from '../components/skin-analysis-results';
-import {
-  analyzeSkinImage,
-  type SkinAnalysisResult,
-} from '@/library/skin-analysis';
 
 export default function CameraScreen() {
   const [imageUri, setImageUri] = useState<string | null>(null);
   const [isOpeningCamera, setIsOpeningCamera] = useState(false);
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [analysisResult, setAnalysisResult] =
-    useState<SkinAnalysisResult | null>(null);
 
   const takePhoto = async () => {
-    if (isOpeningCamera || isAnalyzing) {
+    if (isOpeningCamera) {
       return;
     }
 
@@ -58,7 +49,6 @@ export default function CameraScreen() {
       }
 
       setImageUri(result.assets[0].uri);
-      setAnalysisResult(null);
     } catch {
       Alert.alert(
         'Unable to open camera',
@@ -69,45 +59,24 @@ export default function CameraScreen() {
     }
   };
 
-  const analyzePhoto = async () => {
-    if (!imageUri || isAnalyzing) {
+  const usePhoto = () => {
+    if (!imageUri) {
       return;
     }
 
-    setIsAnalyzing(true);
-    setAnalysisResult(null);
-
-    try {
-      const result = await analyzeSkinImage(imageUri);
-      setAnalysisResult(result);
-    } catch (error) {
-      Alert.alert(
-        'Analysis failed',
-        error instanceof Error
-          ? error.message
-          : 'Unable to analyze this photo. Please try again.'
-      );
-    } finally {
-      setIsAnalyzing(false);
-    }
+    // Return to the existing Upload screen with the captured photo.
+    router.dismissTo({
+      pathname: '/upload',
+      params: { imageUri },
+    });
   };
 
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          keyboardShouldPersistTaps="handled"
-        >
+        <ScrollView contentContainerStyle={styles.scrollContent}>
           <Pressable
-            accessibilityRole="button"
-            onPress={() => {
-              if (router.canGoBack()) {
-                router.back();
-              } else {
-                router.replace('/');
-              }
-            }}
+            onPress={() => router.back()}
             style={styles.backButton}
           >
             <ThemedText style={styles.backText}>
@@ -119,8 +88,9 @@ export default function CameraScreen() {
             <ThemedText style={styles.title}>
               Take a Photo
             </ThemedText>
+
             <ThemedText style={styles.description}>
-              Take a photo of a skin lesion to preview and analyze it.
+              Take a photo of a skin lesion to preview it before analysis.
             </ThemedText>
           </View>
 
@@ -137,6 +107,7 @@ export default function CameraScreen() {
                 <ThemedText style={styles.placeholderIcon}>
                   {'\u{1F4F7}'}
                 </ThemedText>
+
                 <ThemedText style={styles.placeholderText}>
                   No photo taken yet
                 </ThemedText>
@@ -146,16 +117,12 @@ export default function CameraScreen() {
 
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={
-              imageUri ? 'Retake photo' : 'Open camera'
-            }
-            disabled={isOpeningCamera || isAnalyzing}
+            disabled={isOpeningCamera}
             onPress={takePhoto}
             style={({ pressed }) => [
               styles.cameraButton,
               pressed && styles.buttonPressed,
-              (isOpeningCamera || isAnalyzing) &&
-                styles.buttonDisabled,
+              isOpeningCamera && styles.buttonDisabled,
             ]}
           >
             <ThemedText style={styles.cameraButtonText}>
@@ -170,38 +137,17 @@ export default function CameraScreen() {
           {imageUri && (
             <Pressable
               accessibilityRole="button"
-              disabled={isAnalyzing}
-              onPress={analyzePhoto}
+              onPress={usePhoto}
               style={({ pressed }) => [
-                styles.analyzeButton,
+                styles.useButton,
                 pressed && styles.buttonPressed,
-                isAnalyzing && styles.buttonDisabled,
               ]}
             >
-              {isAnalyzing ? (
-                <View style={styles.loadingContent}>
-                  <ActivityIndicator color="#FFFFFF" />
-                  <ThemedText style={styles.analyzeButtonText}>
-                    Analyzing Photo...
-                  </ThemedText>
-                </View>
-              ) : (
-                <ThemedText style={styles.analyzeButtonText}>
-                  Analyze Photo
-                </ThemedText>
-              )}
+              <ThemedText style={styles.useButtonText}>
+                Use This Photo
+              </ThemedText>
             </Pressable>
           )}
-
-          {analysisResult && (
-            <SkinAnalysisResults result={analysisResult} />
-          )}
-
-          <ThemedText style={styles.disclaimer}>
-            SkinAI is an educational tool and does not provide a
-            medical diagnosis. Consult a healthcare professional
-            about concerning or changing lesions.
-          </ThemedText>
         </ScrollView>
       </SafeAreaView>
     </ThemedView>
@@ -218,7 +164,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    paddingBottom: 12,
+    paddingBottom: 20,
   },
   backButton: {
     alignSelf: 'flex-start',
@@ -286,7 +232,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '700',
   },
-  analyzeButton: {
+  useButton: {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#245B45',
@@ -294,27 +240,15 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     marginTop: 12,
   },
-  analyzeButtonText: {
+  useButtonText: {
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '700',
-  },
-  loadingContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 10,
   },
   buttonPressed: {
     opacity: 0.75,
   },
   buttonDisabled: {
     opacity: 0.6,
-  },
-  disclaimer: {
-    fontSize: 12,
-    textAlign: 'center',
-    opacity: 0.65,
-    marginTop: 20,
-    marginBottom: 18,
   },
 });

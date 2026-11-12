@@ -1,13 +1,8 @@
-import { useSyncExternalStore } from 'react';
-import { useColorScheme as useRNColorScheme } from 'react-native';
+﻿import { useSyncExternalStore } from 'react';
+import { useThemePreference } from '@/contexts/theme-preference';
 
 const subscribe = () => () => {};
 
-/**
- * To support static rendering, this value needs to be re-calculated on the client side for web.
- * The server snapshot is `false` and the client snapshot is `true`, so the first client render
- * matches the static HTML ("light") and React then re-renders with the real scheme.
- */
 export function useColorScheme() {
   const hasHydrated = useSyncExternalStore(
     subscribe,
@@ -15,11 +10,11 @@ export function useColorScheme() {
     () => false
   );
 
-  const colorScheme = useRNColorScheme();
+  const { colorScheme } = useThemePreference();
 
-  if (hasHydrated) {
-    return colorScheme;
+  if (!hasHydrated) {
+    return 'light';
   }
 
-  return 'light';
+  return colorScheme;
 }
