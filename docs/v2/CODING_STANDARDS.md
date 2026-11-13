@@ -31,8 +31,8 @@ response schema. Logic lives in hooks, services, and `intelligence/`. Lint
 enforces one React component per file, 300 lines per file, and a complexity
 limit. When a file outgrows them, split it by responsibility. Mobile features
 follow the folder layout in `REPOSITORY_STRUCTURE.md` (`screens/`,
-`components/`, `hooks/`, `stores/`, `utils/`), and each component's styles live
-in a `.styles.ts` file beside it.
+`components/`, `hooks/`, `stores/`, `utils/`), and each component keeps its
+`StyleSheet` at the bottom of its own file.
 
 **2. Don't repeat yourself.** Every fact has one home, and everything else
 imports or links to it:

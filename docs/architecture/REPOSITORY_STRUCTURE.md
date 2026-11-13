@@ -268,12 +268,17 @@ feature has a file for it.
 
 ```text
 features/<feature>/
-├── screens/      one screen per file, with its <name>.styles.ts beside it
-├── components/   one component per file, with its <name>.styles.ts beside it
+├── screens/      one screen per file
+├── components/   one component per file; group by screen when the folder
+│                 gets crowded (for example components/upload/, components/results/)
 ├── hooks/        use-<name>.ts: state, effects, and handlers
 ├── stores/       state shared between screens
 └── utils/        pure helpers, constants, and lookup tables
 ```
+
+Each component keeps its styles at the bottom of its own file
+(`const styles = StyleSheet.create({...})`, or a `createStyles(colors)` function
+when styles depend on the theme), as in the React Native docs.
 
 Import files directly (`@/features/analysis/hooks/use-image-upload`). Do not
 add `index.ts` barrel files; in React Native they slow bundling and invite
