@@ -1,11 +1,13 @@
 # tests
 
-Unit, integration, contract, ML regression, and expert-system regression
-tests for SkinAI V2, per the Testing Requirements in `CLAUDE.md`.
+Cross-system tests for SkinAI V2: tests that span more than one project or
+protect shared behavior. See the `tests/` section of
+`docs/architecture/REPOSITORY_STRUCTURE.md`.
 
-- `unit/` — preprocessing, class mapping, certainty factors, rules, services, schema validation
-- `integration/` — API, database, authentication, object storage, analysis persistence
-- `contract/` — mobile-to-API request/response shape fixtures
-- `regression/` — ML and expert-system regression fixtures
+- `contract/`: mobile-to-API request and response shapes
+- `regression/`: ML and expert-system regression fixtures and tests
+- `e2e/` and `fixtures/`: added when end-to-end tests exist
 
-V1 tests remain in `legacy/v1-flask/tests/` and are not moved here.
+Tests for a single project live inside it: `apps/mobile/__tests__/` for the
+mobile app and `services/api/tests/` for the API. V1 tests remain in
+`legacy/v1-flask/tests/`.

@@ -259,6 +259,18 @@ Contains routes only (Expo Router, resolved relative to `src/` per
 its feature, for example
 `export { default } from '@/features/analysis/screens/upload-screen';`.
 
+The target tree above shows the planned routes. Today's routes map to them as
+follows; rename a route when the milestone that changes it lands.
+
+| Current route | Screen | Target route | When it changes |
+|---|---|---|---|
+| `(tabs)/index.tsx` | home | `(tabs)/index.tsx` | unchanged |
+| `upload.tsx`, `camera.tsx` | pick or capture a photo | `(tabs)/scan.tsx`, `analysis/new.tsx` | when the intake form is added (Milestone 4) |
+| `results.tsx` | result of the last analysis | `analysis/[analysisId].tsx` | when results are stored and fetched by id (Milestone 5) |
+| `(tabs)/explore.tsx` | assistant chat | not in the target tree yet | when the assistant is connected (Milestone 7) |
+| `(tabs)/account.tsx` | account and theme | `(tabs)/profile.tsx` | when sign-in exists (Milestone 6) |
+| none | | `(tabs)/history.tsx`, `(auth)/` | not built yet (Milestones 5 and 6) |
+
 ### `apps/mobile/src/features/`
 
 Contains feature-oriented mobile behavior. Prefer feature ownership over a large global collection of unrelated components.
@@ -405,6 +417,16 @@ Each legacy directory should contain a README stating that V2 work belongs elsew
 ## `tests/`
 
 Contains cross-system tests that do not belong solely to the mobile or API project.
+
+Tests that cover one project live inside that project, next to the code they
+test:
+
+- mobile unit and component tests: `apps/mobile/__tests__/`
+- API unit and integration tests: `services/api/tests/unit/` and
+  `services/api/tests/integration/`
+
+Use the root `tests/` folder only for tests that span more than one project or
+protect shared behavior.
 
 ### `tests/contract/`
 
