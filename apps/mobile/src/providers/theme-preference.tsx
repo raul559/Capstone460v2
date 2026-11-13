@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary -- TODO: replace nested ternaries. */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   createContext,
@@ -9,7 +8,10 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { useColorScheme as useSystemColorScheme } from 'react-native';
+import {
+  useColorScheme as useSystemColorScheme,
+  type ColorSchemeName,
+} from 'react-native';
 
 export type ThemePreference = 'system' | 'light' | 'dark';
 export type AppColorScheme = 'light' | 'dark';
@@ -25,6 +27,17 @@ const STORAGE_KEY = '@skinai/theme-preference';
 
 const ThemePreferenceContext =
   createContext<ThemePreferenceContextValue | undefined>(undefined);
+
+function resolveColorScheme(
+  preference: ThemePreference,
+  systemScheme: ColorSchemeName | null
+): AppColorScheme {
+  if (preference !== 'system') {
+    return preference;
+  }
+
+  return systemScheme === 'dark' ? 'dark' : 'light';
+}
 
 export function ThemePreferenceProvider({
   children,
@@ -75,12 +88,7 @@ export function ThemePreferenceProvider({
     });
   }, []);
 
-  const colorScheme: AppColorScheme =
-    preference === 'system'
-      ? systemScheme === 'dark'
-        ? 'dark'
-        : 'light'
-      : preference;
+  const colorScheme = resolveColorScheme(preference, systemScheme);
 
   const value = useMemo(
     () => ({

@@ -16,7 +16,7 @@ import { useTheme } from '@/hooks/use-theme';
 import {
   clearAnalysisResult,
   getAnalysisResult,
-} from '@/library/analysis-result-store';
+} from '@/features/analysis/analysis-result-store';
 
 export default function ResultsScreen() {
   const colors = useTheme();

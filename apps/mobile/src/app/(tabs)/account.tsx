@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   useThemePreference,
   type ThemePreference,
-} from '@/contexts/theme-preference';
+} from '@/providers/theme-preference';
 import { useTheme } from '@/hooks/use-theme';
 
 type AccountRowProps = {
