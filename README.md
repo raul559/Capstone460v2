@@ -58,7 +58,7 @@ vasc    - Vascular lesions
 
 ## Running the Project
 
-See **`RUN.md`** for step-by-step instructions on running the project locally.
+See **`docs/v1/RUN.md`** for step-by-step instructions on running the V1 project locally.
 
 ---
 

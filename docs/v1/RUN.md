@@ -1,5 +1,7 @@
 # SkinAI Project - Quick Start
 
+Run every command below from the repository root.
+
 You need **3 terminals** running at the same time.
 
 ---
