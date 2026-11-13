@@ -1,7 +1,6 @@
-import { Pressable } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { styles } from '@/features/analysis/components/results-back-button.styles';
 import { useTheme } from '@/hooks/use-theme';
 
 type Props = {
@@ -24,3 +23,16 @@ export function ResultsBackButton({ onPress }: Props) {
     </Pressable>
   );
 }
+
+const styles = StyleSheet.create({
+  backButton: {
+    alignSelf: 'flex-start',
+    paddingVertical: 12,
+    paddingHorizontal: 4,
+    marginBottom: 12,
+  },
+  backText: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});

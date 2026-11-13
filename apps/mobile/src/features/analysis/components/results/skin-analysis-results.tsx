@@ -1,11 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 
-import { AnalyzedImageCard } from '@/features/analysis/components/analyzed-image-card';
-import { ClinicalNoticeCard } from '@/features/analysis/components/clinical-notice-card';
-import { OtherPredictionsCard } from '@/features/analysis/components/other-predictions-card';
-import { PrimaryFindingCard } from '@/features/analysis/components/primary-finding-card';
-import { ResultActions } from '@/features/analysis/components/result-actions';
-import { ResultHeader } from '@/features/analysis/components/result-header';
+import { AnalyzedImageCard } from '@/features/analysis/components/results/analyzed-image-card';
+import { ClinicalNoticeCard } from '@/features/analysis/components/results/clinical-notice-card';
+import { OtherPredictionsCard } from '@/features/analysis/components/results/other-predictions-card';
+import { PrimaryFindingCard } from '@/features/analysis/components/results/primary-finding-card';
+import { ResultActions } from '@/features/analysis/components/results/result-actions';
+import { ResultHeader } from '@/features/analysis/components/results/result-header';
 import type { SkinAnalysisResult } from '@/types/skin-analysis';
 
 type Props = {

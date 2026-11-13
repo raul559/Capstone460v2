@@ -1,8 +1,8 @@
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { createStyles } from '@/features/analysis/components/image-selection-card.styles';
-import { ImageSourceOptions } from '@/features/analysis/components/image-source-options';
-import { SelectedImagePreview } from '@/features/analysis/components/selected-image-preview';
+import type { ThemePalette } from '@/constants/theme';
+import { ImageSourceOptions } from '@/features/analysis/components/upload/image-source-options';
+import { SelectedImagePreview } from '@/features/analysis/components/upload/selected-image-preview';
 import { useTheme } from '@/hooks/use-theme';
 
 type Props = {
@@ -37,4 +37,18 @@ export function ImageSelectionCard({
       )}
     </View>
   );
+}
+
+function createStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    selectionCard: {
+      alignItems: 'center',
+      backgroundColor: colors.backgroundElement,
+      borderColor: colors.accent,
+      borderWidth: 1,
+      borderRadius: 18,
+      padding: 22,
+      marginBottom: 17,
+    },
+  });
 }

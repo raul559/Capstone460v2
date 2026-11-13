@@ -1,11 +1,10 @@
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedView } from '@/components/themed-view';
-import { ResultsBackButton } from '@/features/analysis/components/results-back-button';
-import { styles } from '@/features/analysis/screens/results-screen.styles';
-import { ResultsUnavailable } from '@/features/analysis/components/results-unavailable';
-import { SkinAnalysisResults } from '@/features/analysis/components/skin-analysis-results';
+import { ResultsBackButton } from '@/features/analysis/components/results/results-back-button';
+import { ResultsUnavailable } from '@/features/analysis/components/results/results-unavailable';
+import { SkinAnalysisResults } from '@/features/analysis/components/results/skin-analysis-results';
 import { useStoredAnalysis } from '@/features/analysis/hooks/use-stored-analysis';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -37,3 +36,16 @@ export default function ResultsScreen() {
     </ThemedView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  safeArea: {
+    flex: 1,
+  },
+  content: {
+    padding: 20,
+    paddingBottom: 40,
+  },
+});

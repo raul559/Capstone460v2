@@ -1,5 +1,7 @@
+import { StyleSheet } from 'react-native';
+
 import { ThemedText } from '@/components/themed-text';
-import { createStyles } from '@/features/analysis/components/upload-footer.styles';
+import type { ThemePalette } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 type Props = {
@@ -24,4 +26,22 @@ export function UploadFooter({ hasImage }: Props) {
       </ThemedText>
     </>
   );
+}
+
+function createStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    footerText: {
+      color: colors.textSecondary,
+      fontSize: 11,
+      textAlign: 'center',
+      marginTop: 10,
+    },
+    disclaimer: {
+      color: colors.textSecondary,
+      fontSize: 11,
+      textAlign: 'center',
+      marginTop: 20,
+      lineHeight: 17,
+    },
+  });
 }

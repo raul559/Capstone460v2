@@ -1,7 +1,7 @@
-import { ActivityIndicator, Pressable, View } from 'react-native';
+import { ActivityIndicator, Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { createStyles } from '@/features/analysis/components/analyze-button.styles';
+import type { ThemePalette } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 type Props = {
@@ -48,4 +48,43 @@ export function AnalyzeButton({ hasImage, isAnalyzing, onPress }: Props) {
       )}
     </Pressable>
   );
+}
+
+function createStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    analyzeButton: {
+      backgroundColor: colors.accent,
+      borderRadius: 100,
+      paddingVertical: 15,
+      paddingHorizontal: 17,
+      marginTop: 2,
+      elevation: 3,
+    },
+    disabledButton: {
+      opacity: 0.5,
+    },
+    analyzeButtonContent: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    analyzeButtonText: {
+      color: colors.white,
+      fontSize: 15,
+      fontWeight: 'bold',
+    },
+    analyzeArrow: {
+      color: colors.white,
+      fontSize: 21,
+    },
+    loadingContent: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 10,
+    },
+    buttonPressed: {
+      opacity: 0.75,
+    },
+  });
 }

@@ -1,7 +1,6 @@
-import { Image, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { styles } from '@/features/camera/components/camera-preview.styles';
 
 type Props = {
   imageUri: string | null;
@@ -32,3 +31,34 @@ export function CameraPreview({ imageUri }: Props) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  preview: {
+    height: 300,
+    minHeight: 180,
+    borderWidth: 1.5,
+    borderColor: '#B8CDD6',
+    borderRadius: 16,
+    overflow: 'hidden',
+    backgroundColor: '#F3F7F8',
+  },
+  emptyPreview: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  placeholderIcon: {
+    fontSize: 48,
+    marginBottom: 12,
+  },
+  placeholderText: {
+    fontSize: 15,
+    color: '#526873',
+    textAlign: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+});

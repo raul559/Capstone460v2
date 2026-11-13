@@ -1,7 +1,6 @@
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { styles } from '@/features/analysis/components/results-unavailable.styles';
 import { useTheme } from '@/hooks/use-theme';
 
 export function ResultsUnavailable() {
@@ -30,3 +29,18 @@ export function ResultsUnavailable() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  errorContainer: {
+    padding: 20,
+    borderRadius: 16,
+    gap: 10,
+  },
+  errorTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  errorMessage: {
+    fontSize: 14,
+  },
+});

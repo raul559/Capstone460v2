@@ -1,8 +1,30 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
+import { ThemedText } from '@/components/themed-text';
 import type { ThemePalette } from '@/constants/theme';
+import { useTheme } from '@/hooks/use-theme';
 
-export function createStyles(colors: ThemePalette) {
+export function ResultHeader() {
+  const styles = createStyles(useTheme());
+
+  return (
+    <>
+      <View style={styles.header}>
+        <View style={styles.logo}>
+          <ThemedText style={styles.logoText}>S</ThemedText>
+        </View>
+        <ThemedText style={styles.headerLabel}>RESULT OVERVIEW</ThemedText>
+        <View style={styles.headerIcon}>
+          <ThemedText style={styles.sparkle}>✦</ThemedText>
+        </View>
+      </View>
+
+      <ThemedText style={styles.pageTitle}>Your analysis</ThemedText>
+    </>
+  );
+}
+
+function createStyles(colors: ThemePalette) {
   return StyleSheet.create({
     header: {
       flexDirection: 'row',

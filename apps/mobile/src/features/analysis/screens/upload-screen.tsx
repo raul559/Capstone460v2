@@ -1,14 +1,14 @@
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedView } from '@/components/themed-view';
-import { AnalyzeButton } from '@/features/analysis/components/analyze-button';
-import { ImageSelectionCard } from '@/features/analysis/components/image-selection-card';
-import { PhotoTipsCard } from '@/features/analysis/components/photo-tips-card';
-import { UploadFooter } from '@/features/analysis/components/upload-footer';
-import { UploadHeader } from '@/features/analysis/components/upload-header';
-import { UploadNoticeCard } from '@/features/analysis/components/upload-notice-card';
-import { createStyles } from '@/features/analysis/screens/upload-screen.styles';
+import type { ThemePalette } from '@/constants/theme';
+import { AnalyzeButton } from '@/features/analysis/components/upload/analyze-button';
+import { ImageSelectionCard } from '@/features/analysis/components/upload/image-selection-card';
+import { PhotoTipsCard } from '@/features/analysis/components/upload/photo-tips-card';
+import { UploadFooter } from '@/features/analysis/components/upload/upload-footer';
+import { UploadHeader } from '@/features/analysis/components/upload/upload-header';
+import { UploadNoticeCard } from '@/features/analysis/components/upload/upload-notice-card';
 import { useImageUpload } from '@/features/analysis/hooks/use-image-upload';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -57,4 +57,21 @@ export default function UploadScreen() {
       </SafeAreaView>
     </ThemedView>
   );
+}
+
+function createStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    safeArea: {
+      flex: 1,
+      paddingHorizontal: 24,
+    },
+    scrollContent: {
+      paddingTop: 13,
+      paddingBottom: 30,
+    },
+  });
 }
