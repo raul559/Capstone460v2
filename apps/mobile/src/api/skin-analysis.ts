@@ -1,47 +1,14 @@
-/* eslint-disable no-nested-ternary, complexity -- TODO: replace nested ternaries; simplify branching. */
-
 import { File } from 'expo-file-system';
 
-export type SkinPrediction = {
-  label: string;
-  confidence: number;
-};
-
-export type SkinAnalysisResult = {
-  top_predictions: SkinPrediction[];
-  risk_score: string;
-  certainty_factor?: number;
-  assistant_seed?: string;
-  follow_up_questions?: string[];
-};
-
-const API_BASE_URL = 'http://10.0.2.2:3720';
+import { API_BASE_URL } from '@/api/config';
+import type { SkinAnalysisResult } from '@/types/skin-analysis';
+import { getImageUploadFile } from '@/utils/image-upload-file';
 
 export async function analyzeSkinImage(
   imageUri: string
 ): Promise<SkinAnalysisResult> {
   const formData = new FormData();
-
-  const extension = imageUri
-    .split('?')[0]
-    .split('.')
-    .pop()
-    ?.toLowerCase();
-
-  const imageType =
-    extension === 'png'
-      ? 'image/png'
-      : extension === 'webp'
-        ? 'image/webp'
-        : 'image/jpeg';
-
-  const imageName =
-    imageType === 'image/png'
-      ? 'skin-image.png'
-      : imageType === 'image/webp'
-        ? 'skin-image.webp'
-        : 'skin-image.jpg';
-
+  const { name: imageName } = getImageUploadFile(imageUri);
   const imageFile = new File(imageUri);
 
   formData.append('image', imageFile, imageName);
