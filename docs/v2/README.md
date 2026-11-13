@@ -8,6 +8,8 @@ Active V2 Directories.
   as part of any revision that completes a milestone step.
 - [`CODING_STANDARDS.md`](CODING_STANDARDS.md): project coding rules,
   check commands, and the review checklist.
+- [`DEVELOPMENT.md`](DEVELOPMENT.md): install, run, and test locally,
+  including manual testing of the analysis flow.
 - System design and technology decisions live in
   `docs/architecture/V2_ARCHITECTURE.md`; source-code organization and
   directory ownership live in `docs/architecture/REPOSITORY_STRUCTURE.md`.

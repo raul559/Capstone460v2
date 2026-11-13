@@ -17,10 +17,12 @@ locally before pushing.
 |---|---|---|
 | Mobile lint | `npm run lint` in `apps/mobile` | `apps/mobile/eslint.config.js` |
 | Mobile types | `npx tsc --noEmit` in `apps/mobile` | `apps/mobile/tsconfig.json` |
+| Mobile tests | `npm test` in `apps/mobile` | `jest` in `apps/mobile/package.json` |
 | Python lint and format | `ruff check .` and `ruff format --check .` at the repo root | `ruff.toml` |
 | API tests | `pytest` in `services/api` | `services/api/pyproject.toml` |
 
-Ruff and pytest come from the API virtualenv (`pip install -e ".[dev]"`).
+Ruff and pytest come from the API virtualenv (`pip install -e ".[dev]"`). Setup and
+manual testing steps are in [`DEVELOPMENT.md`](DEVELOPMENT.md).
 
 ## Rules
 

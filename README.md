@@ -58,7 +58,8 @@ vasc    - Vascular lesions
 
 ## Running the Project
 
-See **`RUN.md`** for step-by-step instructions on running the project locally.
+- **V2 (mobile app and FastAPI):** see [`docs/v2/DEVELOPMENT.md`](docs/v2/DEVELOPMENT.md) for setup, tests, and manual testing.
+- **V1 (web app):** see **`RUN.md`**.
 
 ---
 
