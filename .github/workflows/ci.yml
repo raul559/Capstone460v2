@@ -20,6 +20,9 @@ jobs:
           cache-dependency-path: apps/mobile/package-lock.json
       - run: npm ci
       - run: npm run lint
+      # Expo generates this file on `expo start` and it is gitignored, so
+      # create it here for the type checker.
+      - run: echo '/// <reference types="expo/types" />' > expo-env.d.ts
       - run: npx tsc --noEmit
 
   api:
