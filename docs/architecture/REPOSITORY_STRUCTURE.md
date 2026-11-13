@@ -254,13 +254,31 @@ Do not place server authorization, ML inference, expert-system rules, database c
 
 ### `apps/mobile/src/app/`
 
-Contains route and screen composition (Expo Router, resolved relative to
-`src/` per `tsconfig.json`'s `@/*` path mapping). Keep route files relatively
-thin.
+Contains routes only (Expo Router, resolved relative to `src/` per
+`tsconfig.json`'s `@/*` path mapping). Each route file re-exports a screen from
+its feature, for example
+`export { default } from '@/features/analysis/screens/upload-screen';`.
 
 ### `apps/mobile/src/features/`
 
 Contains feature-oriented mobile behavior. Prefer feature ownership over a large global collection of unrelated components.
+
+Each feature uses the same internal layout. Create a subfolder only when the
+feature has a file for it.
+
+```text
+features/<feature>/
+├── screens/      one screen per file, with its <name>.styles.ts beside it
+├── components/   one component per file, with its <name>.styles.ts beside it
+├── hooks/        use-<name>.ts: state, effects, and handlers
+├── stores/       state shared between screens
+└── utils/        pure helpers, constants, and lookup tables
+```
+
+Import files directly (`@/features/analysis/hooks/use-image-upload`). Do not
+add `index.ts` barrel files; in React Native they slow bundling and invite
+circular imports. Code used by more than one feature moves to `src/components/`,
+`src/hooks/`, or `src/utils/`.
 
 ### `apps/mobile/src/api/`
 
