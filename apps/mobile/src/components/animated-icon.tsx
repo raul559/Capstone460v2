@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp -- TODO: move each component to its own file. */
 import { Image } from 'expo-image';
 import * as SplashScreen from 'expo-splash-screen';
 import { useState } from 'react';

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary -- TODO: replace nested ternaries. */
 
 import { useLocalSearchParams, router } from 'expo-router';
 import {
