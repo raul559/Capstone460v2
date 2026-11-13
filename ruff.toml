@@ -1,0 +1,45 @@
+# Python lint and format rules for V2 code (services/api, intelligence, tests,
+# scripts). Standards are described in docs/v2/CODING_STANDARDS.md.
+target-version = "py312"
+line-length = 88
+extend-exclude = ["legacy", "apps", "docs", "scripts/fix_upload.py"]
+# Lets import sorting recognize the API package "app" as first-party code.
+src = ["services/api", "."]
+
+[lint]
+select = [
+    "E", "W",  # pycodestyle
+    "F",       # pyflakes: unused imports and names
+    "I",       # import order
+    "N",       # naming conventions
+    "UP",      # modern Python syntax
+    "B",       # likely bugs
+    "SIM",     # simpler equivalent code
+    "C90",     # cyclomatic complexity
+    "PL",      # pylint: size and complexity limits
+    "S",       # bandit: security
+    "T20",     # no print statements
+    "ERA",     # no commented-out code
+    "RET",     # consistent returns
+    "RUF",     # ambiguous unicode and other ruff checks
+    "ANN",     # type annotations on functions
+]
+
+[lint.mccabe]
+max-complexity = 8
+
+[lint.pylint]
+max-args = 5
+max-branches = 8
+max-returns = 4
+max-statements = 25
+
+[lint.per-file-ignores]
+"**/tests/**" = [
+    "S101",     # assert is how pytest checks results
+    "PLR2004",  # literal expected values are clear in tests
+    "ANN",      # test functions need no return annotations
+]
+
+[format]
+quote-style = "double"
