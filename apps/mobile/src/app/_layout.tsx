@@ -11,7 +11,7 @@ import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import {
   ThemePreferenceProvider,
   useThemePreference,
-} from '@/contexts/theme-preference';
+} from '@/providers/theme-preference';
 
 SplashScreen.preventAutoHideAsync();
 

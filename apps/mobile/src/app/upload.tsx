@@ -22,7 +22,7 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { useTheme } from '@/hooks/use-theme';
 import { analyzeSkinImage } from '@/api/skin-analysis';
-import { saveAnalysisResult } from '@/library/analysis-result-store';
+import { saveAnalysisResult } from '@/features/analysis/analysis-result-store';
 
 export default function UploadScreen() {
   const params = useLocalSearchParams<{ imageUri?: string }>();
