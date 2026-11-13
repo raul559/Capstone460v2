@@ -1,4 +1,5 @@
-﻿
+/* eslint-disable max-lines, react/no-multi-comp, no-restricted-syntax -- TODO: split into smaller files; move each component to its own file; replace emoji with icons. */
+
 import { useState } from 'react';
 import {
   Alert,

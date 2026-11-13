@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax, no-nested-ternary -- TODO: replace emoji with icons; replace nested ternaries. */
 
 import { useState } from 'react';
 import {

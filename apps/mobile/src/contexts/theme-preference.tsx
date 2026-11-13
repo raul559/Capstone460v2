@@ -1,4 +1,5 @@
-﻿import AsyncStorage from '@react-native-async-storage/async-storage';
+/* eslint-disable no-nested-ternary -- TODO: replace nested ternaries. */
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   createContext,
   useCallback,

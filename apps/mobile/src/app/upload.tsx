@@ -1,3 +1,4 @@
+/* eslint-disable max-lines -- TODO: split into smaller files. */
 
 import { useCallback, useRef, useState } from 'react';
 import {

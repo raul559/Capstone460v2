@@ -1,3 +1,4 @@
+/* eslint-disable max-lines, no-restricted-syntax -- TODO: split into smaller files; replace emoji with icons. */
 
 import { useState } from 'react';
 import {
