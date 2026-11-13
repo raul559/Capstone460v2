@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary, complexity -- TODO: replace nested ternaries; simplify branching. */
 
 import { File } from 'expo-file-system';
 

@@ -1,4 +1,5 @@
-﻿import {
+/* eslint-disable react/no-multi-comp -- TODO: move each component to its own file. */
+import {
   DarkTheme,
   DefaultTheme,
   Stack,

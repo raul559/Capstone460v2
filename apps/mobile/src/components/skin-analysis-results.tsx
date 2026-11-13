@@ -1,3 +1,4 @@
+/* eslint-disable max-lines -- TODO: split into smaller files. */
 
 import { router } from 'expo-router';
 import { Image, Pressable, StyleSheet, View } from 'react-native';

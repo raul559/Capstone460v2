@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp -- TODO: move each component to its own file. */
 import { Image } from 'expo-image';
 import { StyleSheet, View } from 'react-native';
 import Animated, { Keyframe, Easing } from 'react-native-reanimated';
