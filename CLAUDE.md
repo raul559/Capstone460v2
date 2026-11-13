@@ -22,7 +22,10 @@ Before proposing architecture changes or implementing V2 functionality, read:
 - [`docs/architecture/REPOSITORY_STRUCTURE.md`](docs/architecture/REPOSITORY_STRUCTURE.md) — the full target directory tree, directory responsibilities, and dependency-direction rules (this file's own Repository Structure section below is a summary, not a replacement)
 - [`docs/v2/IMPLEMENTATION_PLAN.md`](docs/v2/IMPLEMENTATION_PLAN.md) — current milestone status; check it before assuming what is or isn't built yet
 - [`docs/v2/LEARNING_AND_COLLABORATION.md`](docs/v2/LEARNING_AND_COLLABORATION.md) — ownership model and assistance modes for this capstone
+- [`docs/v2/CODING_STANDARDS.md`](docs/v2/CODING_STANDARDS.md) — code-level standards: naming, structure, DRY, error handling, code-level security, review checklist
 - [`README.md`](README.md)
+
+[`AGENTS.md`](AGENTS.md) is the tool-neutral entry point for other AI agents. It routes to this file and does not duplicate it; keep rules here and links there.
 
 When working on a migrated V1 capability, inspect the corresponding V1 implementation before modifying behavior.
 
@@ -224,6 +227,7 @@ Current top-level layout:
 
 ```text
 skinai/
+├── AGENTS.md
 ├── CLAUDE.md
 ├── README.md
 ├── apps/
@@ -249,6 +253,11 @@ skinai/
 │   ├── v1/
 │   └── v2/
 ├── scripts/
+├── .github/
+│   ├── workflows/
+│   └── pull_request_template.md
+├── .editorconfig
+├── ruff.toml
 ├── .gitignore
 └── .env.example
 ```
