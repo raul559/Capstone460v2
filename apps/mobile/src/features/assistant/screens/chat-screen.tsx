@@ -1,13 +1,13 @@
-import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView, StyleSheet } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
+import type { ThemePalette } from '@/constants/theme';
 import { ChatHeader } from '@/features/assistant/components/chat-header';
 import { ChatInputBar } from '@/features/assistant/components/chat-input-bar';
 import { ChatMessageItem } from '@/features/assistant/components/chat-message-item';
 import { ChatProjectFooter } from '@/features/assistant/components/chat-project-footer';
-import { createChatScreenStyles } from '@/features/assistant/screens/chat-screen.styles';
 import { ChatSessionCard } from '@/features/assistant/components/chat-session-card';
 import { ChatSuggestion } from '@/features/assistant/components/chat-suggestion';
 import { useChatMessages } from '@/features/assistant/hooks/use-chat-messages';
@@ -71,4 +71,32 @@ export default function ChatScreen() {
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
+}
+
+function createChatScreenStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    safeArea: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    chatArea: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    chatContent: {
+      padding: 16,
+      gap: 18,
+    },
+    dateLabel: {
+      color: colors.textSecondary,
+      fontSize: 10,
+      fontWeight: '700',
+      textAlign: 'center',
+      letterSpacing: 1.2,
+    },
+  });
 }

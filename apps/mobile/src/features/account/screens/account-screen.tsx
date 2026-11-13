@@ -1,4 +1,4 @@
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AccountAppearanceOptions } from '@/features/account/components/account-appearance-options';
@@ -7,7 +7,6 @@ import { AccountHeader } from '@/features/account/components/account-header';
 import { AccountNotificationRow } from '@/features/account/components/account-notification-row';
 import { AccountProfileCard } from '@/features/account/components/account-profile-card';
 import { AccountRow } from '@/features/account/components/account-row';
-import { styles } from '@/features/account/screens/account-screen.styles';
 import { AccountSection } from '@/features/account/components/account-section';
 import { AccountSignOutCard } from '@/features/account/components/account-sign-out-card';
 import { showUnavailable } from '@/features/account/utils/show-unavailable';
@@ -73,3 +72,16 @@ export default function AccountScreen() {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  safeArea: { flex: 1 },
+  screen: { flex: 1 },
+  content: {
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 36,
+    maxWidth: 650,
+    width: '100%',
+    alignSelf: 'center',
+  },
+});

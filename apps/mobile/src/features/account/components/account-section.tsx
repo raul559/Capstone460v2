@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { styles } from '@/features/account/components/account-section.styles';
 import { useTheme } from '@/hooks/use-theme';
 
 type AccountSectionProps = {
@@ -28,3 +27,19 @@ export function AccountSection({ title, children }: AccountSectionProps) {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  sectionTitle: {
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 1.5,
+    marginBottom: 10,
+    marginLeft: 3,
+  },
+  card: {
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+    marginBottom: 26,
+  },
+});

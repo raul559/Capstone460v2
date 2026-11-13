@@ -1,7 +1,7 @@
-import { Pressable, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { createChatFeedbackButtonsStyles } from '@/features/assistant/components/chat-feedback-buttons.styles';
+import type { ThemePalette } from '@/constants/theme';
 import type { Feedback } from '@/features/assistant/utils/chat-messages';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -52,4 +52,25 @@ export function ChatFeedbackButtons({
       ))}
     </View>
   );
+}
+
+function createChatFeedbackButtonsStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    feedbackRow: {
+      flexDirection: 'row',
+      gap: 8,
+    },
+    feedbackButton: {
+      paddingHorizontal: 9,
+      paddingVertical: 5,
+      borderRadius: 9,
+      backgroundColor: colors.backgroundElement,
+    },
+    feedbackSelected: {
+      backgroundColor: colors.backgroundSelected,
+    },
+    feedbackText: {
+      fontSize: 13,
+    },
+  });
 }

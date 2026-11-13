@@ -1,6 +1,5 @@
-import { Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { styles } from '@/features/account/components/account-footer.styles';
 import { useTheme } from '@/hooks/use-theme';
 
 export function AccountFooter() {
@@ -25,3 +24,14 @@ export function AccountFooter() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  footer: { alignItems: 'center', paddingTop: 8 },
+  footerTitle: {
+    fontSize: 12,
+    fontWeight: '700',
+    marginBottom: 5,
+  },
+  footerText: { fontSize: 11, marginBottom: 7 },
+  footerDisclaimer: { fontSize: 10, textAlign: 'center' },
+});

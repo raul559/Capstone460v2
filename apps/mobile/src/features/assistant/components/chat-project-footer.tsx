@@ -1,7 +1,7 @@
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
-import { createChatProjectFooterStyles } from '@/features/assistant/components/chat-project-footer.styles';
+import type { ThemePalette } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
 export function ChatProjectFooter() {
@@ -20,4 +20,24 @@ export function ChatProjectFooter() {
       </ThemedText>
     </View>
   );
+}
+
+function createChatProjectFooterStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    projectFooter: {
+      alignItems: 'center',
+      paddingVertical: 13,
+      gap: 5,
+    },
+    projectTitle: {
+      color: colors.text,
+      fontWeight: '700',
+      fontSize: 12,
+    },
+    projectText: {
+      color: colors.textSecondary,
+      fontSize: 10,
+      textAlign: 'center',
+    },
+  });
 }

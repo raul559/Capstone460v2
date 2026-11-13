@@ -1,13 +1,13 @@
-import { ScrollView } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { router } from 'expo-router';
 
 import { ThemedText } from '@/components/themed-text';
+import type { ThemePalette } from '@/constants/theme';
 import { HomeActionCard } from '@/features/home/components/home-action-card';
 import { HomeDisclaimer } from '@/features/home/components/home-disclaimer';
 import { HomeHeader } from '@/features/home/components/home-header';
 import { HomeMethodology } from '@/features/home/components/home-methodology';
-import { createHomeScreenStyles } from '@/features/home/screens/home-screen.styles';
 import { showComingSoon } from '@/features/home/utils/show-coming-soon';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -49,4 +49,28 @@ export default function HomeScreen() {
       </ScrollView>
     </SafeAreaView>
   );
+}
+
+function createHomeScreenStyles(colors: ThemePalette) {
+  return StyleSheet.create({
+    safeArea: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
+    content: {
+      paddingHorizontal: 24,
+      paddingTop: 16,
+      paddingBottom: 28,
+    },
+    footer: {
+      color: colors.textSecondary,
+      fontSize: 11,
+      textAlign: 'center',
+      marginTop: 18,
+    },
+  });
 }

@@ -1,6 +1,5 @@
-import { Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
-import { styles } from '@/features/account/components/account-appearance-options.styles';
 import { ThemeOptionRow } from '@/features/account/components/theme-option-row';
 import { THEME_OPTIONS } from '@/features/account/utils/theme-options';
 import { useTheme } from '@/hooks/use-theme';
@@ -32,3 +31,10 @@ export function AccountAppearanceOptions() {
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  appearanceDescription: {
+    fontSize: 12,
+    paddingVertical: 12,
+  },
+});

@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Switch, Text, View } from 'react-native';
+import { StyleSheet, Switch, Text, View } from 'react-native';
 
-import { styles } from '@/features/account/components/account-notification-row.styles';
 import { useTheme } from '@/hooks/use-theme';
 
 export function AccountNotificationRow() {
@@ -32,3 +31,20 @@ export function AccountNotificationRow() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  notificationRow: {
+    minHeight: 75,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 12,
+  },
+  rowText: { flex: 1, paddingRight: 12 },
+  rowTitle: {
+    fontSize: 15,
+    fontWeight: '600',
+    marginBottom: 5,
+  },
+  rowSubtitle: { fontSize: 12 },
+});
