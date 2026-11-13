@@ -16,7 +16,7 @@ Markdown previewers.
 |---|---|
 | Solid box | Part of the V2 design |
 | Dashed box | Optional or deferred until a measured need |
-| ✅ in a label | Exists in the repository today |
+| "(built)" in a label | Exists in the repository today |
 
 ---
 
@@ -59,7 +59,7 @@ top-level `intelligence/` package so it can be tested without the web layer.
 ```mermaid
 flowchart TB
     subgraph client["Client · apps/mobile"]
-        screens["Screens · Expo Router<br/>home ✅ · upload ✅ · intake · result · history"]
+        screens["Screens · Expo Router<br/>home (built) · upload (built) · intake · result · history"]
         apiclient["Typed API client<br/>TanStack Query"]
         secure["SecureStore<br/>tokens only"]
         screens --> apiclient
@@ -67,7 +67,7 @@ flowchart TB
     end
 
     subgraph api["API · services/api/app"]
-        routes["api/routes<br/>health ✅ · analyses · reports · conversations · users"]
+        routes["api/routes<br/>health (built) · analyses · reports · conversations · users"]
         deps["api/dependencies<br/>auth · current user · DB session"]
         schemas["schemas<br/>Pydantic request/response contracts"]
         services["services<br/>analysis · report · storage · assistant"]
@@ -376,17 +376,17 @@ flowchart TB
 
 ## 9. Mobile app structure
 
-Target route and feature layout. ✅ marks screens that exist today.
+Target route and feature layout. "(built)" marks screens that exist today.
 
 ```mermaid
 flowchart TB
-    root["_layout.tsx<br/>theme · splash ✅"]
+    root["_layout.tsx<br/>theme · splash (built)"]
     root --> auth["(auth)<br/>login · register"]
-    root --> tabs["(tabs) ✅"]
-    root --> upload["upload.tsx ✅<br/>pick from library"]
+    root --> tabs["(tabs) (built)"]
+    root --> upload["upload.tsx (built)<br/>pick from library"]
     root --> detail["analysis/[analysisId]<br/>result detail"]
 
-    tabs --> home["index · home ✅"]
+    tabs --> home["index · home (built)"]
     tabs --> scan["scan<br/>camera capture"]
     tabs --> reports["reports<br/>history"]
     tabs --> profile["profile"]
@@ -463,10 +463,10 @@ diagram when a milestone step lands.
 
 ```mermaid
 flowchart LR
-    m1["M1 Repository foundation<br/>layout ✅ docs ✅<br/>FastAPI /api/v2/health ✅<br/>Expo SDK 58 app ✅"]
+    m1["M1 Repository foundation<br/>layout (built) docs (built)<br/>FastAPI /api/v2/health (built)<br/>Expo SDK 58 app (built)"]
     m2["M2 Intelligence migration"]
     m3["M3 Analysis API"]
-    m4["M4 Mobile vertical slice<br/>home ✅ upload ✅"]
+    m4["M4 Mobile vertical slice<br/>home (built) upload (built)"]
     m5["M5 Persistence"]
     m6["M6 Identity and authorization"]
     m7["M7 AI explanation"]

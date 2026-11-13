@@ -5,7 +5,7 @@ description: Review student-authored SkinAI code before proposing rewrites.
 
 # Review My Code
 
-Review before rewriting.
+Review before rewriting. Apply the rules and review checklist in `docs/v2/CODING_STANDARDS.md` and cite the rule a finding comes from.
 
 Organize findings as:
 

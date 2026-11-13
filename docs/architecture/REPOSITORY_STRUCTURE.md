@@ -16,6 +16,7 @@ The recommended documentation hierarchy is:
 
 ```text
 skinai/
+├── AGENTS.md
 ├── CLAUDE.md
 ├── README.md
 └── docs/
@@ -25,16 +26,19 @@ skinai/
     │   └── decisions/
     ├── v1/
     └── v2/
-        └── IMPLEMENTATION_PLAN.md
+        ├── IMPLEMENTATION_PLAN.md
+        └── CODING_STANDARDS.md
 ```
 
 Use each document for one purpose:
 
+- `AGENTS.md`: tool-neutral entry point for AI agents; links to the documents below and holds no rules of its own.
 - `CLAUDE.md`: persistent agent instructions and repository guardrails.
 - `README.md`: human entry point, development setup, and common commands.
 - `V2_ARCHITECTURE.md`: V2 system design and technology architecture.
 - `REPOSITORY_STRUCTURE.md`: source-code ownership, directory structure, and dependency boundaries.
 - `IMPLEMENTATION_PLAN.md`: current migration/build sequence and milestone status.
+- `CODING_STANDARDS.md`: project coding rules, check commands, and the review checklist.
 - `docs/architecture/decisions/`: architecture decision records for important choices and reversals.
 
 Do not create a second generic handoff document containing copies of these documents. A future handoff should reference these sources and contain only current-state information that changes frequently.
@@ -46,8 +50,11 @@ Do not create a second generic handoff document containing copies of these docum
 ```text
 skinai/
 │
+├── AGENTS.md
 ├── CLAUDE.md
 ├── README.md
+├── .editorconfig
+├── ruff.toml
 ├── .gitignore
 ├── .env.example
 │
@@ -206,6 +213,7 @@ skinai/
 │   ├── v1/
 │   └── v2/
 │       ├── IMPLEMENTATION_PLAN.md
+│       ├── CODING_STANDARDS.md
 │       ├── API.md
 │       ├── DEVELOPMENT.md
 │       └── DEMO.md
@@ -218,8 +226,7 @@ skinai/
 │
 └── .github/
     ├── workflows/
-    │   ├── mobile-ci.yml
-    │   ├── api-ci.yml
+    │   ├── ci.yml
     │   └── regression-tests.yml
     └── pull_request_template.md
 ```
