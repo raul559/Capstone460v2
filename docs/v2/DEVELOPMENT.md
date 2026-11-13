@@ -36,6 +36,9 @@ is installed for component tests. Name test files `<module>.test.ts` or
 
 CI runs these on every pull request, together with lint and type checks.
 
+The root `tests/` folder is only for tests that span projects, such as API
+contract and ML or expert-system regression tests.
+
 ## Manual testing of the analysis flow
 
 The mobile app still calls the V1 Flask backend (`POST /analyze_skin`) until the
