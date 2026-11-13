@@ -79,11 +79,13 @@ skinai/
 │   │   │   ├── api/
 │   │   │   ├── components/
 │   │   │   ├── features/
+│   │   │   │   ├── account/
 │   │   │   │   ├── auth/
 │   │   │   │   ├── camera/
 │   │   │   │   ├── intake/
 │   │   │   │   ├── analysis/
 │   │   │   │   ├── history/
+│   │   │   │   ├── home/
 │   │   │   │   └── assistant/
 │   │   │   ├── hooks/
 │   │   │   ├── providers/
