@@ -22,13 +22,13 @@
 
 <!-- CI runs the automated checks. Record manual checks and gaps here. -->
 
-- [ ] All checks in [`CODING_STANDARDS.md`](../docs/v2/CODING_STANDARDS.md#checks) pass locally
+- [ ] All checks in [`CODING_STANDARDS.md`](https://github.com/raul559/Capstone460v2/blob/main/docs/v2/CODING_STANDARDS.md#checks) pass locally
 - [ ] Manual check (describe device or platform):
 - Not tested:
 
 ## Standards
 
-- [ ] I self-reviewed against the [review checklist](../docs/v2/CODING_STANDARDS.md#review-checklist)
+- [ ] I self-reviewed against the [review checklist](https://github.com/raul559/Capstone460v2/blob/main/docs/v2/CODING_STANDARDS.md#review-checklist)
 
 ## AI assistance
 
