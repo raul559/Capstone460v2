@@ -137,6 +137,8 @@ The mobile application should store access and refresh tokens only in OS-backed 
 
 ## Target Architecture
 
+Detailed diagrams (layers, request flow, data model, sign-in, storage, migration map): [`V2_ARCHITECTURE_DIAGRAMS.md`](V2_ARCHITECTURE_DIAGRAMS.md).
+
 ```text
 React Native / Expo Mobile App
             |
