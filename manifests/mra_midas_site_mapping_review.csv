@@ -1,0 +1,498 @@
+﻿anatomical_site_raw,anatomical_site_normalized,anatomical_site,anatomical_site_detail,site_mapping_status,site_mapping_rule,site_mapping_note,candidate_site,candidate_detail,dataset_source,rows,mapping_version
+l upper back,l upper back,torso,back,mapped,back,,,,mra_midas,87,skinai-site-map-draft-1
+r upper back,r upper back,torso,back,mapped,back,,,,mra_midas,69,skinai-site-map-draft-1
+l cheek,l cheek,head_neck,face,mapped,face,,,,mra_midas,64,skinai-site-map-draft-1
+l forearm,l forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,53,skinai-site-map-draft-1
+mid back,mid back,torso,back,mapped,back,,,,mra_midas,49,skinai-site-map-draft-1
+l mid back,l mid back,torso,back,mapped,back,,,,mra_midas,43,skinai-site-map-draft-1
+r forehead,r forehead,head_neck,face,mapped,face,,,,mra_midas,42,skinai-site-map-draft-1
+r forearm,r forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,38,skinai-site-map-draft-1
+mid upper back,mid upper back,torso,back,mapped,back,,,,mra_midas,37,skinai-site-map-draft-1
+l lower back,l lower back,torso,back,mapped,back,,,,mra_midas,32,skinai-site-map-draft-1
+l abdomen,l abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,31,skinai-site-map-draft-1
+left back,left back,torso,back,mapped,back,,,,mra_midas,30,skinai-site-map-draft-1
+l temple,l temple,head_neck,face,mapped,face,,,,mra_midas,30,skinai-site-map-draft-1
+l neck,l neck,head_neck,neck,mapped,neck,,,,mra_midas,29,skinai-site-map-draft-1
+r back,r back,torso,back,mapped,back,,,,mra_midas,28,skinai-site-map-draft-1
+l back,l back,torso,back,mapped,back,,,,mra_midas,28,skinai-site-map-draft-1
+l forehead,l forehead,head_neck,face,mapped,face,,,,mra_midas,27,skinai-site-map-draft-1
+right cheek,right cheek,head_neck,face,mapped,face,,,,mra_midas,27,skinai-site-map-draft-1
+l thigh,l thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,27,skinai-site-map-draft-1
+r shin,r shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,27,skinai-site-map-draft-1
+left cheek,left cheek,head_neck,face,mapped,face,,,,mra_midas,26,skinai-site-map-draft-1
+right forearm,right forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,26,skinai-site-map-draft-1
+r cheek,r cheek,head_neck,face,mapped,face,,,,mra_midas,25,skinai-site-map-draft-1
+r shoulder,r shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,24,skinai-site-map-draft-1
+l shoulder,l shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,22,skinai-site-map-draft-1
+r thigh,r thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,22,skinai-site-map-draft-1
+left lower back,left lower back,torso,back,mapped,back,,,,mra_midas,22,skinai-site-map-draft-1
+l upper arm,l upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,21,skinai-site-map-draft-1
+l lower leg,l lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,21,skinai-site-map-draft-1
+r lower leg,r lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,20,skinai-site-map-draft-1
+r upper chest,r upper chest,torso,chest,mapped,chest,,,,mra_midas,19,skinai-site-map-draft-1
+r calf,r calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,19,skinai-site-map-draft-1
+right back,right back,torso,back,mapped,back,,,,mra_midas,19,skinai-site-map-draft-1
+left forearm,left forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,18,skinai-site-map-draft-1
+r chest,r chest,torso,chest,mapped,chest,,,,mra_midas,18,skinai-site-map-draft-1
+right neck,right neck,head_neck,neck,mapped,neck,,,,mra_midas,18,skinai-site-map-draft-1
+left upper back,left upper back,torso,back,mapped,back,,,,mra_midas,18,skinai-site-map-draft-1
+central chest,central chest,torso,chest,mapped,chest,,,,mra_midas,18,skinai-site-map-draft-1
+left chest,left chest,torso,chest,mapped,chest,,,,mra_midas,18,skinai-site-map-draft-1
+mid chest,mid chest,torso,chest,mapped,chest,,,,mra_midas,18,skinai-site-map-draft-1
+r mid back,r mid back,torso,back,mapped,back,,,,mra_midas,18,skinai-site-map-draft-1
+r neck,r neck,head_neck,neck,mapped,neck,,,,mra_midas,18,skinai-site-map-draft-1
+l knee,l knee,lower_extremity,knee,mapped,knee,,,,mra_midas,17,skinai-site-map-draft-1
+posterior neck,posterior neck,head_neck,neck,mapped,neck,,,,mra_midas,16,skinai-site-map-draft-1
+right shoulder,right shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,16,skinai-site-map-draft-1
+right thigh,right thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,16,skinai-site-map-draft-1
+right calf,right calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,16,skinai-site-map-draft-1
+back,back,torso,back,mapped,back,,,,mra_midas,15,skinai-site-map-draft-1
+l upper chest,l upper chest,torso,chest,mapped,chest,,,,mra_midas,15,skinai-site-map-draft-1
+l shin,l shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,15,skinai-site-map-draft-1
+r abdomen,r abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,15,skinai-site-map-draft-1
+left shin,left shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,15,skinai-site-map-draft-1
+upper back,upper back,torso,back,mapped,back,,,,mra_midas,15,skinai-site-map-draft-1
+r upper arm,r upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,15,skinai-site-map-draft-1
+frontal scalp,frontal scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,15,skinai-site-map-draft-1
+mid nasal dorsum,mid nasal dorsum,head_neck,nose,mapped,nose,,,,mra_midas,15,skinai-site-map-draft-1
+l nasal ala,l nasal ala,head_neck,nose,mapped,nose,,,,mra_midas,15,skinai-site-map-draft-1
+l chest,l chest,torso,chest,mapped,chest,,,,mra_midas,15,skinai-site-map-draft-1
+right chest,right chest,torso,chest,mapped,chest,,,,mra_midas,15,skinai-site-map-draft-1
+right upper back,right upper back,torso,back,mapped,back,,,,mra_midas,15,skinai-site-map-draft-1
+right lower leg,right lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,15,skinai-site-map-draft-1
+r posterior thigh,r posterior thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,15,skinai-site-map-draft-1
+scalp,scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,14,skinai-site-map-draft-1
+chest,chest,torso,chest,mapped,chest,,,,mra_midas,14,skinai-site-map-draft-1
+left upper arm,left upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,14,skinai-site-map-draft-1
+l lateral thigh,l lateral thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,12,skinai-site-map-draft-1
+l elbow,l elbow,upper_extremity,elbow,mapped,elbow,,,,mra_midas,12,skinai-site-map-draft-1
+mid lower back,mid lower back,torso,back,mapped,back,,,,mra_midas,12,skinai-site-map-draft-1
+r lower back,r lower back,torso,back,mapped,back,,,,mra_midas,12,skinai-site-map-draft-1
+left forehead,left forehead,head_neck,face,mapped,face,,,,mra_midas,12,skinai-site-map-draft-1
+nasal bridge,nasal bridge,head_neck,nose,mapped,nose,,,,mra_midas,12,skinai-site-map-draft-1
+l nasal bridge,l nasal bridge,head_neck,nose,mapped,nose,,,,mra_midas,12,skinai-site-map-draft-1
+r temple,r temple,head_neck,face,mapped,face,,,,mra_midas,12,skinai-site-map-draft-1
+l posterior shoulder,l posterior shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,12,skinai-site-map-draft-1
+l calf,l calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,12,skinai-site-map-draft-1
+r elbow,r elbow,upper_extremity,elbow,mapped,elbow,,,,mra_midas,11,skinai-site-map-draft-1
+r nasal sidewall,r nasal sidewall,head_neck,nose,mapped,nose,,,,mra_midas,11,skinai-site-map-draft-1
+l lateral calf,l lateral calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,10,skinai-site-map-draft-1
+lower back,lower back,torso,back,mapped,back,,,,mra_midas,10,skinai-site-map-draft-1
+right arm,right arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,10,skinai-site-map-draft-1
+nasal dorsum,nasal dorsum,head_neck,nose,mapped,nose,,,,mra_midas,10,skinai-site-map-draft-1
+nasal tip,nasal tip,head_neck,nose,mapped,nose,,,,mra_midas,10,skinai-site-map-draft-1
+r upper back ,r upper back,torso,back,mapped,back,,,,mra_midas,9,skinai-site-map-draft-1
+left mid back,left mid back,torso,back,mapped,back,,,,mra_midas,9,skinai-site-map-draft-1
+right hand,right hand,upper_extremity,hand,mapped,hand,,,,mra_midas,9,skinai-site-map-draft-1
+l lateral neck,l lateral neck,head_neck,neck,mapped,neck,,,,mra_midas,9,skinai-site-map-draft-1
+right abdomen,right abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,9,skinai-site-map-draft-1
+r forearm ,r forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,9,skinai-site-map-draft-1
+r dorsal hand,r dorsal hand,upper_extremity,hand,mapped,hand,,,,mra_midas,9,skinai-site-map-draft-1
+right frontal scalp,right frontal scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,9,skinai-site-map-draft-1
+left vertex scalp,left vertex scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,9,skinai-site-map-draft-1
+right pre-auricular,right pre-auricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,9,skinai-site-map-draft-1
+right nasal sidewall,right nasal sidewall,head_neck,nose,mapped,nose,,,,mra_midas,9,skinai-site-map-draft-1
+r nasal ala,r nasal ala,head_neck,nose,mapped,nose,,,,mra_midas,9,skinai-site-map-draft-1
+r vertex scalp,r vertex scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,9,skinai-site-map-draft-1
+right helix,right helix,head_neck,ear,mapped,ear,,,,mra_midas,9,skinai-site-map-draft-1
+left shoulder,left shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,9,skinai-site-map-draft-1
+right lower back,right lower back,torso,back,mapped,back,,,,mra_midas,9,skinai-site-map-draft-1
+r lateral calf,r lateral calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,9,skinai-site-map-draft-1
+l forearm ,l forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,9,skinai-site-map-draft-1
+r posterior shoulder,r posterior shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,9,skinai-site-map-draft-1
+r back ,r back,torso,back,mapped,back,,,,mra_midas,9,skinai-site-map-draft-1
+r shoulder ,r shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,9,skinai-site-map-draft-1
+left arm,left arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,9,skinai-site-map-draft-1
+left lower leg,left lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,9,skinai-site-map-draft-1
+r jaw,r jaw,head_neck,face,mapped,face,,,,mra_midas,9,skinai-site-map-draft-1
+l flank,l flank,torso,flank,mapped,flank,,,,mra_midas,9,skinai-site-map-draft-1
+left thigh,left thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,9,skinai-site-map-draft-1
+left neck,left neck,head_neck,neck,mapped,neck,,,,mra_midas,9,skinai-site-map-draft-1
+l wrist,l wrist,upper_extremity,wrist,mapped,wrist,,,,mra_midas,8,skinai-site-map-draft-1
+l arm,l arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,8,skinai-site-map-draft-1
+forehead,forehead,head_neck,face,mapped,face,,,,mra_midas,7,skinai-site-map-draft-1
+r preauricular,r preauricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,7,skinai-site-map-draft-1
+r lower cheek,r lower cheek,head_neck,face,mapped,face,,,,mra_midas,7,skinai-site-map-draft-1
+right ankle,right ankle,lower_extremity,ankle,mapped,ankle,,,,mra_midas,7,skinai-site-map-draft-1
+l lower lip,l lower lip,head_neck,lip,mapped,lip,,,,mra_midas,7,skinai-site-map-draft-1
+right leg,right leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,7,skinai-site-map-draft-1
+right temple,right temple,head_neck,face,mapped,face,,,,mra_midas,7,skinai-site-map-draft-1
+l hand,l hand,upper_extremity,hand,mapped,hand,,,,mra_midas,7,skinai-site-map-draft-1
+mid nasal supratip,mid nasal supratip,head_neck,nose,mapped,nose,,,,mra_midas,7,skinai-site-map-draft-1
+l dorsal hand ,l dorsal hand,upper_extremity,hand,mapped,hand,,,,mra_midas,6,skinai-site-map-draft-1
+l ear,l ear,head_neck,ear,mapped,ear,,,,mra_midas,6,skinai-site-map-draft-1
+l medial ankle,l medial ankle,lower_extremity,ankle,mapped,ankle,,,,mra_midas,6,skinai-site-map-draft-1
+l antihelix,l antihelix,head_neck,ear,mapped,ear,,,,mra_midas,6,skinai-site-map-draft-1
+right posterior calf,right posterior calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,6,skinai-site-map-draft-1
+lower mid back,lower mid back,torso,back,mapped,back,,,,mra_midas,6,skinai-site-map-draft-1
+l upper abdomen ,l upper abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,6,skinai-site-map-draft-1
+r arm,r arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,6,skinai-site-map-draft-1
+lower vermilion lip,lower vermilion lip,head_neck,lip,mapped,lip,,,,mra_midas,6,skinai-site-map-draft-1
+left elbow,left elbow,upper_extremity,elbow,mapped,elbow,,,,mra_midas,6,skinai-site-map-draft-1
+r posterior arm,r posterior arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,6,skinai-site-map-draft-1
+r lateral eyelid,r lateral eyelid,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+l eyebrow,l eyebrow,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+left upper thigh,left upper thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,6,skinai-site-map-draft-1
+l lower eyelid,l lower eyelid,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+l nasal sidewall,l nasal sidewall,head_neck,nose,mapped,nose,,,,mra_midas,6,skinai-site-map-draft-1
+mid upper cutaneous lip,mid upper cutaneous lip,head_neck,lip,mapped,lip,,,,mra_midas,6,skinai-site-map-draft-1
+left posterior neck,left posterior neck,head_neck,neck,mapped,neck,,,,mra_midas,6,skinai-site-map-draft-1
+r lateral leg,r lateral leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,6,skinai-site-map-draft-1
+l foot,l foot,lower_extremity,foot,mapped,foot,,,,mra_midas,6,skinai-site-map-draft-1
+right medial lower leg,right medial lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,6,skinai-site-map-draft-1
+mid vertex scalp,mid vertex scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,6,skinai-site-map-draft-1
+mid forehead,mid forehead,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+left upper back ,left upper back,torso,back,mapped,back,,,,mra_midas,6,skinai-site-map-draft-1
+right cheek ,right cheek,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+r nasal bridge,r nasal bridge,head_neck,nose,mapped,nose,,,,mra_midas,6,skinai-site-map-draft-1
+upper chest,upper chest,torso,chest,mapped,chest,,,,mra_midas,6,skinai-site-map-draft-1
+l upper back ,l upper back,torso,back,mapped,back,,,,mra_midas,6,skinai-site-map-draft-1
+l leg,l leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,6,skinai-site-map-draft-1
+l lower abdomen,l lower abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,6,skinai-site-map-draft-1
+mid low back,mid low back,torso,back,mapped,back,,,,mra_midas,6,skinai-site-map-draft-1
+r thigh ,r thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,6,skinai-site-map-draft-1
+l lower leg ,l lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,6,skinai-site-map-draft-1
+r 3rd finger,r 3rd finger,upper_extremity,hand,mapped,hand,,,,mra_midas,6,skinai-site-map-draft-1
+r lower back ,r lower back,torso,back,mapped,back,,,,mra_midas,6,skinai-site-map-draft-1
+r lower eyelid,r lower eyelid,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+l lateral cheek,l lateral cheek,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+left helix,left helix,head_neck,ear,mapped,ear,,,,mra_midas,6,skinai-site-map-draft-1
+r upper arm ,r upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,6,skinai-site-map-draft-1
+r dorsal hand ,r dorsal hand,upper_extremity,hand,mapped,hand,,,,mra_midas,6,skinai-site-map-draft-1
+left abdomen,left abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,6,skinai-site-map-draft-1
+abdomen,abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,6,skinai-site-map-draft-1
+r posterior neck,r posterior neck,head_neck,neck,mapped,neck,,,,mra_midas,6,skinai-site-map-draft-1
+r cheek ,r cheek,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+l postauricular,l postauricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,6,skinai-site-map-draft-1
+r frontal scalp,r frontal scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,6,skinai-site-map-draft-1
+r upper abdomen,r upper abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,6,skinai-site-map-draft-1
+right mid back,right mid back,torso,back,mapped,back,,,,mra_midas,6,skinai-site-map-draft-1
+central upper back ,central upper back,torso,back,mapped,back,,,,mra_midas,6,skinai-site-map-draft-1
+r clavicle,r clavicle,torso,clavicular_region,mapped,clavicle,,,,mra_midas,6,skinai-site-map-draft-1
+r upper shoulder,r upper shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,6,skinai-site-map-draft-1
+right anterior shin,right anterior shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,6,skinai-site-map-draft-1
+l frontal scalp,l frontal scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,6,skinai-site-map-draft-1
+l helix,l helix,head_neck,ear,mapped,ear,,,,mra_midas,6,skinai-site-map-draft-1
+r leg,r leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,6,skinai-site-map-draft-1
+l medial thigh,l medial thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,6,skinai-site-map-draft-1
+r medial cheek,r medial cheek,head_neck,face,mapped,face,,,,mra_midas,6,skinai-site-map-draft-1
+l lateral knee,l lateral knee,lower_extremity,knee,mapped,knee,,,,mra_midas,6,skinai-site-map-draft-1
+l chest ,l chest,torso,chest,mapped,chest,,,,mra_midas,5,skinai-site-map-draft-1
+hypogastric region,hypogastric region,torso,abdomen,mapped,abdomen,,,,mra_midas,5,skinai-site-map-draft-1
+l medial shin,l medial shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,5,skinai-site-map-draft-1
+l inguinal crease,l inguinal crease,pelvic_region,groin,mapped,groin,,,,mra_midas,5,skinai-site-map-draft-1
+shoulder,shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,5,skinai-site-map-draft-1
+r medial malleolus,r medial malleolus,lower_extremity,ankle,mapped,ankle,,,,mra_midas,5,skinai-site-map-draft-1
+l jawline,l jawline,head_neck,face,mapped,face,,,,mra_midas,5,skinai-site-map-draft-1
+right superomedial thigh,right superomedial thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,5,skinai-site-map-draft-1
+r mid vertex,r mid vertex,head_neck,scalp,mapped,scalp,,,,mra_midas,5,skinai-site-map-draft-1
+left cutaneous lip,left cutaneous lip,head_neck,lip,mapped,lip,,,,mra_midas,4,skinai-site-map-draft-1
+left upper lip,left upper lip,head_neck,lip,mapped,lip,,,,mra_midas,4,skinai-site-map-draft-1
+r deltoid ,r deltoid,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,4,skinai-site-map-draft-1
+right lateral neck ,right lateral neck,head_neck,neck,mapped,neck,,,,mra_midas,4,skinai-site-map-draft-1
+left anterior shin ,left anterior shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,4,skinai-site-map-draft-1
+r dorsal foot,r dorsal foot,lower_extremity,foot,mapped,foot,,,,mra_midas,4,skinai-site-map-draft-1
+right forehead,right forehead,head_neck,face,mapped,face,,,,mra_midas,4,skinai-site-map-draft-1
+right knee,right knee,lower_extremity,knee,mapped,knee,,,,mra_midas,4,skinai-site-map-draft-1
+r lateral cheek,r lateral cheek,head_neck,face,mapped,face,,,,mra_midas,4,skinai-site-map-draft-1
+left groin,left groin,pelvic_region,groin,mapped,groin,,,,mra_midas,4,skinai-site-map-draft-1
+mid vertex,mid vertex,head_neck,scalp,mapped,scalp,,,,mra_midas,4,skinai-site-map-draft-1
+l preauricular,l preauricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,4,skinai-site-map-draft-1
+left frontal scalp,left frontal scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,4,skinai-site-map-draft-1
+l nose,l nose,head_neck,nose,mapped,nose,,,,mra_midas,4,skinai-site-map-draft-1
+left lower cutaneous lip,left lower cutaneous lip,head_neck,lip,mapped,lip,,,,mra_midas,4,skinai-site-map-draft-1
+l clavicle,l clavicle,torso,clavicular_region,mapped,clavicle,,,,mra_midas,4,skinai-site-map-draft-1
+left nasal dorsum,left nasal dorsum,head_neck,nose,mapped,nose,,,,mra_midas,4,skinai-site-map-draft-1
+r flank,r flank,torso,flank,mapped,flank,,,,mra_midas,4,skinai-site-map-draft-1
+l dorsal foot,l dorsal foot,lower_extremity,foot,mapped,foot,,,,mra_midas,4,skinai-site-map-draft-1
+r crown of scalp,r crown of scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,4,skinai-site-map-draft-1
+l hand radial,l hand radial,upper_extremity,hand,mapped,hand,,,,mra_midas,4,skinai-site-map-draft-1
+r lateral foot,r lateral foot,lower_extremity,foot,mapped,foot,,,,mra_midas,4,skinai-site-map-draft-1
+l hip,l hip,pelvic_region,hip,mapped,hip,,,,mra_midas,4,skinai-site-map-draft-1
+r antihelix,r antihelix,head_neck,ear,mapped,ear,,,,mra_midas,4,skinai-site-map-draft-1
+l jaw,l jaw,head_neck,face,mapped,face,,,,mra_midas,4,skinai-site-map-draft-1
+mid scalp,mid scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+r dorsal foot ,r dorsal foot,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+l lateral calf ,l lateral calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+neck,neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+low back,low back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+r elbow joint,r elbow joint,upper_extremity,elbow,mapped,elbow,,,,mra_midas,3,skinai-site-map-draft-1
+left posterior leg,left posterior leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,3,skinai-site-map-draft-1
+right medial cheek,right medial cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+right lateral canthus,right lateral canthus,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+lower lip,lower lip,head_neck,lip,mapped,lip,,,,mra_midas,3,skinai-site-map-draft-1
+right ear,right ear,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+left nasal bridge,left nasal bridge,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+right buttox,right buttox,pelvic_region,buttock,mapped,buttock,,,,mra_midas,3,skinai-site-map-draft-1
+right mid-back,right mid-back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+left inner thigh,left inner thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+unclear,unclear,,,unknown,,Source does not establish a location.,,,mra_midas,3,skinai-site-map-draft-1
+r heel,r heel,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+left mid thigh,left mid thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+left eyebrow,left eyebrow,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+right buttock,right buttock,pelvic_region,buttock,mapped,buttock,,,,mra_midas,3,skinai-site-map-draft-1
+right plantar arch,right plantar arch,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+right nasal supra tip,right nasal supra tip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+philtrum,philtrum,head_neck,lip,mapped,lip,,,,mra_midas,3,skinai-site-map-draft-1
+right lower eyelid,right lower eyelid,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+mid-nasal dorsum,mid-nasal dorsum,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+l nasal supratip,l nasal supratip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+left shin ,left shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+l upper calf,l upper calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+l lower calf,l lower calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+left knee,left knee,lower_extremity,knee,mapped,knee,,,,mra_midas,3,skinai-site-map-draft-1
+l mid back ,l mid back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+left post auricular,left post auricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+r pinky,r pinky,upper_extremity,hand,mapped,hand,,,,mra_midas,3,skinai-site-map-draft-1
+right dorsal hand,right dorsal hand,upper_extremity,hand,mapped,hand,,,,mra_midas,3,skinai-site-map-draft-1
+l posterior neck ,l posterior neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+left heel,left heel,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+posterior neck ,posterior neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+r lateral knee,r lateral knee,lower_extremity,knee,mapped,knee,,,,mra_midas,3,skinai-site-map-draft-1
+r posterior shoulder ,r posterior shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,3,skinai-site-map-draft-1
+r nasal supratip,r nasal supratip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+l upper vermilion border,l upper vermilion border,head_neck,lip,mapped,lip,,,,mra_midas,3,skinai-site-map-draft-1
+left posterior helix,left posterior helix,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+l anterior neck,l anterior neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+superior l upper back,superior l upper back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+mid nasal dorsum ,mid nasal dorsum,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+l parietal scalp ,l parietal scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+right clavicle ,right clavicle,torso,clavicular_region,mapped,clavicle,,,,mra_midas,3,skinai-site-map-draft-1
+l infra-auricular,l infra-auricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+right nasal sidewall ,right nasal sidewall,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+right nasal tip,right nasal tip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+r frontal hairline,r frontal hairline,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+left arm medial,left arm medial,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,3,skinai-site-map-draft-1
+mid nasal supra tip,mid nasal supra tip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+r nasal fold,r nasal fold,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+left infra mammary,left infra mammary,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+right lateral thigh,right lateral thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+right nasal ala,right nasal ala,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+central upper abdomen,central upper abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+r upper lip,r upper lip,head_neck,lip,mapped,lip,,,,mra_midas,3,skinai-site-map-draft-1
+l ear scapha,l ear scapha,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+r lower lateral leg,r lower lateral leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,3,skinai-site-map-draft-1
+r lateral neck ,r lateral neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+ l anterior shin ,l anterior shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+r medial cheek ,r medial cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l upper back (this is mislabeled on epic as r upper back),l upper back (this is mislabeled on epic as r upper back),,,needs_review,back,Source notes a labeling discrepancy; raw note preserved.,torso,back,mra_midas,3,skinai-site-map-draft-1
+l dorsal 2nd toe,l dorsal 2nd toe,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+l posterior helix,l posterior helix,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+l mandible,l mandible,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+left temple,left temple,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+r retro auricular ,r retro auricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+left posterior shoulder,left posterior shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,3,skinai-site-map-draft-1
+l root of neck ,l root of neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+l chest lateral,l chest lateral,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+r low chest,r low chest,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+l medial cheek,l medial cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+left lateral neck,left lateral neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+left scalp vertex,left scalp vertex,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+left shoulder posterior,left shoulder posterior,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,3,skinai-site-map-draft-1
+l shin ,l shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+l cheek ,l cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l chest medial,l chest medial,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+left anterior shoulder,left anterior shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,3,skinai-site-map-draft-1
+mid back ,mid back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+left posterior calf,left posterior calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+left anterior thigh ,left anterior thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+right posterior calf ,right posterior calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+right shin,right shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+l preauricular ,l preauricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+left alar crease (peri-nasal),left alar crease (peri-nasal),head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+left lateral cheek,left lateral cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l medial cheek ,l medial cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l posterior ankle,l posterior ankle,lower_extremity,ankle,mapped,ankle,,,,mra_midas,3,skinai-site-map-draft-1
+r axilla,r axilla,upper_extremity,axilla,mapped,axilla,,,,mra_midas,3,skinai-site-map-draft-1
+r 4th dorsal toe,r 4th dorsal toe,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+l inner upper arm,l inner upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+left lower flank,left lower flank,torso,flank,mapped,flank,,,,mra_midas,3,skinai-site-map-draft-1
+mons pubis,mons pubis,pelvic_region,pubic_region,mapped,pubic,,,,mra_midas,3,skinai-site-map-draft-1
+upper mid abdomen,upper mid abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+right elbow,right elbow,upper_extremity,elbow,mapped,elbow,,,,mra_midas,3,skinai-site-map-draft-1
+left anterior thigh,left anterior thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+right calf ,right calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+right mid back ,right mid back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+r abdomen ,r abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+right lateral cheek,right lateral cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+r infirmary breast,r infirmary breast,,,needs_review,manual_review,Likely transcription issue in breast wording; inspect original record.,torso,chest,mra_midas,3,skinai-site-map-draft-1
+right clavicle,right clavicle,torso,clavicular_region,mapped,clavicle,,,,mra_midas,3,skinai-site-map-draft-1
+right crown of scalp,right crown of scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+l axilla,l axilla,upper_extremity,axilla,mapped,axilla,,,,mra_midas,3,skinai-site-map-draft-1
+left jawline,left jawline,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+r4 digit,r4 digit,,,needs_review,manual_review,Digit could mean finger or toe; do not infer hand.,,,mra_midas,3,skinai-site-map-draft-1
+umbilicus,umbilicus,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+l temple ,l temple,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+right lateral ankle,right lateral ankle,lower_extremity,ankle,mapped,ankle,,,,mra_midas,3,skinai-site-map-draft-1
+left cheek ,left cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+crown of scalp ,crown of scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+submental jaw,submental jaw,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+nasal bridge ,nasal bridge,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+left shoulder anterior,left shoulder anterior,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,3,skinai-site-map-draft-1
+left pre-auricular,left pre-auricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+left nasal supratip,left nasal supratip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+r nose tip,r nose tip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+left chest ,left chest,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+left upper cutaneous lip,left upper cutaneous lip,head_neck,lip,mapped,lip,,,,mra_midas,3,skinai-site-map-draft-1
+r proximal leg melanoma scar,r proximal leg melanoma scar,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,3,skinai-site-map-draft-1
+right upper eyelid,right upper eyelid,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l alar crease,l alar crease,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+supra pubic skin,supra pubic skin,pelvic_region,pubic_region,mapped,pubic,,,,mra_midas,3,skinai-site-map-draft-1
+left 4th finger,left 4th finger,upper_extremity,hand,mapped,hand,,,,mra_midas,3,skinai-site-map-draft-1
+right anterior leg,right anterior leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,3,skinai-site-map-draft-1
+l superior helix,l superior helix,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+l proximal dorsal forearm ,l proximal dorsal forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,3,skinai-site-map-draft-1
+r vertex scalp ,r vertex scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+central chest ,central chest,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+l flank inferior,l flank inferior,torso,flank,mapped,flank,,,,mra_midas,3,skinai-site-map-draft-1
+r upper eyelid,r upper eyelid,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l forehead ,l forehead,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l malar cheek,l malar cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l flank superior,l flank superior,torso,flank,mapped,flank,,,,mra_midas,3,skinai-site-map-draft-1
+r eyelid,r eyelid,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l occiput,l occiput,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+chin,chin,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+left scapula,left scapula,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+r side burn,r side burn,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+left alar crease of nose,left alar crease of nose,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+rt superior parietal,rt superior parietal,,,needs_review,manual_review,Scalp is not explicit in this wording; review the proposed location.,head_neck,scalp,mra_midas,3,skinai-site-map-draft-1
+left postauricular,left postauricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+l medial calf,l medial calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+central upper back,central upper back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+l anterior thigh,l anterior thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+l shoulder ,l shoulder,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,3,skinai-site-map-draft-1
+r superior helix,r superior helix,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+right temple ,right temple,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l dorsal hand,l dorsal hand,upper_extremity,hand,mapped,hand,,,,mra_midas,3,skinai-site-map-draft-1
+posterior midline neck,posterior midline neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+r flank ,r flank,torso,flank,mapped,flank,,,,mra_midas,3,skinai-site-map-draft-1
+right anterior scalp,right anterior scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+upper mid r chest ,upper mid r chest,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+l neck ,l neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+r conchal bowl,r conchal bowl,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+right superior helix of ear,right superior helix of ear,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+left mid plantar heel,left mid plantar heel,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+l medial plantar heel,l medial plantar heel,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+crown of scalp,crown of scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+l posterior calf,l posterior calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+right medial knee,right medial knee,lower_extremity,knee,mapped,knee,,,,mra_midas,3,skinai-site-map-draft-1
+r medial chest,r medial chest,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+l arm ,l arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,3,skinai-site-map-draft-1
+r antitragus,r antitragus,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+right superior upper arm,right superior upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+right upper back ,right upper back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+r base of neck,r base of neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+left shoulder lateral,left shoulder lateral,upper_extremity,shoulder,mapped,shoulder,,,,mra_midas,3,skinai-site-map-draft-1
+r lower chest,r lower chest,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+l suprapubic,l suprapubic,pelvic_region,pubic_region,mapped,pubic,,,,mra_midas,3,skinai-site-map-draft-1
+right posterior thigh,right posterior thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+central lower back,central lower back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+mid abdomen,mid abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+r foot ,r foot,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+mid abdomen ,mid abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+left ear,left ear,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+right posterior helix,right posterior helix,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+right medial arm ,right medial arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,3,skinai-site-map-draft-1
+l lower back ,l lower back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+left posterior thigh,left posterior thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+right upper abdomen,right upper abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+right flank,right flank,torso,flank,mapped,flank,,,,mra_midas,3,skinai-site-map-draft-1
+upper middle lip ,upper middle lip,head_neck,lip,mapped,lip,,,,mra_midas,3,skinai-site-map-draft-1
+l medial eyebrow,l medial eyebrow,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+mid central back,mid central back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+l nasal tip,l nasal tip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+r preauricular cheek,r preauricular cheek,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+l superior helix of ear,l superior helix of ear,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+right lateral mid back,right lateral mid back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+right vertex scalp,right vertex scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+l crown of scalp,l crown of scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+r lateral back,r lateral back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+l breast,l breast,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+left buttock,left buttock,pelvic_region,buttock,mapped,buttock,,,,mra_midas,3,skinai-site-map-draft-1
+left thigh proximal,left thigh proximal,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+lower abdomen,lower abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+right post calf,right post calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+left forearm ,left forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,3,skinai-site-map-draft-1
+upper mid back ,upper mid back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+r upper post calf,r upper post calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+left lateral jawline,left lateral jawline,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l popliteal,l popliteal,lower_extremity,knee,mapped,knee,,,,mra_midas,3,skinai-site-map-draft-1
+l inframammary,l inframammary,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+right upper arm,right upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+left arm lateral,left arm lateral,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,3,skinai-site-map-draft-1
+left breast,left breast,torso,chest,mapped,chest,,,,mra_midas,3,skinai-site-map-draft-1
+l abdomen ,l abdomen,torso,abdomen,mapped,abdomen,,,,mra_midas,3,skinai-site-map-draft-1
+low mid back,low mid back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+right superior helix,right superior helix,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+left lower vermilion border of lip,left lower vermilion border of lip,head_neck,lip,mapped,lip,,,,mra_midas,3,skinai-site-map-draft-1
+right proximal forearm,right proximal forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,3,skinai-site-map-draft-1
+right distal forearm,right distal forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,3,skinai-site-map-draft-1
+r thumb base,r thumb base,upper_extremity,hand,mapped,hand,,,,mra_midas,3,skinai-site-map-draft-1
+r medial forearm,r medial forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,3,skinai-site-map-draft-1
+r preauricular ,r preauricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+l lateral cheek ,l lateral cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+left dorsal foot,left dorsal foot,lower_extremity,foot,mapped,foot,,,,mra_midas,3,skinai-site-map-draft-1
+r lower leg ,r lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+r medial shin,r medial shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+left anterior lower leg,left anterior lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+l deltoid,l deltoid,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+right lateral lower leg ,right lateral lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+right elbow ,right elbow,upper_extremity,elbow,mapped,elbow,,,,mra_midas,3,skinai-site-map-draft-1
+r lower leg inferior,r lower leg inferior,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+r supra nasal tip,r supra nasal tip,head_neck,nose,mapped,nose,,,,mra_midas,3,skinai-site-map-draft-1
+r distal lateral upper arm ,r distal lateral upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+mid posterior neck,mid posterior neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+l lower medial cheek ,l lower medial cheek,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+l melolabia fold ,l melolabia fold,,,needs_review,manual_review,Likely facial-fold transcription; review before accepting.,head_neck,face,mra_midas,3,skinai-site-map-draft-1
+l dorsal forearm,l dorsal forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,3,skinai-site-map-draft-1
+right jaw,right jaw,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+left lobule of ear,left lobule of ear,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+left dorsal hand,left dorsal hand,upper_extremity,hand,mapped,hand,,,,mra_midas,3,skinai-site-map-draft-1
+r popliteal fossa,r popliteal fossa,lower_extremity,knee,mapped,knee,,,,mra_midas,3,skinai-site-map-draft-1
+l lateral neck ,l lateral neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+left calf,left calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+right postauricular,right postauricular,head_neck,periauricular,mapped,periauricular,,,,mra_midas,3,skinai-site-map-draft-1
+l inferior upper arm,l inferior upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+r post auricular scalp,r post auricular scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,3,skinai-site-map-draft-1
+r posterior helix,r posterior helix,head_neck,ear,mapped,ear,,,,mra_midas,3,skinai-site-map-draft-1
+right shin ,right shin,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+r posterior calf,r posterior calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+r clavicle ,r clavicle,torso,clavicular_region,mapped,clavicle,,,,mra_midas,3,skinai-site-map-draft-1
+right anterior upper arm ,right anterior upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+r lateral neck,r lateral neck,head_neck,neck,mapped,neck,,,,mra_midas,3,skinai-site-map-draft-1
+r medial eyebrow,r medial eyebrow,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+r deltoid,r deltoid,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+right chin,right chin,head_neck,face,mapped,face,,,,mra_midas,3,skinai-site-map-draft-1
+rt inferior parietal,rt inferior parietal,,,needs_review,manual_review,Scalp is not explicit in this wording; review the proposed location.,head_neck,scalp,mra_midas,3,skinai-site-map-draft-1
+r medial thigh,r medial thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,3,skinai-site-map-draft-1
+left central back,left central back,torso,back,mapped,back,,,,mra_midas,3,skinai-site-map-draft-1
+r index finger,r index finger,upper_extremity,hand,mapped,hand,,,,mra_midas,3,skinai-site-map-draft-1
+l upper arm ,l upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,3,skinai-site-map-draft-1
+r lateral calf ,r lateral calf,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,3,skinai-site-map-draft-1
+leg,leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,2,skinai-site-map-draft-1
+r medial lower eyelid,r medial lower eyelid,head_neck,face,mapped,face,,,,mra_midas,2,skinai-site-map-draft-1
+r sideburn,r sideburn,head_neck,face,mapped,face,,,,mra_midas,2,skinai-site-map-draft-1
+left upper arm ,left upper arm,upper_extremity,upper_arm,mapped,upper_arm,,,,mra_midas,2,skinai-site-map-draft-1
+right 3rd intertarsal region,right 3rd intertarsal region,lower_extremity,foot,mapped,foot,,,,mra_midas,2,skinai-site-map-draft-1
+cheek,cheek,head_neck,face,mapped,face,,,,mra_midas,2,skinai-site-map-draft-1
+l 5th finger,l 5th finger,upper_extremity,hand,mapped,hand,,,,mra_midas,2,skinai-site-map-draft-1
+r eyebrow,r eyebrow,head_neck,face,mapped,face,,,,mra_midas,2,skinai-site-map-draft-1
+mid l vertex scalp,mid l vertex scalp,head_neck,scalp,mapped,scalp,,,,mra_midas,2,skinai-site-map-draft-1
+left mid distal dorsal foot,left mid distal dorsal foot,lower_extremity,foot,mapped,foot,,,,mra_midas,2,skinai-site-map-draft-1
+right inguinal fold,right inguinal fold,pelvic_region,groin,mapped,groin,,,,mra_midas,2,skinai-site-map-draft-1
+left upper buttock,left upper buttock,pelvic_region,buttock,mapped,buttock,,,,mra_midas,2,skinai-site-map-draft-1
+l anterior lower leg,l anterior lower leg,lower_extremity,lower_leg,mapped,lower_leg,,,,mra_midas,2,skinai-site-map-draft-1
+left thigh distal,left thigh distal,lower_extremity,thigh,mapped,thigh,,,,mra_midas,2,skinai-site-map-draft-1
+l ribcage,l ribcage,torso,chest_wall,mapped,ribcage,,,,mra_midas,1,skinai-site-map-draft-1
+nose,nose,head_neck,nose,mapped,nose,,,,mra_midas,1,skinai-site-map-draft-1
+right forearm ,right forearm,upper_extremity,forearm,mapped,forearm,,,,mra_midas,1,skinai-site-map-draft-1
+left postauricular area,left postauricular area,head_neck,periauricular,mapped,periauricular,,,,mra_midas,1,skinai-site-map-draft-1
+left nasal ala,left nasal ala,head_neck,nose,mapped,nose,,,,mra_midas,1,skinai-site-map-draft-1
+arm,arm,upper_extremity,arm_unspecified,mapped,arm,,,,mra_midas,1,skinai-site-map-draft-1
+left clavicle,left clavicle,torso,clavicular_region,mapped,clavicle,,,,mra_midas,1,skinai-site-map-draft-1
+thigh,thigh,lower_extremity,thigh,mapped,thigh,,,,mra_midas,1,skinai-site-map-draft-1
+left leg,left leg,lower_extremity,,mapped,leg_unspecified,,,,mra_midas,1,skinai-site-map-draft-1
+l middle finger,l middle finger,upper_extremity,hand,mapped,hand,,,,mra_midas,1,skinai-site-map-draft-1
+l hand ulnar,l hand ulnar,upper_extremity,hand,mapped,hand,,,,mra_midas,1,skinai-site-map-draft-1
+l 2nd finger,l 2nd finger,upper_extremity,hand,mapped,hand,,,,mra_midas,1,skinai-site-map-draft-1
+left back ,left back,torso,back,mapped,back,,,,mra_midas,1,skinai-site-map-draft-1

@@ -1,0 +1,10 @@
+dataset_source,fitzpatrick_group,rows
+ddi,I-II,208
+ddi,III-IV,241
+ddi,V-VI,207
+fitzpatrick17k,,16577
+hiba,,1635
+isic2019,,33569
+milk10k,,10480
+mra_midas,,3399
+pad_ufes_20,,2298
