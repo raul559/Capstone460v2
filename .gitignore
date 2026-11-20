@@ -2,6 +2,9 @@
 # Data / artifacts
 # ----------------------
 data/
+# Local dataset build output (row-level manifests); summaries live in models/datasets/.
+manifests/
+*.parquet
 
 # ----------------------
 # Python
@@ -22,6 +25,14 @@ venv/
 .env
 .env.*
 !.env.example
+# Keys and service credentials
+*.pem
+*.key
+*.p12
+*.pfx
+*service-account*.json
+# Per-user Claude Code settings
+.claude/settings.local.json
 
 # ----------------------
 # Node / React / Vite / Expo
@@ -57,5 +68,6 @@ front-end-temp/
 *.keras
 *.h5
 *.onnx
+*.pth
 resnet50_skin_disease_finetuned.keras
 legacy/v1-flask/src/models/resnet50_skin_disease_finetuned_v4.keras

@@ -1,0 +1,9 @@
+image_ref_a,image_ref_b,reason
+Images/DDI.zip::000632.png,Images/ISIC2019/ISIC_2019_Training_Input.zip::ISIC_2019_Training_Input/ISIC_0034018.jpg,visually different images
+Images/ISIC2019/ISIC_2019_Training_Input.zip::ISIC_2019_Training_Input/ISIC_0024613.jpg, Images/MRA-MIDAS.zip::MRA-MIDAS/s-prd-704414306.jpg,visually different images
+Images/ISIC2019/ISIC_2019_Training_Input.zip::ISIC_2019_Training_Input/ISIC_0060772.jpg, Images/MRA-MIDAS.zip::MRA-MIDAS/s-prd-719315705.jpg,visually different images
+Images/MRA-MIDAS.zip::MRA-MIDAS/s-prd-501817652.jpg,Images/hiba-skin-lesions.zip::hiba-skin-lesions/ISIC_4867646.jpg,visually different images
+Images/MRA-MIDAS.zip::MRA-MIDAS/s-prd-676964314.jpg,Images/hiba-skin-lesions.zip::hiba-skin-lesions/ISIC_8760682.jpg,visually different images
+Images/MRA-MIDAS.zip::MRA-MIDAS/s-prd-725957207.jpg,Images/hiba-skin-lesions.zip::hiba-skin-lesions/ISIC_8998096.jpg,visually different images
+Images/ISIC2019/ISIC_2019_Training_Input.zip::ISIC_2019_Training_Input/ISIC_0024613.jpg,Images/MRA-MIDAS.zip::MRA-MIDAS/s-prd-704414306.jpg,visual review: different lesion
+Images/ISIC2019/ISIC_2019_Training_Input.zip::ISIC_2019_Training_Input/ISIC_0060772.jpg,Images/MRA-MIDAS.zip::MRA-MIDAS/s-prd-719315705.jpg,visual review: different lesion
