@@ -39,7 +39,7 @@ Active V2 development belongs in:
 - `services/api/` — Python and FastAPI application
 - `intelligence/ml/` — model loading, image preprocessing, inference, labels, and model-version handling
 - `intelligence/expert/` — certainty-factor engine, rules, and deterministic risk reasoning
-- `tests/` — unit, integration, contract, ML regression, and expert-system regression tests
+- `tests/` — cross-system contract, ML regression, expert-system regression, and end-to-end tests (each project's own unit and integration tests live inside that project; see `REPOSITORY_STRUCTURE.md`)
 - `docs/v2/` — V2-specific implementation and product documentation
 - `docs/architecture/` — architecture decisions and system design
 
@@ -242,8 +242,6 @@ skinai/
 │   ├── v1-node/
 │   └── v1-flask/
 ├── tests/
-│   ├── unit/
-│   ├── integration/
 │   ├── contract/
 │   └── regression/
 ├── docs/

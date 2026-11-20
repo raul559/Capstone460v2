@@ -24,6 +24,7 @@ jobs:
       # create it here for the type checker.
       - run: echo '/// <reference types="expo/types" />' > expo-env.d.ts
       - run: npx tsc --noEmit
+      - run: npm test -- --ci
 
   api:
     runs-on: ubuntu-latest
