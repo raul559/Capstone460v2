@@ -34,6 +34,9 @@ export const Colors = {
 
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
 
+/** The full color set for the active scheme, as returned by `useTheme()`. */
+export type ThemePalette = (typeof Colors)[keyof typeof Colors];
+
 export const Fonts = Platform.select({
   ios: {
     /** iOS `UIFontDescriptorSystemDesignDefault` */

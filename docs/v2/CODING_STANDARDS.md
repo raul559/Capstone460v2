@@ -29,7 +29,10 @@ file's purpose in one sentence without "and". Screens compose components and
 navigate; route handlers parse the request, call one service, and return a
 response schema. Logic lives in hooks, services, and `intelligence/`. Lint
 enforces one React component per file, 300 lines per file, and a complexity
-limit. When a file outgrows them, split it by responsibility.
+limit. When a file outgrows them, split it by responsibility. Mobile features
+follow the folder layout in `REPOSITORY_STRUCTURE.md` (`screens/`,
+`components/`, `hooks/`, `stores/`, `utils/`), and each component keeps its
+`StyleSheet` at the bottom of its own file.
 
 **2. Don't repeat yourself.** Every fact has one home, and everything else
 imports or links to it:

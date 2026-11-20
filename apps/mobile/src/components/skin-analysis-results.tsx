@@ -5,7 +5,7 @@ import { Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { useTheme } from '@/hooks/use-theme';
-import type { SkinAnalysisResult } from '@/library/skin-analysis';
+import type { SkinAnalysisResult } from '@/types/skin-analysis';
 
 type Props = {
   result: SkinAnalysisResult;

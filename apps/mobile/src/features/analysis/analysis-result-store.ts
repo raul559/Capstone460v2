@@ -1,5 +1,5 @@
 
-import type { SkinAnalysisResult } from '@/library/skin-analysis';
+import type { SkinAnalysisResult } from '@/types/skin-analysis';
 
 interface StoredAnalysis {
   id: string;
