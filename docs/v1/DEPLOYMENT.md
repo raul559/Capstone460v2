@@ -40,10 +40,10 @@ The Python service must be deployed first so its URL can be embedded into the fr
 
 ```bash
 # From the repo root
-# Build Python image using cloudbuild.yaml, which points -f at
-# legacy/v1-flask/Dockerfile (edit the image names in cloudbuild.yaml
+# Build Python image using legacy/v1-flask/cloudbuild.yaml, which points -f at
+# legacy/v1-flask/Dockerfile (edit the image names in legacy/v1-flask/cloudbuild.yaml
 # if you want them to say skinai-python instead of capstone)
-gcloud builds submit --config cloudbuild.yaml .
+gcloud builds submit --config legacy/v1-flask/cloudbuild.yaml .
 
 # Deploy Python image to Cloud Run
 gcloud run deploy skinai-python \
@@ -77,7 +77,7 @@ The React frontend is built inside the Docker image, so `VITE_API_BASE_URL` must
 # From the repo root — replace the Python URL below
 # Build Node image with Dockerfile.node through Cloud Build
 gcloud builds submit \
-  --config cloudbuild.node.yaml \
+  --config legacy/v1-node/cloudbuild.node.yaml \
   --substitutions _IMAGE=gcr.io/YOUR_PROJECT_ID/skinai-node:latest,_PYTHON_URL=https://skinai-python-xxxx-uc.a.run.app
 
 # Deploy Node image to Cloud Run
@@ -117,7 +117,7 @@ The browser calls the Python service directly (upload analysis, chatbot). Make s
 
 **Python only** (AI/chatbot changes):
 ```bash
-gcloud builds submit --config cloudbuild.yaml .
+gcloud builds submit --config legacy/v1-flask/cloudbuild.yaml .
 
 gcloud run deploy skinai-python \
   --image gcr.io/YOUR_PROJECT_ID/capstone:latest \
@@ -128,7 +128,7 @@ gcloud run deploy skinai-python \
 **Node + frontend** (UI or server changes):
 ```bash
 gcloud builds submit \
-  --config cloudbuild.node.yaml \
+  --config legacy/v1-node/cloudbuild.node.yaml \
   --substitutions _IMAGE=gcr.io/YOUR_PROJECT_ID/skinai-node:latest,_PYTHON_URL=https://skinai-python-xxxx-uc.a.run.app
 
 gcloud run deploy skinai-node \
@@ -176,7 +176,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
       - uses: google-github-actions/setup-gcloud@v2
       - run: |
-          gcloud builds submit --config cloudbuild.yaml .
+          gcloud builds submit --config legacy/v1-flask/cloudbuild.yaml .
 
           gcloud run deploy skinai-python \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/capstone:latest \
@@ -201,7 +201,7 @@ jobs:
             --format "value(status.url)")
 
           gcloud builds submit \
-            --config cloudbuild.node.yaml \
+            --config legacy/v1-node/cloudbuild.node.yaml \
             --substitutions _IMAGE=gcr.io/${{ secrets.GCP_PROJECT_ID }}/skinai-node:latest,_PYTHON_URL=${PYTHON_URL}
 
           gcloud run deploy skinai-node \
