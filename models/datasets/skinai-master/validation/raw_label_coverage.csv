@@ -1,0 +1,262 @@
+dataset_source,disease_label,rows
+ddi,abrasions-ulcerations-and-physical-injuries,3
+ddi,abscess,1
+ddi,acne-cystic,1
+ddi,acquired-digital-fibrokeratoma,2
+ddi,acral-melanotic-macule,1
+ddi,acrochordon,19
+ddi,actinic-keratosis,4
+ddi,angioleiomyoma,1
+ddi,angioma,11
+ddi,arteriovenous-hemangioma,3
+ddi,atypical-spindle-cell-nevus-of-reed,1
+ddi,basal-cell-carcinoma,41
+ddi,basal-cell-carcinoma-nodular,6
+ddi,basal-cell-carcinoma-superficial,2
+ddi,benign-keratosis,3
+ddi,blastic-plasmacytoid-dendritic-cell-neoplasm,1
+ddi,blue-nevus,6
+ddi,cellular-neurothekeoma,1
+ddi,chondroid-syringoma,1
+ddi,clear-cell-acanthoma,1
+ddi,coccidioidomycosis,1
+ddi,condyloma-accuminatum,2
+ddi,dermatofibroma,22
+ddi,dermatomyositis,1
+ddi,dysplastic-nevus,16
+ddi,eccrine-poroma,10
+ddi,eczema-spongiotic-dermatitis,4
+ddi,epidermal-cyst,35
+ddi,epidermal-nevus,1
+ddi,fibrous-papule,2
+ddi,focal-acral-hyperkeratosis,1
+ddi,folliculitis,1
+ddi,foreign-body-granuloma,2
+ddi,glomangioma,1
+ddi,graft-vs-host-disease,2
+ddi,hematoma,1
+ddi,hyperpigmentation,3
+ddi,inverted-follicular-keratosis,5
+ddi,kaposi-sarcoma,6
+ddi,keloid,1
+ddi,leukemia-cutis,1
+ddi,lichenoid-keratosis,1
+ddi,lipoma,6
+ddi,lymphocytic-infiltrations,1
+ddi,melanocytic-nevi,119
+ddi,melanoma,7
+ddi,melanoma-acral-lentiginous,7
+ddi,melanoma-in-situ,6
+ddi,metastatic-carcinoma,5
+ddi,molluscum-contagiosum,6
+ddi,morphea,1
+ddi,mycosis-fungoides,32
+ddi,neurofibroma,12
+ddi,neuroma,1
+ddi,nevus-lipomatosus-superficialis,6
+ddi,nodular-melanoma-(nm),1
+ddi,onychomycosis,2
+ddi,pigmented-spindle-cell-nevus-of-reed,1
+ddi,prurigo-nodularis,5
+ddi,pyogenic-granuloma,14
+ddi,reactive-lymphoid-hyperplasia,1
+ddi,scar,2
+ddi,sebaceous-carcinoma,1
+ddi,seborrheic-keratosis,58
+ddi,seborrheic-keratosis-irritated,14
+ddi,solar-lentigo,4
+ddi,squamous-cell-carcinoma,17
+ddi,squamous-cell-carcinoma-in-situ,28
+ddi,squamous-cell-carcinoma-keratoacanthoma,8
+ddi,subcutaneous-t-cell-lymphoma,1
+ddi,syringocystadenoma-papilliferum,2
+ddi,tinea-pedis,1
+ddi,trichilemmoma,3
+ddi,trichofolliculoma,2
+ddi,verruca-vulgaris,50
+ddi,verruciform-xanthoma,1
+ddi,wart,1
+ddi,xanthogranuloma,2
+fitzpatrick17k,acanthosis nigricans,92
+fitzpatrick17k,acne,183
+fitzpatrick17k,acne vulgaris,335
+fitzpatrick17k,acquired autoimmune bullous diseaseherpes gestationis,67
+fitzpatrick17k,acrodermatitis enteropathica,92
+fitzpatrick17k,actinic keratosis,175
+fitzpatrick17k,allergic contact dermatitis,430
+fitzpatrick17k,aplasia cutis,72
+fitzpatrick17k,basal cell carcinoma,468
+fitzpatrick17k,basal cell carcinoma morpheiform,62
+fitzpatrick17k,becker nevus,63
+fitzpatrick17k,behcets disease,63
+fitzpatrick17k,calcinosis cutis,80
+fitzpatrick17k,cheilitis,106
+fitzpatrick17k,congenital nevus,68
+fitzpatrick17k,dariers disease,153
+fitzpatrick17k,dermatofibroma,79
+fitzpatrick17k,dermatomyositis,151
+fitzpatrick17k,disseminated actinic porokeratosis,60
+fitzpatrick17k,drug eruption,200
+fitzpatrick17k,drug induced pigmentary changes,71
+fitzpatrick17k,dyshidrotic eczema,83
+fitzpatrick17k,eczema,204
+fitzpatrick17k,ehlers danlos syndrome,127
+fitzpatrick17k,epidermal nevus,91
+fitzpatrick17k,epidermolysis bullosa,70
+fitzpatrick17k,erythema annulare centrifigum,88
+fitzpatrick17k,erythema elevatum diutinum,55
+fitzpatrick17k,erythema multiforme,236
+fitzpatrick17k,erythema nodosum,81
+fitzpatrick17k,factitial dermatitis,66
+fitzpatrick17k,fixed eruptions,125
+fitzpatrick17k,folliculitis,342
+fitzpatrick17k,fordyce spots,100
+fitzpatrick17k,granuloma annulare,211
+fitzpatrick17k,granuloma pyogenic,75
+fitzpatrick17k,hailey hailey disease,174
+fitzpatrick17k,halo nevus,82
+fitzpatrick17k,hidradenitis,90
+fitzpatrick17k,ichthyosis vulgaris,65
+fitzpatrick17k,incontinentia pigmenti,102
+fitzpatrick17k,juvenile xanthogranuloma,149
+fitzpatrick17k,kaposi sarcoma,156
+fitzpatrick17k,keloid,156
+fitzpatrick17k,keratosis pilaris,78
+fitzpatrick17k,langerhans cell histiocytosis,60
+fitzpatrick17k,lentigo maligna,83
+fitzpatrick17k,lichen amyloidosis,77
+fitzpatrick17k,lichen planus,491
+fitzpatrick17k,lichen simplex,97
+fitzpatrick17k,livedo reticularis,60
+fitzpatrick17k,lupus erythematosus,410
+fitzpatrick17k,lupus subacute,111
+fitzpatrick17k,lyme disease,129
+fitzpatrick17k,lymphangioma,100
+fitzpatrick17k,malignant melanoma,111
+fitzpatrick17k,melanoma,261
+fitzpatrick17k,milia,112
+fitzpatrick17k,mucinosis,92
+fitzpatrick17k,mucous cyst,79
+fitzpatrick17k,mycosis fungoides,182
+fitzpatrick17k,myiasis,67
+fitzpatrick17k,naevus comedonicus,73
+fitzpatrick17k,necrobiosis lipoidica,123
+fitzpatrick17k,nematode infection,260
+fitzpatrick17k,neurodermatitis,69
+fitzpatrick17k,neurofibromatosis,189
+fitzpatrick17k,neurotic excoriations,73
+fitzpatrick17k,neutrophilic dermatoses,361
+fitzpatrick17k,nevocytic nevus,86
+fitzpatrick17k,nevus sebaceous of jadassohn,95
+fitzpatrick17k,papilomatosis confluentes and reticulate,150
+fitzpatrick17k,paronychia,59
+fitzpatrick17k,pediculosis lids,151
+fitzpatrick17k,perioral dermatitis,61
+fitzpatrick17k,photodermatoses,348
+fitzpatrick17k,pilar cyst,93
+fitzpatrick17k,pilomatricoma,53
+fitzpatrick17k,pityriasis lichenoides chronica,73
+fitzpatrick17k,pityriasis rosea,193
+fitzpatrick17k,pityriasis rubra pilaris,278
+fitzpatrick17k,porokeratosis actinic,183
+fitzpatrick17k,porokeratosis of mibelli,78
+fitzpatrick17k,porphyria,127
+fitzpatrick17k,port wine stain,59
+fitzpatrick17k,prurigo nodularis,170
+fitzpatrick17k,psoriasis,653
+fitzpatrick17k,pustular psoriasis,53
+fitzpatrick17k,pyogenic granuloma,113
+fitzpatrick17k,rhinophyma,91
+fitzpatrick17k,rosacea,102
+fitzpatrick17k,sarcoidosis,349
+fitzpatrick17k,scabies,339
+fitzpatrick17k,scleroderma,309
+fitzpatrick17k,scleromyxedema,108
+fitzpatrick17k,seborrheic dermatitis,126
+fitzpatrick17k,seborrheic keratosis,69
+fitzpatrick17k,solid cystic basal cell carcinoma,66
+fitzpatrick17k,squamous cell carcinoma,581
+fitzpatrick17k,stasis edema,69
+fitzpatrick17k,stevens johnson syndrome,113
+fitzpatrick17k,striae,67
+fitzpatrick17k,sun damaged skin,66
+fitzpatrick17k,superficial spreading melanoma ssm,118
+fitzpatrick17k,syringoma,127
+fitzpatrick17k,telangiectases,126
+fitzpatrick17k,tick bite,73
+fitzpatrick17k,tuberous sclerosis,141
+fitzpatrick17k,tungiasis,152
+fitzpatrick17k,urticaria,151
+fitzpatrick17k,urticaria pigmentosa,112
+fitzpatrick17k,vitiligo,166
+fitzpatrick17k,xanthomas,53
+fitzpatrick17k,xeroderma pigmentosum,81
+hiba,Basal cell carcinoma,344
+hiba,Dermatofibroma,61
+hiba,Lichen planus like keratosis,2
+hiba,"Melanoma, NOS",261
+hiba,Nevus,608
+hiba,Seborrheic keratosis,68
+hiba,Solar lentigo,18
+hiba,Solar or actinic keratosis,63
+hiba,"Squamous cell carcinoma, NOS",159
+hiba,,51
+isic2019,AK,1241
+isic2019,BCC,4298
+isic2019,BKL,3284
+isic2019,DF,330
+isic2019,MEL,5849
+isic2019,NV,15370
+isic2019,SCC,793
+isic2019,UNK,2047
+isic2019,VASC,357
+milk10k,Angiokeratoma,14
+milk10k,Basal cell carcinoma,5044
+milk10k,Clear cell acanthoma,8
+milk10k,Dermatofibroma,104
+milk10k,Hemangioma,68
+milk10k,Infundibular or epidermal cyst,4
+milk10k,Ink-spot lentigo,4
+milk10k,Juvenile xanthogranuloma,6
+milk10k,Keratoacanthoma,324
+milk10k,Lichen planus like keratosis,270
+milk10k,Mastocytosis,4
+milk10k,Melanoma Invasive,510
+milk10k,Melanoma in situ,362
+milk10k,Melanoma metastasis,28
+milk10k,Molluscum,2
+milk10k,Mucosal melanotic macule,14
+milk10k,Nevus,1492
+milk10k,Porokeratosis,6
+milk10k,Pyogenic granuloma,12
+milk10k,Sebaceous hyperplasia,4
+milk10k,Seborrheic keratosis,680
+milk10k,Solar lentigo,126
+milk10k,Solar or actinic keratosis,246
+milk10k,Squamous cell carcinoma in situ,360
+milk10k,"Squamous cell carcinoma, Invasive",622
+milk10k,Supernumerary nipple,2
+milk10k,Trichoblastoma,6
+milk10k,,158
+mra_midas,benign-dermatofibroma,51
+mra_midas,benign-fibrous papule,18
+mra_midas,benign-hemangioma,29
+mra_midas,benign-melanocytic nevus,577
+mra_midas,benign-other,418
+mra_midas,benign-seborrheic keratosis,241
+mra_midas,malignant- ak,189
+mra_midas,malignant- bcc,607
+mra_midas,malignant- melanoma,235
+mra_midas,malignant- other,14
+mra_midas,malignant- scc,203
+mra_midas,malignant- sccis,165
+mra_midas,"melanocytic tumor, possible re-excision (severe, spitz, aimp)",6
+mra_midas,"other- melanocytic lesion, possible re-excision (severe, spitz, aimp)",109
+mra_midas,"other- non-neoplastic, inflammatory, infectious",39
+mra_midas,,498
+pad_ufes_20,ACK,730
+pad_ufes_20,BCC,845
+pad_ufes_20,MEL,52
+pad_ufes_20,NEV,244
+pad_ufes_20,SCC,192
+pad_ufes_20,SEK,235

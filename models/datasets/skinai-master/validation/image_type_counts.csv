@@ -1,0 +1,10 @@
+dataset_source,image_type,rows
+ddi,clinical,656
+fitzpatrick17k,clinical,16577
+hiba,dermoscopic,1635
+isic2019,dermoscopic,33569
+milk10k,clinical: close-up,5240
+milk10k,dermoscopic,5240
+mra_midas,clinical,2350
+mra_midas,dermoscopic,1049
+pad_ufes_20,clinical,2298

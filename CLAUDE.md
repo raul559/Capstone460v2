@@ -250,7 +250,10 @@ skinai/
 │   │   └── REPOSITORY_STRUCTURE.md
 │   ├── v1/
 │   └── v2/
+├── models/
+│   └── datasets/
 ├── scripts/
+│   └── models/
 ├── .github/
 │   ├── workflows/
 │   └── pull_request_template.md
@@ -260,9 +263,9 @@ skinai/
 └── .env.example
 ```
 
-`models/` (model metadata, manifests, checksums — not large binaries) is
-planned per `docs/architecture/REPOSITORY_STRUCTURE.md` but not yet created;
-add it when ML model migration (Milestone 2) actually needs it, not before.
+`models/` holds metadata, manifests, and checksums, never large binaries.
+`models/datasets/skinai-master/` has the training-dataset summaries; the
+deployed model's `manifest.json` is added with the Milestone 2 migration.
 
 This is a summary for quick orientation. For the full target tree, per-directory
 responsibilities, and the dependency-direction rules between layers, see

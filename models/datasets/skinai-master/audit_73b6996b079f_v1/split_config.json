@@ -1,0 +1,47 @@
+{
+  "master_sha256": "73b6996b079f58e3404042b256111b67ac50f0ea14f929500318c52979facb87",
+  "audit_version": "v1",
+  "bucket": "sarcolemma/SkinAI",
+  "archive_metadata_signatures": {
+    "Images/DDI.zip": "50eccfc8dad20237eafa5d9ad944fe7f6fe8c7af35a3fcf8ea40ce4f1adabfe2",
+    "Images/Fitzpatrick17k.zip": "70a2595a5c50905017e81bd42c156e5e44b674bdbc0fc2fd3f6292e764fc1061",
+    "Images/ISIC2019/ISIC_2019_Test_Input.zip": "93a6b30ea9cba7b1387422ae2ccdc7c324928710223f92ecc035f97d6c8b6dbe",
+    "Images/ISIC2019/ISIC_2019_Training_Input.zip": "d3e3d3107d57f9d20d1422a8a6ad6d86df7f014b0aab67a921505c941862a6df",
+    "Images/MRA-MIDAS.zip": "3461a2b5a8c83630eec94ba5e2a23a885f901a35e05f731749fa67c482ade98e",
+    "Images/PAD-UFES-20.zip": "8c036bf640fba28cea76e3c16cc29070ad6525e3ec0e4ffa66107cc43f72b8df",
+    "Images/hiba-skin-lesions.zip": "640041ac9998ecd803b05263bd1a460df75d0e0bb54fdf531cca512b07e0e59e",
+    "Images/milk10k.zip": "04d86f84d3be0cd1c1e8785ecd45a3af5c1964e89a921363a7e1c08ed693ac92"
+  },
+  "seed": 42,
+  "phash_hamming_threshold": 4,
+  "near_candidate_policy": "group unless explicitly rejected; never auto-delete",
+  "split_policy": "8 train / 1 validation / 1 internal test group folds; external held out",
+  "external_sources": [
+    "ddi",
+    "mra_midas"
+  ],
+  "input_rows": 68614,
+  "retained_rows": 68510,
+  "eight_class_rows": 50832,
+  "split_rows": {
+    "train": 38503,
+    "test": 4815,
+    "val": 4813,
+    "external_test": 2701
+  },
+  "near_rejections_sha256": "56310e1c0c42fdea4eea974e68abab395428ad272546520ced9ba6daa1dfcd66",
+  "packages": {
+    "pandas": "3.0.6",
+    "Pillow": "12.3.0",
+    "ImageHash": "4.3.2",
+    "scikit-learn": "1.9.1",
+    "huggingface_hub": "2.4.0",
+    "pyarrow": "26.0.1"
+  },
+  "limitations": [
+    "Unknown patient/lesion identities remain unverified, including across sources.",
+    "pHash screening can miss transformed copies and can over-group unrelated images.",
+    "Readable images are not necessarily clinically usable or correctly labelled.",
+    "Class/source/modality/subgroup proportions are reported, not guaranteed balanced."
+  ]
+}
