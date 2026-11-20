@@ -1,0 +1,9 @@
+{
+  "rows": 68614,
+  "errors": [],
+  "expected_counts_checked": true,
+  "bucket": "sarcolemma/SkinAI",
+  "zip_check": "remote",
+  "deduplication": "partial: supplied exact hashes only; perceptual/group review still required",
+  "status": "passed_requested_checks_not_training_readiness"
+}
