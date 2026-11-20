@@ -1,4 +1,4 @@
-import { useThemePreference } from '@/contexts/theme-preference';
+import { useThemePreference } from '@/providers/theme-preference';
 
 export function useColorScheme() {
   return useThemePreference().colorScheme;

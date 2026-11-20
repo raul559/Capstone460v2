@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from 'react';
-import { useThemePreference } from '@/contexts/theme-preference';
+import { useThemePreference } from '@/providers/theme-preference';
 
 const subscribe = () => () => {};
 

@@ -18,10 +18,16 @@ V2 development is beginning. Milestone 1 is partially complete:
 
 - Done: V2 repository structure, V1 imported as legacy reference, `CLAUDE.md`,
   `docs/architecture/V2_ARCHITECTURE.md`, `docs/architecture/REPOSITORY_STRUCTURE.md`.
-- Done (pre-existing): `apps/mobile/` is an initialized Expo + TypeScript
-  application (Expo Router, `src/app/` routes) — not yet wired to any backend.
-- Not started: Python environment for `services/api/`, FastAPI application,
-  V2 test infrastructure beyond the placeholder directories in `tests/`.
+- Done: `apps/mobile/` is an Expo + TypeScript app (Expo Router) with upload,
+  camera, results, chat, and account screens. Its analysis request still calls
+  the V1 Flask endpoint `POST /analyze_skin`; the base URL comes from
+  `EXPO_PUBLIC_API_URL`.
+- Done: `services/api/` FastAPI app with `GET /api/v2/health` and a pytest test.
+- Done: test infrastructure (Jest with `jest-expo` for mobile, pytest for the
+  API) and CI running lint, type checks, and tests on every pull request. See
+  `docs/v2/DEVELOPMENT.md`.
+- Not started: V2 analysis endpoint (Milestone 3), so manual end-to-end testing
+  uses the V1 backend.
 
 V1 provides reusable implementations for:
 
@@ -69,7 +75,7 @@ The following are **not** required for the first vertical slice:
 - [ ] Configure Python environment
 - [x] Initialize Expo TypeScript application (pre-existing)
 - [ ] Initialize FastAPI application
-- [ ] Configure test infrastructure
+- [x] Configure test infrastructure (Jest with jest-expo for mobile, pytest for the API)
 
 Definition of Done:
 
@@ -77,7 +83,7 @@ Definition of Done:
 - [ ] FastAPI starts locally
 - [ ] FastAPI health endpoint responds
 - [x] V1 remains unchanged
-- [ ] unit test commands run successfully (no V2 unit tests exist yet)
+- [x] unit test commands run successfully (`npm test`, `pytest`)
 
 Student focus: understand repository boundaries, local development
 processes, and the first FastAPI request.

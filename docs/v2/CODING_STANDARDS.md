@@ -17,10 +17,12 @@ locally before pushing.
 |---|---|---|
 | Mobile lint | `npm run lint` in `apps/mobile` | `apps/mobile/eslint.config.js` |
 | Mobile types | `npx tsc --noEmit` in `apps/mobile` | `apps/mobile/tsconfig.json` |
+| Mobile tests | `npm test` in `apps/mobile` | `jest` in `apps/mobile/package.json` |
 | Python lint and format | `ruff check .` and `ruff format --check .` at the repo root | `ruff.toml` |
 | API tests | `pytest` in `services/api` | `services/api/pyproject.toml` |
 
-Ruff and pytest come from the API virtualenv (`pip install -e ".[dev]"`).
+Ruff and pytest come from the API virtualenv (`pip install -e ".[dev]"`). Setup and
+manual testing steps are in [`DEVELOPMENT.md`](DEVELOPMENT.md).
 
 ## Rules
 
@@ -29,7 +31,10 @@ file's purpose in one sentence without "and". Screens compose components and
 navigate; route handlers parse the request, call one service, and return a
 response schema. Logic lives in hooks, services, and `intelligence/`. Lint
 enforces one React component per file, 300 lines per file, and a complexity
-limit. When a file outgrows them, split it by responsibility.
+limit. When a file outgrows them, split it by responsibility. Mobile features
+follow the folder layout in `REPOSITORY_STRUCTURE.md` (`screens/`,
+`components/`, `hooks/`, `stores/`, `utils/`), and each component keeps its
+`StyleSheet` at the bottom of its own file.
 
 **2. Don't repeat yourself.** Every fact has one home, and everything else
 imports or links to it:

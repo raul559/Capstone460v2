@@ -35,7 +35,7 @@ module.exports = defineConfig([
   },
   {
     // The API client is the one place allowed to call fetch.
-    files: ['src/api/**', 'src/library/skin-analysis.ts'],
+    files: ['src/api/**'],
     rules: { 'no-restricted-globals': 'off' },
   },
 ]);

@@ -59,8 +59,8 @@ top-level `intelligence/` package so it can be tested without the web layer.
 ```mermaid
 flowchart TB
     subgraph client["Client · apps/mobile"]
-        screens["Screens · Expo Router<br/>home (built) · upload (built) · intake · result · history"]
-        apiclient["Typed API client<br/>TanStack Query"]
+        screens["Screens · Expo Router<br/>home · upload · camera · results · chat · account (built)<br/>intake · history"]
+        apiclient["API client · src/api (built)<br/>TanStack Query planned"]
         secure["SecureStore<br/>tokens only"]
         screens --> apiclient
         apiclient --- secure
@@ -376,41 +376,47 @@ flowchart TB
 
 ## 9. Mobile app structure
 
-Target route and feature layout. "(built)" marks screens that exist today.
+Current routes and features. "(built)" marks what exists today; dashed lines
+are planned. How current routes map to the target routes is in
+`REPOSITORY_STRUCTURE.md` under `apps/mobile/src/app/`.
 
 ```mermaid
 flowchart TB
-    root["_layout.tsx<br/>theme · splash (built)"]
-    root --> auth["(auth)<br/>login · register"]
+    root["_layout.tsx (built)<br/>theme · splash"]
     root --> tabs["(tabs) (built)"]
     root --> upload["upload.tsx (built)<br/>pick from library"]
-    root --> detail["analysis/[analysisId]<br/>result detail"]
+    root --> camera["camera.tsx (built)<br/>take a photo"]
+    root --> results["results.tsx (built)"]
+    root -.-> auth["(auth)<br/>login · register"]
 
     tabs --> home["index · home (built)"]
-    tabs --> scan["scan<br/>camera capture"]
-    tabs --> reports["reports<br/>history"]
-    tabs --> profile["profile"]
+    tabs --> chat["explore · chat (built)"]
+    tabs --> account["account (built)"]
+    tabs -.-> history["history"]
 
-    subgraph features["src/features"]
-        f1["auth"]
-        f2["camera"]
-        f3["intake<br/>React Hook Form + Zod"]
-        f4["analysis"]
-        f5["reports"]
-        f6["assistant"]
+    subgraph features["src/features · screens, components, hooks, stores, utils"]
+        fa["analysis (built)"]
+        fc["camera (built)"]
+        fs["assistant (built)"]
+        fh["home (built)"]
+        fac["account (built)"]
+        fi["intake<br/>React Hook Form + Zod"]
+        fau["auth"]
     end
 
-    subgraph svc["src/services"]
-        c1["api-client.ts"]
-        c2["auth-client.ts"]
+    subgraph api["src/api"]
+        c1["skin-analysis.ts (built)<br/>base URL from EXPO_PUBLIC_API_URL"]
     end
 
-    scan --> f2
-    upload --> f3
-    f3 --> f4
-    f4 --> c1
-    f1 --> c2
-    c1 -- "HTTPS /api/v2" --> backend["FastAPI"]
+    upload --> fa
+    results --> fa
+    camera --> fc
+    chat --> fs
+    home --> fh
+    account --> fac
+    fa --> c1
+    c1 -- "today: POST /analyze_skin" --> v1["V1 Flask"]
+    c1 -. "Milestone 3: POST /api/v2/analyses" .-> backend["FastAPI"]
 ```
 
 ---
@@ -463,10 +469,10 @@ diagram when a milestone step lands.
 
 ```mermaid
 flowchart LR
-    m1["M1 Repository foundation<br/>layout (built) docs (built)<br/>FastAPI /api/v2/health (built)<br/>Expo SDK 58 app (built)"]
+    m1["M1 Repository foundation<br/>layout (built) docs (built)<br/>FastAPI /api/v2/health (built)<br/>Expo SDK 58 app (built)<br/>tests and CI (built)"]
     m2["M2 Intelligence migration"]
     m3["M3 Analysis API"]
-    m4["M4 Mobile vertical slice<br/>home (built) upload (built)"]
+    m4["M4 Mobile vertical slice<br/>screens built, calling V1<br/>intake form not started"]
     m5["M5 Persistence"]
     m6["M6 Identity and authorization"]
     m7["M7 AI explanation"]
