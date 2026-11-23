@@ -1,8 +1,8 @@
+import { router } from 'expo-router';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import type { ThemePalette } from '@/constants/theme';
-import { showComingSoon } from '@/features/home/utils/show-coming-soon';
 import { useTheme } from '@/hooks/use-theme';
 
 export function HomeMethodology() {
@@ -22,7 +22,7 @@ export function HomeMethodology() {
 
       <Pressable
         accessibilityRole="button"
-        onPress={() => showComingSoon('Methodology')}
+        onPress={() => router.push('/about')}
         style={({ pressed }) => pressed && styles.linkPressed}
       >
         <ThemedText style={styles.methodologyLink}>
