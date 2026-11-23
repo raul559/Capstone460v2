@@ -1,0 +1,174 @@
+split,dataset_source,label_class,image_type,fitzpatrick_group,rows
+external_test,ddi,AK,clinical,I-II,1
+external_test,ddi,AK,clinical,III-IV,3
+external_test,ddi,BCC,clinical,I-II,14
+external_test,ddi,BCC,clinical,III-IV,35
+external_test,ddi,BKL,clinical,I-II,32
+external_test,ddi,BKL,clinical,III-IV,25
+external_test,ddi,BKL,clinical,V-VI,28
+external_test,ddi,DF,clinical,I-II,6
+external_test,ddi,DF,clinical,III-IV,10
+external_test,ddi,DF,clinical,V-VI,6
+external_test,ddi,MEL,clinical,I-II,7
+external_test,ddi,MEL,clinical,III-IV,7
+external_test,ddi,MEL,clinical,V-VI,7
+external_test,ddi,NV,clinical,I-II,49
+external_test,ddi,NV,clinical,III-IV,67
+external_test,ddi,NV,clinical,V-VI,25
+external_test,ddi,SCC,clinical,I-II,21
+external_test,ddi,SCC,clinical,III-IV,23
+external_test,ddi,SCC,clinical,V-VI,9
+external_test,ddi,VASC,clinical,I-II,5
+external_test,ddi,VASC,clinical,III-IV,15
+external_test,ddi,VASC,clinical,V-VI,9
+external_test,mra_midas,AK,clinical,,125
+external_test,mra_midas,AK,dermoscopic,,64
+external_test,mra_midas,BCC,clinical,,405
+external_test,mra_midas,BCC,dermoscopic,,202
+external_test,mra_midas,BKL,clinical,,162
+external_test,mra_midas,BKL,dermoscopic,,79
+external_test,mra_midas,DF,clinical,,35
+external_test,mra_midas,DF,dermoscopic,,16
+external_test,mra_midas,MEL,clinical,,156
+external_test,mra_midas,MEL,dermoscopic,,79
+external_test,mra_midas,NV,clinical,,385
+external_test,mra_midas,NV,dermoscopic,,192
+external_test,mra_midas,SCC,clinical,,245
+external_test,mra_midas,SCC,dermoscopic,,123
+external_test,mra_midas,VASC,clinical,,19
+external_test,mra_midas,VASC,dermoscopic,,10
+test,fitzpatrick17k,AK,clinical,,10
+test,fitzpatrick17k,BCC,clinical,,60
+test,fitzpatrick17k,BKL,clinical,,11
+test,fitzpatrick17k,DF,clinical,,6
+test,fitzpatrick17k,MEL,clinical,,53
+test,fitzpatrick17k,NV,clinical,,32
+test,fitzpatrick17k,SCC,clinical,,51
+test,fitzpatrick17k,VASC,clinical,,20
+test,hiba,AK,dermoscopic,,13
+test,hiba,BCC,dermoscopic,,45
+test,hiba,BKL,dermoscopic,,8
+test,hiba,DF,dermoscopic,,4
+test,hiba,MEL,dermoscopic,,40
+test,hiba,NV,dermoscopic,,32
+test,hiba,SCC,dermoscopic,,17
+test,isic2019,AK,dermoscopic,,109
+test,isic2019,BCC,dermoscopic,,403
+test,isic2019,BKL,dermoscopic,,337
+test,isic2019,DF,dermoscopic,,34
+test,isic2019,MEL,dermoscopic,,569
+test,isic2019,NV,dermoscopic,,1574
+test,isic2019,SCC,dermoscopic,,93
+test,isic2019,VASC,dermoscopic,,38
+test,milk10k,AK,clinical: close-up,,18
+test,milk10k,AK,dermoscopic,,18
+test,milk10k,BCC,clinical: close-up,,259
+test,milk10k,BCC,dermoscopic,,259
+test,milk10k,BKL,clinical: close-up,,50
+test,milk10k,BKL,dermoscopic,,50
+test,milk10k,DF,clinical: close-up,,7
+test,milk10k,DF,dermoscopic,,7
+test,milk10k,MEL,clinical: close-up,,48
+test,milk10k,MEL,dermoscopic,,48
+test,milk10k,NV,clinical: close-up,,72
+test,milk10k,NV,dermoscopic,,72
+test,milk10k,SCC,clinical: close-up,,64
+test,milk10k,SCC,dermoscopic,,64
+test,milk10k,VASC,clinical: close-up,,3
+test,milk10k,VASC,dermoscopic,,3
+test,pad_ufes_20,AK,clinical,,76
+test,pad_ufes_20,BCC,clinical,,84
+test,pad_ufes_20,BKL,clinical,,19
+test,pad_ufes_20,MEL,clinical,,4
+test,pad_ufes_20,NV,clinical,,18
+test,pad_ufes_20,SCC,clinical,,13
+train,fitzpatrick17k,AK,clinical,,150
+train,fitzpatrick17k,BCC,clinical,,487
+train,fitzpatrick17k,BKL,clinical,,49
+train,fitzpatrick17k,DF,clinical,,62
+train,fitzpatrick17k,MEL,clinical,,467
+train,fitzpatrick17k,NV,clinical,,223
+train,fitzpatrick17k,SCC,clinical,,458
+train,fitzpatrick17k,VASC,clinical,,149
+train,hiba,AK,dermoscopic,,49
+train,hiba,BCC,dermoscopic,,269
+train,hiba,BKL,dermoscopic,,75
+train,hiba,DF,dermoscopic,,53
+train,hiba,MEL,dermoscopic,,188
+train,hiba,NV,dermoscopic,,537
+train,hiba,SCC,dermoscopic,,137
+train,isic2019,AK,dermoscopic,,977
+train,isic2019,BCC,dermoscopic,,3422
+train,isic2019,BKL,dermoscopic,,2596
+train,isic2019,DF,dermoscopic,,269
+train,isic2019,MEL,dermoscopic,,4689
+train,isic2019,NV,dermoscopic,,12247
+train,isic2019,SCC,dermoscopic,,628
+train,isic2019,VASC,dermoscopic,,287
+train,milk10k,AK,clinical: close-up,,92
+train,milk10k,AK,dermoscopic,,92
+train,milk10k,BCC,clinical: close-up,,2019
+train,milk10k,BCC,dermoscopic,,2018
+train,milk10k,BKL,clinical: close-up,,440
+train,milk10k,BKL,dermoscopic,,440
+train,milk10k,DF,clinical: close-up,,37
+train,milk10k,DF,dermoscopic,,37
+train,milk10k,MEL,clinical: close-up,,357
+train,milk10k,MEL,dermoscopic,,357
+train,milk10k,NV,clinical: close-up,,590
+train,milk10k,NV,dermoscopic,,590
+train,milk10k,SCC,clinical: close-up,,521
+train,milk10k,SCC,dermoscopic,,521
+train,milk10k,VASC,clinical: close-up,,38
+train,milk10k,VASC,dermoscopic,,38
+train,pad_ufes_20,AK,clinical,,592
+train,pad_ufes_20,BCC,clinical,,665
+train,pad_ufes_20,BKL,clinical,,192
+train,pad_ufes_20,MEL,clinical,,42
+train,pad_ufes_20,NV,clinical,,206
+train,pad_ufes_20,SCC,clinical,,151
+val,fitzpatrick17k,AK,clinical,,15
+val,fitzpatrick17k,BCC,clinical,,49
+val,fitzpatrick17k,BKL,clinical,,9
+val,fitzpatrick17k,DF,clinical,,11
+val,fitzpatrick17k,MEL,clinical,,53
+val,fitzpatrick17k,NV,clinical,,44
+val,fitzpatrick17k,SCC,clinical,,69
+val,fitzpatrick17k,VASC,clinical,,19
+val,hiba,AK,dermoscopic,,1
+val,hiba,BCC,dermoscopic,,29
+val,hiba,BKL,dermoscopic,,5
+val,hiba,DF,dermoscopic,,4
+val,hiba,MEL,dermoscopic,,33
+val,hiba,NV,dermoscopic,,38
+val,hiba,SCC,dermoscopic,,5
+val,isic2019,AK,dermoscopic,,147
+val,isic2019,BCC,dermoscopic,,464
+val,isic2019,BKL,dermoscopic,,337
+val,isic2019,DF,dermoscopic,,27
+val,isic2019,MEL,dermoscopic,,581
+val,isic2019,NV,dermoscopic,,1530
+val,isic2019,SCC,dermoscopic,,72
+val,isic2019,VASC,dermoscopic,,32
+val,milk10k,AK,clinical: close-up,,13
+val,milk10k,AK,dermoscopic,,13
+val,milk10k,BCC,clinical: close-up,,242
+val,milk10k,BCC,dermoscopic,,242
+val,milk10k,BKL,clinical: close-up,,50
+val,milk10k,BKL,dermoscopic,,50
+val,milk10k,DF,clinical: close-up,,8
+val,milk10k,DF,dermoscopic,,8
+val,milk10k,MEL,clinical: close-up,,45
+val,milk10k,MEL,dermoscopic,,45
+val,milk10k,NV,clinical: close-up,,84
+val,milk10k,NV,dermoscopic,,84
+val,milk10k,SCC,clinical: close-up,,68
+val,milk10k,SCC,dermoscopic,,68
+val,milk10k,VASC,clinical: close-up,,6
+val,milk10k,VASC,dermoscopic,,6
+val,pad_ufes_20,AK,clinical,,55
+val,pad_ufes_20,BCC,clinical,,84
+val,pad_ufes_20,BKL,clinical,,23
+val,pad_ufes_20,MEL,clinical,,6
+val,pad_ufes_20,NV,clinical,,19
+val,pad_ufes_20,SCC,clinical,,20
