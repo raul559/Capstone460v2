@@ -1,0 +1,8 @@
+dataset_source,rows_actual,rows_expected
+isic2019,33569,33569
+milk10k,10480,10480
+fitzpatrick17k,16577,16577
+pad_ufes_20,2298,2298
+hiba,1635,1635
+mra_midas,3399,3399
+ddi,656,656

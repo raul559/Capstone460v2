@@ -2,7 +2,11 @@
 # scripts). Standards are described in docs/v2/CODING_STANDARDS.md.
 target-version = "py312"
 line-length = 88
-extend-exclude = ["legacy", "apps", "docs", "scripts/fix_upload.py"]
+extend-exclude = [
+    "legacy", "apps", "docs", "scripts/fix_upload.py",
+    # Exploratory dataset notebooks; the reusable logic belongs in .py scripts.
+    "scripts/models/dataset/*.ipynb",
+]
 # Lets import sorting recognize the API package "app" as first-party code.
 src = ["services/api", "."]
 
@@ -39,6 +43,13 @@ max-statements = 25
     "S101",     # assert is how pytest checks results
     "PLR2004",  # literal expected values are clear in tests
     "ANN",      # test functions need no return annotations
+]
+"scripts/models/dataset/**" = [
+    "T201",     # command-line tool reports progress on stdout
+    "PLC0415",  # huggingface_hub is optional and imported lazily; tests mock it
+    # Temporary, until the author's follow-up PR adds type hints and splits
+    # validate(), check_images(), and main(). Remove these lines then.
+    "ANN", "C901", "PLR0912", "PLR0915", "SIM102",
 ]
 
 [format]

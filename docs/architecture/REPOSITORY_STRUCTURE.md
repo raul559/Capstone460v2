@@ -186,7 +186,9 @@ skinai/
 │
 ├── models/
 │   ├── README.md
-│   └── manifest.json
+│   ├── manifest.json
+│   └── datasets/
+│       └── skinai-master/      # dataset summaries and checksums, no row-level data
 │
 ├── legacy/
 │   ├── README.md
@@ -225,6 +227,7 @@ skinai/
 │   ├── development/
 │   ├── testing/
 │   └── models/
+│       └── dataset/            # dataset build scripts and notebooks
 │
 └── .github/
     ├── workflows/
@@ -401,6 +404,8 @@ Contains model metadata, manifests, checksums, and retrieval documentation.
 
 Do not store large trained model binaries in ordinary Git history. The actual artifact should use the repository's approved artifact-storage or Git LFS strategy.
 
+`models/datasets/` holds aggregate summaries, class mappings, split configs, and SHA-256 pins for training datasets. Images and row-level manifests (one row per image or patient) stay in external storage and are rebuilt locally into the git-ignored `manifests/` folder. See `docs/v2/DATASETS.md`.
+
 ---
 
 ## `legacy/`
@@ -477,6 +482,8 @@ Implementation-facing V2 documents including current implementation plan, API no
 ## `scripts/`
 
 Repository automation only. Organize scripts by purpose rather than using this directory as miscellaneous source-code storage.
+
+`scripts/models/dataset/` holds the dataset build (`build_master.py`, its tests, and the loader and audit notebooks). Notebooks are excluded from Ruff; reusable logic belongs in `.py` files.
 
 ---
 

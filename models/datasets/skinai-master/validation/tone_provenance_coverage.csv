@@ -1,0 +1,12 @@
+dataset_source,tone_provenance,rows
+ddi,recorded,656
+fitzpatrick17k,none,565
+fitzpatrick17k,recorded,16012
+hiba,none,118
+hiba,recorded,1517
+isic2019,none,33569
+milk10k,ita_estimate,10480
+mra_midas,none,36
+mra_midas,recorded,3363
+pad_ufes_20,none,804
+pad_ufes_20,recorded,1494

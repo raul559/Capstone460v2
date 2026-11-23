@@ -1,0 +1,8 @@
+dataset_source,split,rows
+ddi,external_test,656
+fitzpatrick17k,train,16577
+hiba,train,1635
+isic2019,train,33569
+milk10k,train,10480
+mra_midas,external_test,3399
+pad_ufes_20,train,2298
